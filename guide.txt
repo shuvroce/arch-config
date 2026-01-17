@@ -1,32 +1,78 @@
-- install arch minimal with grub
-- pipewire as audio
+- install arch minimal with grub and pipewire
+    archinstall
 
+- install necessary packages:
+    sudo pacman -Syu --needed --noconfirm \
+    curl wget git niri xwayland-satellite xdg-desktop-portal xdg-desktop-portal-gnome xdg-desktop-portal-wlr \
+    xdg-desktop-portal-gtk alacritty neofetch nano micro neovim fish btop polkit-gnome pacman-contrib timeshift \
+    reflector networkmanager network-manager-applet thunar gvfs tumbler vlc firefox swaybg ddcutil brightnessctl \
+    wireplumber wl-clipboard cliphist fuzzel swaync cava wlsunset evince gedit glances udiskie qt6-multimedia-ffmpeg \
+    ifuse usbmuxd libplist libimobiledevice \
+    inter-font ttf-jetbrains-mono-nerd tar bzip2 gzip unzip unrar \
+    wireguard-tools localsend
 
-
-sudo pacman -Syu
-sudo pacman -S curl wget git niri xwayland-satellite xdg-desktop-portal-gnome xdg-desktop-portal-gtk alacritty neofetch nano micro neovim fish btop
-sudo pacman -S thunar gvfs vlc firefox swaybg ddcutil ifuse usbmuxd libplist libimobiledevice cliphist fuzzel swaync cava wlsunset evince
-sudo pacman -S pacman-contrib timeshift gedit glances wireguard-tools inter-font ttf-jetbrains-mono-nerd
-sudo pacmna -S udiskie tar bzip2 gzip unzip unrar localsend reflector
-
-- install yay and paru
-    sudo pacman -S --needed git base-devel
+- install yay
+    sudo pacman -S --needed base-devel
     git clone https://aur.archlinux.org/yay.git
     cd yay
     makepkg -si
 
-yay -S paru
-yay -S wlogout qimgv
+    or,
+    sudo pacman -S --needed --noconfirm base-devel git && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si --noconfirm && cd .. && rm -rf yay
+
+- install paru and aur packages
+    yay -S --noconfirm --nodiff --noedit paru wlogout qimgv nwg-look unimatrix-git visual-studio-code-bin
 
 - inatall sddm/gdm (optional)
+    sudo pacman -S sddm
+    sudo systemctl enable sddm.service
+    sudo systemctl start sddm.service
 
 
-# Config / customize
+#### Config / customize
+NetworkManager:
+    sudo systemctl enable --now NetworkManager
+
+gnome-portal:
+    mkdir -p ~/.config/xdg-desktop-portal
+    nano ~/.config/xdg-desktop-portal/portals.conf
+        [preferred]
+        default=wlr;gtk
+        org.freedesktop.impl.portal.Screencast=gnome
+        org.freedesktop.impl.portal.Screenshot=gnome
+
 Alacritty:
 
-Waybar:
 
-niri:
-   
 
+fish:
+    nano ~/.config/fish/config.fish
+
+    # For auto login: If we are on TTY1 and Niri isn't already running, start it
+    if status is-login
+        if test -z "$DISPLAY" -a "$XDG_VTNR" = 1
+            exec niri-session
+        end
+    end
+
+grub:
+    copy <theme-folder> with root priviledge to /boot/grub/themes/
+    nano /etc/default/grub
+        GRUB_THEME=/boot/grub/themes/<theme-folder>/theme.txt
+    sudo grub-mkconfig -o /boot/grub/grub.cfg
+
+sddm:
+    sudo sddm --example-config | sudo tee /etc/sddm.conf
+    yay -S sddm-astronaut-theme
+    sudo nano /etc/sddm.conf
+        [Theme]
+        Current=astronaut
+
+
+## for auto log-in
+    sudo mkdir -p /etc/systemd/system/getty@tty1.service.d/
+    sudo nano /etc/systemd/system/getty@tty1.service.d/autologin.conf
+        [Service]
+        ExecStart=
+        ExecStart=-/sbin/agetty --o '-p -- \\u' --noclear --autologin mark %I $TERM
 

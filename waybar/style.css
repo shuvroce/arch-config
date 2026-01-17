@@ -1,0 +1,98 @@
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "Inter", "JetBrainsMono Nerd Font", sans-serif;
+    font-size: 13px;
+    min-height: 0;
+    font-weight: 500;
+    -webkit-font-smoothing: antialiased;
+}
+
+window#waybar {
+    background: rgba(20, 20, 20, 0.9);
+    color: #cdd6f4;
+}
+
+/* Base module styling for standard "pills" */
+#network, #niri-window, #mpris, #tray,
+#custom-updates, #pulseaudio, #custom-backlight, 
+#clock, #custom-notification, #custom-nightlight, #custom-darkmode {
+    padding: 0 10px;
+    margin: 4px 2px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+}
+
+#niri-window {
+    color: #89b4fa; /* Makes the title/icon pop */
+}
+
+/* --- Launcher & App Group --- */
+#custom-launcher {
+    background: rgba(23, 147, 209, 0.15);
+    color: #1793d1;
+    font-size: 16px;
+    padding: 0 12px;
+    margin: 4px 4px;
+    border-radius: 12px;
+}
+
+#group-apps {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    margin: 4px 4px;
+    padding: 0 5px;
+}
+
+#custom-term, #custom-files, #custom-browser {
+    padding: 0 10px;
+    color: #cdd6f4;
+}
+
+#custom-term:hover, #custom-files:hover, #custom-browser:hover {
+    color: #89b4fa;
+}
+
+/* --- Workspaces --- */
+#workspaces button {
+    color: #6c7086;
+    padding: 4px 8px;
+    margin: 5px 2px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+#workspaces button.active {
+    color: #89b4fa;
+    background: rgba(137, 180, 250, 0.15);
+    border-bottom: 2px solid #89b4fa;
+}
+
+/* --- Hardware Group --- */
+#group-hardware {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    margin: 4px 4px;
+    padding: 0 5px;
+}
+
+#cpu, #memory, #temperature {
+    background: transparent;
+    padding: 0 8px;
+}
+
+/* --- Right Side Specifics --- */
+#custom-nightlight { color: #fab387; }
+#custom-darkmode { color: #b4befe; }
+#clock { 
+    font-weight: bold; 
+    padding: 0 15px;
+}
+
+#custom-power {
+    color: #f38ba8;
+    background: rgba(243, 139, 168, 0.15);
+    padding: 0 12px;
+    margin: 4px 8px 4px 2px;
+    border-radius: 12px;
+}

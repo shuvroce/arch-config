@@ -1,0 +1,183 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 36,
+    "spacing": 4,
+    "target-fps": 60,
+    "reload_style_on_change": true,
+
+    "modules-left": [
+        "custom/launcher",
+        "group/apps",
+        "group/hardware",
+        "network", 
+        "niri/window"
+    ],
+
+    "modules-center": [
+        "niri/workspaces"
+    ],
+
+    "modules-right": [
+        "mpris",
+        "custom/nightlight",
+        "custom/darkmode",
+        "tray",
+        "custom/updates", 
+        "pulseaudio", 
+        "custom/backlight", 
+        "clock", 
+        "custom/notification", 
+        "custom/power"
+    ],
+
+    // --- LEFT MODULES ---
+
+    "custom/launcher": {
+        "format": "",
+        "on-click": "fuzzel",
+        "tooltip": false
+    },
+
+    "group/apps": {
+        "orientation": "horizontal",
+        "modules": [
+            "custom/term",
+            "custom/files",
+            "custom/browser"
+        ]
+    },
+
+    "custom/term": {
+        "format": "",
+        "on-click": "alacritty",
+        "tooltip": false
+    },
+
+    "custom/files": {
+        "format": "󰉋",
+        "on-click": "thunar",
+        "tooltip": false
+    },
+
+    "custom/browser": {
+        "format": "",
+        "on-click": "firefox",
+        "tooltip": false
+    },
+
+    "group/hardware": {
+        "orientation": "horizontal",
+        "modules": [
+            "cpu",
+            "memory",
+            "temperature"
+        ]
+    },
+
+    "cpu": { "format": "  {usage}%", "interval": 2 },
+    "memory": { "format": "  {used:0.1f}G", "interval": 5 },
+    "temperature": {
+        "hwmon-path": "/sys/class/hwmon/hwmon1/temp1_input", 
+        "critical-threshold": 80,
+        "format": "{icon} {temperatureC}°C",
+        "format-icons": ["", "", ""]
+    },
+
+    "network": {
+        "format-wifi": "  {bandwidthDownBytes}",
+        "format-ethernet": "󰈀  {bandwidthDownBytes}",
+        "format-disconnected": "󰤮  Disconnected",
+        "tooltip-format": "{ifname} via {gwaddr}\n󰇚 {bandwidthDownBytes} 󰕒 {bandwidthUpBytes}",
+        "interval": 2
+    },
+
+    "niri/window": {
+        "format": "{icon} {title}",
+        "max-length": 25,
+        "separate-outputs": true,
+        "rewrite": {
+            // Specific Apps
+            "(.*) - Firefox": "",
+            "(.*) - Visual Studio Code": "󰨞",
+            "Alacritty": "",
+            "Thunar": "󰉋",
+            "vlc": "󰕼",
+            "evince": "",
+            "gedit": "󰷈",
+
+            // Default icon if none of the above match
+            "(.*)": "󰖯" 
+        }
+    },
+
+    // --- CENTER MODULES ---
+
+    "niri/workspaces": {
+        "format": "{index}",
+        "active-only": false,
+        "all-outputs": true
+    },
+
+    // --- RIGHT MODULES ---
+
+    "mpris": {
+        "format": "{player_icon} {title}",
+        "format-paused": "󰏤 {title}",
+        "player-icons": { "default": "󰎆", "spotify": "" },
+        "max-length": 20
+    },
+
+    "custom/nightlight": {
+        "format": "󰛨",
+        "on-click": "pkill wlsunset || wlsunset -t 4500 -T 6500",
+        "tooltip-format": "Night Light Toggle"
+    },
+
+    "custom/darkmode": {
+        "format": "󰔎",
+        "on-click": "nwg-look",
+        "tooltip": false
+    },
+
+    "tray": {
+        "icon-size": 18,
+        "spacing": 10
+    },
+
+    "custom/updates": {
+        "format": "󰚰  {}",
+        "exec": "checkupdates | wc -l",
+        "interval": 3600
+    },
+
+    "pulseaudio": {
+        "format": "{icon}  {volume}%",
+        "format-muted": "󰝟",
+        "format-icons": { "default": ["󰕿", "󰖀", "󰕾"] }
+    },
+
+    "custom/backlight": {
+        "exec": "ddcutil getvcp 10 --bus 1 --sleep-multiplier .5 | grep -oP 'current value=\\s*\\K[0-9]+'",
+        "interval": 15,
+        "format": "󰃠 {}%",
+        "on-scroll-up": "ddcutil setvcp 10 + 10 --bus 1",
+        "on-scroll-down": "ddcutil setvcp 10 - 10 --bus 1"
+    },
+
+    "clock": {
+        "format": "{:%d %b, %Y  |  %I:%M %p}",
+        "tooltip-format": "<tt>{calendar}</tt>"
+    },
+
+    "custom/notification": {
+        "format": "󰂚",
+        "on-click": "swaync-client -t -sw"
+    },
+
+    "custom/power": {
+        "format": "⏻",
+        "on-click": "wlogout",
+        "tooltip": false
+    }
+}

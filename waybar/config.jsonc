@@ -10,7 +10,7 @@
         "custom/launcher",
         "group/apps",
         "group/hardware",
-        "network", 
+        // "network", 
         "niri/window"
     ],
 
@@ -19,6 +19,7 @@
     ],
 
     "modules-right": [
+        "network",
         "mpris",
         "custom/nightlight",
         "custom/darkmode",
@@ -75,7 +76,7 @@
         ]
     },
 
-    "cpu": { "format": "  {usage}%", "interval": 2 },
+    "cpu": { "format": "   {usage}%", "interval": 2 },
     "memory": { "format": "  {used:0.1f}G", "interval": 5 },
     "temperature": {
         "hwmon-path": "/sys/class/hwmon/hwmon1/temp1_input", 
@@ -85,28 +86,19 @@
     },
 
     "network": {
-        "format-wifi": "  {bandwidthDownBytes}",
-        "format-ethernet": "󰈀  {bandwidthDownBytes}",
-        "format-disconnected": "󰤮  Disconnected",
+        "format-wifi": "   {bandwidthDownBytes}",
+        "format-ethernet": "󰈀   {bandwidthDownBytes}",
+        "format-disconnected": "󰤮   Disconnected",
         "tooltip-format": "{ifname} via {gwaddr}\n󰇚 {bandwidthDownBytes} 󰕒 {bandwidthUpBytes}",
         "interval": 2
     },
 
     "niri/window": {
-        "format": "{icon} {title}",
+        "format": "{title}",
         "max-length": 30,
         "separate-outputs": true,
         "icon": true, // Enables the default app icon if available
-        "rewrite": {
-            // Rewrite rules based on window title or class
-            "(.*) - Firefox": "",
-            "(.*) - Visual Studio Code": "󰨞",
-            "(.*) - Alacritty": "",
-            "(.*) - Thunar": "󰉋",
-            "(.*) - VLC media player": "󰕼",
-            "nwg-look": "󰔎"
-        },
-        "icon-size": 18
+        "icon-size": 16
     },
 
     // --- CENTER MODULES ---
@@ -139,7 +131,7 @@
     },
 
     "tray": {
-        "icon-size": 18,
+        "icon-size": 14,
         "spacing": 10
     },
 

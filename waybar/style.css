@@ -31,18 +31,18 @@ window#waybar {
 #custom-launcher {
     background: rgba(23, 147, 209, 0.15);
     color: #1793d1;
-    font-size: 16px;
-    padding: 0 12px;
+    font-size: 14px;
+    padding: 0 14px 0 8px;
     margin: 4px 4px;
-    border-radius: 12px;
+    border-radius: 50px;
 }
 
 #group-apps,
 .modules-left > widget > box {
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(27, 175, 128, 0.15);
     border-radius: 12px;
-    margin: 4px 4px;
-    padding: 0 5px;
+    margin: 4px 2px;
+    padding: 0 4px;
 }
 
 #custom-term, #custom-files, #custom-browser {
@@ -66,7 +66,7 @@ window#waybar {
 #workspaces button.active {
     color: #89b4fa;
     background: rgba(137, 180, 250, 0.15);
-    border-bottom: 2px solid #89b4fa;
+    /* border-bottom: 2px solid #89b4fa; */
 }
 
 /* --- Hardware Group --- */
@@ -74,8 +74,8 @@ window#waybar {
 .modules-left > widget > box {
     background: rgba(255, 255, 255, 0.05);
     border-radius: 12px;
-    margin: 4px 4px;
-    padding: 0 5px;
+    margin: 4px 2px;
+    padding: 0 4px;
 }
 
 #cpu, #memory, #temperature {
@@ -94,7 +94,7 @@ window#waybar {
 #custom-power {
     color: #f38ba8;
     background: rgba(243, 139, 168, 0.15);
-    padding: 0 12px;
+    padding: 0 12px 0 10px;
     margin: 4px 8px 4px 2px;
     border-radius: 12px;
 }

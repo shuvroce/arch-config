@@ -94,21 +94,19 @@
 
     "niri/window": {
         "format": "{icon} {title}",
-        "max-length": 25,
+        "max-length": 30,
         "separate-outputs": true,
+        "icon": true, // Enables the default app icon if available
         "rewrite": {
-            // Specific Apps
+            // Rewrite rules based on window title or class
             "(.*) - Firefox": "",
             "(.*) - Visual Studio Code": "󰨞",
-            "Alacritty": "",
-            "Thunar": "󰉋",
-            "vlc": "󰕼",
-            "evince": "",
-            "gedit": "󰷈",
-
-            // Default icon if none of the above match
-            "(.*)": "󰖯" 
-        }
+            "(.*) - Alacritty": "",
+            "(.*) - Thunar": "󰉋",
+            "(.*) - VLC media player": "󰕼",
+            "nwg-look": "󰔎"
+        },
+        "icon-size": 18
     },
 
     // --- CENTER MODULES ---

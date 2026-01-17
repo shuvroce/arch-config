@@ -1,0 +1,32 @@
+- install arch minimal with grub
+- pipewire as audio
+
+
+
+sudo pacman -Syu
+sudo pacman -S curl wget git niri xwayland-satellite xdg-desktop-portal-gnome xdg-desktop-portal-gtk alacritty neofetch nano micro neovim fish btop
+sudo pacman -S thunar gvfs vlc firefox swaybg ddcutil ifuse usbmuxd libplist libimobiledevice cliphist fuzzel swaync cava wlsunset evince
+sudo pacman -S pacman-contrib timeshift gedit glances wireguard-tools inter-font ttf-jetbrains-mono-nerd
+sudo pacmna -S udiskie tar bzip2 gzip unzip unrar localsend reflector
+
+- install yay and paru
+    sudo pacman -S --needed git base-devel
+    git clone https://aur.archlinux.org/yay.git
+    cd yay
+    makepkg -si
+
+yay -S paru
+yay -S wlogout qimgv
+
+- inatall sddm/gdm (optional)
+
+
+# Config / customize
+Alacritty:
+
+Waybar:
+
+niri:
+   
+
+

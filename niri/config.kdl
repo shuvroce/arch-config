@@ -100,7 +100,7 @@ spawn-at-startup "waybar"
 spawn-at-startup "swaync"
 spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 spawn-at-startup "dbus-update-activation-environment" "--systemd" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP=niri"
-spawn-at-startup "swaybg" "-o" "HDMI-A-1" "-i" "/home/mark/Pictures/Wallpapers/wallpaper.png" "-m" "fill"
+spawn-at-startup "swaybg" "-o" "HDMI-A-1" "-i" "/home/mark/Pictures/Wallpapers/wallpaper.jpg" "-m" "fill"
 spawn-at-startup "udiskie" "--tray"
 
 hotkey-overlay {

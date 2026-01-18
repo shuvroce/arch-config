@@ -18,7 +18,7 @@ cd yay && makepkg -si --noconfirm && cd .. && rm -rf yay
 
 # 3. Install AUR Packages
 echo "--- Installing AUR Packages ---"
-yay -S --noconfirm --noedit paru wlogout qimgv nwg-look unimatrix-git visual-studio-code-bin
+yay -S --noconfirm paru wlogout qimgv nwg-look unimatrix-git visual-studio-code-bin
 
 # 4. Create Directories & Copy Local Configs
 echo "--- Setting up Configs ---"

@@ -9,8 +9,9 @@
 }
 
 window#waybar {
-    background: rgba(20, 20, 20, 0.9);
+    background: rgba(20, 20, 20, 0.6);
     color: #cdd6f4;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 /* Base module styling for standard "pills" */
@@ -18,13 +19,22 @@ window#waybar {
 #custom-updates, #pulseaudio, #custom-backlight, 
 #clock, #custom-notification, #custom-nightlight, #custom-darkmode {
     padding: 0 10px;
-    margin: 4px 2px;
-    background: rgba(255, 255, 255, 0.05);
+    margin: 4px 4px;
+    background: rgba(255, 255, 255, 0.08);
     border-radius: 12px;
+    /* box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); */
 }
 
-#niri-window {
-    color: #89b4fa; /* Makes the title/icon pop */
+#niri-window:empty {
+    background: transparent;
+    margin: 0;
+    padding: 0;
+}
+
+#mpris:empty {
+    background: transparent;
+    margin: 0;
+    padding: 0;
 }
 
 /* --- Launcher & App Group --- */
@@ -39,13 +49,14 @@ window#waybar {
 
 #group-apps,
 .modules-left > widget > box {
-    background: rgba(27, 175, 128, 0.15);
+    background: rgba(27, 175, 128, 0.19);
     border-radius: 12px;
     margin: 4px 2px;
     padding: 0 4px;
 }
 
 #custom-term, #custom-files, #custom-browser {
+    background: transparent;
     padding: 0 10px;
     color: #cdd6f4;
 }
@@ -66,7 +77,6 @@ window#waybar {
 #workspaces button.active {
     color: #89b4fa;
     background: rgba(137, 180, 250, 0.15);
-    /* border-bottom: 2px solid #89b4fa; */
 }
 
 /* --- Hardware Group --- */

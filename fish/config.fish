@@ -20,8 +20,8 @@ if status is-interactive
 end
 
 function rwb
-    pkill waybar
-    spawn waybar > /dev/null 2>&1 &
+    killall waybar
+    waybar > /dev/null 2>&1 &
     disown
     echo "Waybar reloaded!"
 end

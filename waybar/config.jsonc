@@ -50,7 +50,7 @@
     },
 
     "custom/term": {
-        "format": "",
+        "format": "",
         "on-click": "alacritty",
         "tooltip": false
     },
@@ -77,7 +77,7 @@
     },
 
     "cpu": { "format": "   {usage}%", "interval": 2 },
-    "memory": { "format": "  {used:0.1f}G", "interval": 5 },
+    "memory": { "format": "   {used:0.1f}G", "interval": 5 },
     "temperature": {
         "hwmon-path": "/sys/class/hwmon/hwmon1/temp1_input", 
         "critical-threshold": 80,
@@ -98,7 +98,10 @@
         "max-length": 30,
         "separate-outputs": true,
         "icon": true, // Enables the default app icon if available
-        "icon-size": 16
+        "icon-size": 16,
+        "rewrite": {
+            "^$": "" // If title is exactly empty, output nothing
+        }
     },
 
     // --- CENTER MODULES ---
@@ -114,8 +117,18 @@
     "mpris": {
         "format": "{player_icon} {title}",
         "format-paused": "󰏤 {title}",
-        "player-icons": { "default": "󰎆", "spotify": "" },
-        "max-length": 20
+        "format-stopped": "󰎆 Stopped", // Shows even when playback is stopped
+        "player-icons": { 
+            "default": "󰎆", 
+            "spotify": "",
+            "firefox": "" 
+        },
+        "max-length": 30, // Increased to fit the title better
+        "interval": 1,
+        // Ensures the module doesn't disappear if no player is found
+        "on-click": "playerctl play-pause",
+        "on-scroll-up": "playerctl next",
+        "on-scroll-down": "playerctl previous"
     },
 
     "custom/nightlight": {
@@ -136,7 +149,7 @@
     },
 
     "custom/updates": {
-        "format": "󰚰  {}",
+        "format": "   {}",
         "exec": "checkupdates | wc -l",
         "interval": 3600
     },

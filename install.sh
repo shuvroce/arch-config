@@ -18,7 +18,7 @@ cd yay && makepkg -si --noconfirm && cd .. && rm -rf yay
 
 # 3. Install AUR Packages
 echo "--- Installing AUR Packages ---"
-yay -S --noconfirm paru wlogout nwg-look unimatrix-git visual-studio-code-bin
+yay -S --noconfirm wlogout nwg-look unimatrix-git visual-studio-code-bin
 
 # 4. Create Directories & Copy Local Configs
 echo "--- Setting up Configs ---"
@@ -48,11 +48,11 @@ EOF
 
 # 6. Set up Fish Config
 cat <<EOF > ~/.config/fish/config.fish
-if status is-login
-    if test -z "\$DISPLAY" -a "\$XDG_VTNR" = 1
-        exec niri-session
-    end
-end
+# if status is-login
+#     if test -z "\$DISPLAY" -a "\$XDG_VTNR" = 1
+#         exec niri-session
+#     end
+# end
 
 function rwb
     killall waybar
@@ -63,13 +63,13 @@ end
 EOF
 
 # 7. Set up Auto-login for Getty
-echo "--- Setting up Auto-login ---"
-sudo mkdir -p /etc/systemd/system/getty@tty1.service.d/
-sudo bash -c "cat <<EOF > /etc/systemd/system/getty@tty1.service.d/autologin.conf
-[Service]
-ExecStart=
-ExecStart=-/sbin/agetty --o '-p -- \\\\u' --noclear --autologin $USER %I \$TERM
-EOF"
+# echo "--- Setting up Auto-login ---"
+# sudo mkdir -p /etc/systemd/system/getty@tty1.service.d/
+# sudo bash -c "cat <<EOF > /etc/systemd/system/getty@tty1.service.d/autologin.conf
+# [Service]
+# ExecStart=
+# ExecStart=-/sbin/agetty --o '-p -- \\\\u' --noclear --autologin $USER %I \$TERM
+# EOF"
 
 # Change shell to fish
 FISH_PATH=$(which fish)
@@ -78,6 +78,4 @@ if ! grep -q "$FISH_PATH" /etc/shells; then
 fi
 sudo chsh -s "$FISH_PATH" $USER
 
-echo "--- Setup Complete! System will now reboot in 5 seconds ---"
-sleep 5
-reboot
+echo "--- Setup Complete! ---"

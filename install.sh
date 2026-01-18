@@ -18,7 +18,7 @@ cd yay && makepkg -si --noconfirm && cd .. && rm -rf yay
 
 # 3. Install AUR Packages
 echo "--- Installing AUR Packages ---"
-yay -S --noconfirm --nodiff --noedit paru wlogout qimgv nwg-look unimatrix-git visual-studio-code-bin
+yay -S --noconfirm --noedit paru wlogout qimgv nwg-look unimatrix-git visual-studio-code-bin
 
 # 4. Create Directories & Copy Local Configs
 echo "--- Setting up Configs ---"
@@ -70,11 +70,6 @@ sudo bash -c "cat <<EOF > /etc/systemd/system/getty@tty1.service.d/autologin.con
 ExecStart=
 ExecStart=-/sbin/agetty --o '-p -- \\\\u' --noclear --autologin $USER %I \$TERM
 EOF"
-
-# 8. Services & Default Shell
-echo "--- Finalizing ---"
-sudo systemctl enable --now NetworkManager
-sudo systemctl enable --now bluetooth
 
 # Change shell to fish
 FISH_PATH=$(which fish)

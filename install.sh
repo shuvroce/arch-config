@@ -3,7 +3,7 @@
 # Refresh package database
 sudo pacman -Sy
 
-# Install Pacman Packages (Added niri here and fixed swaylock typo)
+# Install Pacman Packages
 echo "--- Installing Pacman Packages ---"
 sudo pacman -S --needed --noconfirm \
 curl wget git which \

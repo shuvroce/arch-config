@@ -7,7 +7,7 @@ sudo pacman -Sy
 echo "--- Installing Pacman Packages ---"
 PKGS=(
     curl wget git which \
-    micro neovim fish btop pacman-contrib timeshift \
+    micro neovim fish btop fastfetch pacman-contrib timeshift \
     reflector thunar gvfs tumbler vlc firefox swaybg ddcutil brightnessctl \
     wireplumber wl-clipboard cliphist swaylock wlsunset evince gedit glances udiskie qt6-multimedia-ffmpeg \
     ifuse usbmuxd libplist libimobiledevice inter-font ttf-jetbrains-mono-nerd tar bzip2 gzip unzip unrar \

@@ -78,13 +78,13 @@
     "cpu": {
         "format": "   {usage}%",
         "interval": 2,
-        "on-click": "btop"
+        "on-click": "alacritty -e btop"
     },
 
     "memory": {
         "format": "    {used:0.1f}G",
         "interval": 5,
-        "on-click": "btop"
+        "on-click": "alacritty -e btop"
     },
 
     "temperature": {
@@ -100,7 +100,7 @@
         "format-disconnected": "󰤮   Disconnected",
         "tooltip-format": "{ifname} via {gwaddr}\n󰇚 {bandwidthDownBytes} 󰕒 {bandwidthUpBytes}",
         "interval": 2,
-        "on-click": "network-manager-applet"
+        "on-click": "nm-connection-editor"
     },
 
     "niri/window": {
@@ -188,7 +188,8 @@
 
     "custom/notification": {
         "format": "󰂚",
-        "on-click": "swaync-client -t -sw"
+        "on-click": "makoctl dismiss",
+        "on-click-right": "makoctl restore"
     },
 
     "custom/power": {

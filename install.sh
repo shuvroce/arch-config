@@ -11,7 +11,7 @@ PKGS=(
     reflector thunar gvfs tumbler vlc firefox swaybg ddcutil brightnessctl nethogs \
     wireplumber wl-clipboard cliphist swaylock wlsunset evince gedit glances udiskie qt6-multimedia-ffmpeg \
     ifuse usbmuxd libplist libimobiledevice inter-font ttf-jetbrains-mono-nerd otf-codenewroman-nerd \
-    tar bzip2 gzip unzip unrar \
+    tar bzip2 gzip unzip unrar python-pip \
     wireguard-tools playerctl libappindicator-gtk3 nm-connection-editor
 )
 

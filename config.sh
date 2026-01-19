@@ -8,6 +8,7 @@ mkdir -p ~/.config/{xdg-desktop-portal,fish,niri,waybar,alacritty,swaync}
 [ -d "./niri" ] && cp -v ./niri/config.kdl ~/.config/niri/
 [ -d "./waybar" ] && cp -v ./waybar/*.{jsonc,css} ~/.config/waybar/
 [ -d "./alacritty" ] && cp -v ./alacritty/alacritty.toml ~/.config/alacritty/
+[ -d "./swaync" ] && cp -v ./swaync/style.css ~/.config/swaync/
 
 # Copy Wallpaper
 echo "--- Setting up Wallpaper ---"

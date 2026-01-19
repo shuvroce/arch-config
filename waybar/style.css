@@ -67,7 +67,7 @@ window#waybar {
     padding: 4px 8px;
     margin: 5px 2px;
     border-radius: 8px;
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(181, 181, 181, 0.15);
 }
 
 #workspaces button.active {

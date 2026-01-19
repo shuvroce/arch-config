@@ -8,7 +8,7 @@ echo "--- Installing Pacman Packages ---"
 PKGS=(
     curl wget git which \
     micro neovim fish btop fastfetch pacman-contrib timeshift \
-    reflector thunar gvfs tumbler vlc firefox swaybg ddcutil brightnessctl \
+    reflector thunar gvfs tumbler vlc firefox swaybg ddcutil brightnessctl nethogs \
     wireplumber wl-clipboard cliphist swaylock wlsunset evince gedit glances udiskie qt6-multimedia-ffmpeg \
     ifuse usbmuxd libplist libimobiledevice inter-font ttf-jetbrains-mono-nerd tar bzip2 gzip unzip unrar \
     wireguard-tools playerctl libappindicator-gtk3 nm-connection-editor

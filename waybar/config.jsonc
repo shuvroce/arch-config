@@ -78,20 +78,23 @@
     "cpu": {
         "format": "   {usage}%",
         "interval": 2,
-        "on-click": "alacritty -e btop"
+        "on-click": "alacritty -e btop",
+        "tooltip": false
     },
 
     "memory": {
         "format": "    {used:0.1f}G",
         "interval": 5,
-        "on-click": "alacritty -e btop"
+        "on-click": "alacritty -e btop",
+        "tooltip": false
     },
 
     "temperature": {
         "hwmon-path": "/sys/class/hwmon/hwmon1/temp1_input", 
         "critical-threshold": 80,
         "format": "{icon} {temperatureC}°C",
-        "format-icons": ["", "", ""]
+        "format-icons": ["", "", ""],
+        "tooltip": false
     },
 
     "network": {
@@ -100,7 +103,8 @@
         "format-disconnected": "󰤮   Disconnected",
         "tooltip-format": "{ifname} via {gwaddr}\n󰇚 {bandwidthDownBytes} 󰕒 {bandwidthUpBytes}",
         "interval": 2,
-        "on-click": "nm-connection-editor"
+        "on-click": "alacritty -e nethogs",
+        "tooltip": false
     },
 
     "niri/window": {
@@ -111,7 +115,8 @@
         "icon-size": 15,
         "rewrite": {
             "^\\s*$": ""
-        }
+        },
+        "tooltip": false
     },
 
 
@@ -152,7 +157,7 @@
     "custom/darkmode": {
         "format": "󰔎",
         "on-click": "nwg-look",
-        "tooltip": false
+        "tooltip-format": "Toggle Dark/Light Mode"
     },
 
     "tray": {
@@ -163,13 +168,15 @@
     "custom/updates": {
         "format": "   {}",
         "exec": "checkupdates | wc -l",
-        "interval": 3600
+        "interval": 3600,
+        "tooltip": false
     },
 
     "pulseaudio": {
         "format": "{icon}  {volume}%",
         "format-muted": "󰝟",
-        "format-icons": { "default": ["󰕿", "󰖀", "󰕾"] }
+        "format-icons": { "default": ["󰕿", "󰖀", "󰕾"] },
+        "tooltip": false
     },
 
     "custom/backlight": {
@@ -189,7 +196,8 @@
     "custom/notification": {
         "format": "󰂚",
         "on-click": "makoctl dismiss",
-        "on-click-right": "makoctl restore"
+        "on-click-right": "makoctl restore",
+        "tooltip": false
     },
 
     "custom/power": {

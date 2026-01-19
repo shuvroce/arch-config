@@ -9,9 +9,9 @@
 }
 
 window#waybar {
-    background: rgba(20, 20, 20, 0.8);
+    background: rgba(20, 20, 20, 0.7);
     color: #cdd6f4;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.187);
+    /* border-bottom: 1px solid rgba(255, 255, 255, 0.187); */
 }
 
 /* Base module styling for standard "pills" */
@@ -20,14 +20,14 @@ window#waybar {
 #clock, #custom-notification, #custom-nightlight, #custom-darkmode {
     padding: 0 10px;
     margin: 4px 4px;
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(181, 181, 181, 0.15);
     border-radius: 12px;
     /* box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); */
 }
 
 /* --- Launcher & App Group --- */
 .modules-left > widget > box {
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(181, 181, 181, 0.15);
     border-radius: 12px;
     margin: 4px 4px;
     padding: 0 10px;

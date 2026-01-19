@@ -1,22 +1,8 @@
-prefer-no-csd
 input {
- keyboard {
+    keyboard {
         xkb {
         }
         numlock
-    }
-    touchpad {
-        // off
-        tap
-        // dwt
-        // dwtp
-        // drag false
-        // drag-lock
-        natural-scroll
-        // accel-speed 0.2
-        // accel-profile "flat"
-        // scroll-method "two-finger"
-        // disabled-on-external-mouse
     }
     mouse {
         // off
@@ -24,16 +10,6 @@ input {
         // accel-speed 0.2
         // accel-profile "flat"
         // scroll-method "no-scroll"
-    }
-    trackpoint {
-        // off
-        // natural-scroll
-        // accel-speed 0.2
-        // accel-profile "flat"
-        // scroll-method "on-button-down"
-        // scroll-button 273
-        // scroll-button-lock
-        // middle-emulation
     }
     // warp-mouse-to-focus
     focus-follows-mouse max-scroll-amount="0%"
@@ -47,6 +23,21 @@ input {
     position x=1280 y=0
 }
 
+hotkey-overlay { skip-at-startup }
+
+gestures {
+    hot-corners {
+        off
+    }
+}
+
+
+//--------------------------------------------------------------
+// Layout
+//--------------------------------------------------------------
+
+prefer-no-csd
+
 layout {
     gaps 5
     center-focused-column "never"
@@ -57,19 +48,14 @@ layout {
         // fixed 1920
     }
     // preset-window-heights { }
-    default-column-width { proportion 0.5; }
+    default-column-width { proportion 0.45; }
     // default-column-width {}
     // `draw-border-with-background`.
     focus-ring {
         // off
         width 2
-        // - CSS named colors: "red"
-        // - RGB hex: "#rgb", "#rgba", "#rrggbb", "#rrggbbaa"
-        // - CSS-like notation: "rgb(255, 127, 0)", rgba(), hsl() and a few others.
         active-color "#7fc8ff"
         inactive-color "#505050"
-        // active-gradient from="#80c8ff" to="#c7ff7f" angle=45
-        // inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
     }
     border {
         off
@@ -77,8 +63,6 @@ layout {
         active-color "#ffc87f"
         inactive-color "#505050"
         urgent-color "#9b0000"
-        // active-gradient from="#e5989b" to="#ffb4a2" angle=45 relative-to="workspace-view" in="oklch longer hue"
-        // inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
     }
     shadow {
         // on
@@ -96,47 +80,66 @@ layout {
     }
 }
 
+
+//--------------------------------------------------------------
+// Startup
+//--------------------------------------------------------------
+
 spawn-at-startup "waybar"
 spawn-at-startup "swaync"
+spawn-at-startup "swaybg" "-o" "HDMI-A-1" "-i" "/home/mark/Pictures/Wallpapers/wallpaper.jpg" "-m" "fill"
+// spawn-at-startup "waypaper" "--backend" "swaybg" "--restore"
 spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 spawn-at-startup "dbus-update-activation-environment" "--systemd" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP=niri"
-spawn-at-startup "swaybg" "-o" "HDMI-A-1" "-i" "/home/mark/Pictures/Wallpapers/wallpaper.jpg" "-m" "fill"
 spawn-at-startup "udiskie" "--tray"
 
-hotkey-overlay {
-    skip-at-startup
-}
+
+//--------------------------------------------------------------
+// Screenshot
+//--------------------------------------------------------------
 
 screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+
 // screenshot-path null
 animations {
     // off
     // slowdown 3.0
 }
 
-window-rule {
-    match app-id=r#"^org\.wezfurlong\.wezterm$"#
-    default-column-width {}
-}
 
-window-rule {
-    // - host Firefox (app-id is "firefox")
-    // - Flatpak Firefox (app-id is "org.mozilla.firefox")
-    match app-id=r#"firefox$"# title="^Picture-in-Picture$"
-    open-floating true
-}
-
-/-window-rule {
-    match app-id=r#"^org\.keepassxc\.KeePassXC$"#
-    match app-id=r#"^org\.gnome\.World\.Secrets$"#
-    block-out-from "screen-capture"
-    // block-out-from "screencast"
-}
+//--------------------------------------------------------------
+// Winddow rules
+//--------------------------------------------------------------
 
 window-rule {
     geometry-corner-radius 8
     clip-to-geometry true
 }
+
+window-rule {
+    match app-id="thunar" title="^Rename "
+    open-floating true
+}
+
+window-rule {
+    match app-id="vlc"
+    open-floating true
+}
+
+window-rule {
+    match-title="Firefox"
+    open-maximized true
+}
+
+window-rule {
+    match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+    open-floating true
+}
+
+
+//--------------------------------------------------------------
+// Key bindings
+//--------------------------------------------------------------
 
 binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
@@ -180,11 +183,6 @@ binds {
     Mod+Ctrl+K     { move-window-up; }
     Mod+Ctrl+L     { move-column-right; }
 
-    // Mod+J     { focus-window-or-workspace-down; }
-    // Mod+K     { focus-window-or-workspace-up; }
-    // Mod+Ctrl+J     { move-window-down-or-to-workspace-down; }
-    // Mod+Ctrl+K     { move-window-up-or-to-workspace-up; }
-
     Mod+Home { focus-column-first; }
     Mod+End  { focus-column-last; }
     Mod+Ctrl+Home { move-column-to-first; }
@@ -208,19 +206,14 @@ binds {
     Mod+Shift+Ctrl+K     { move-column-to-monitor-up; }
     Mod+Shift+Ctrl+L     { move-column-to-monitor-right; }
 
-    // Mod+Shift+Ctrl+Left  { move-window-to-monitor-left; }
-    // Mod+Shift+Ctrl+Left  { move-workspace-to-monitor-left; }
-
-    Page_Down      { focus-workspace-down; }
-    Page_Up        { focus-workspace-up; }
+    Mod+Page_Down      { focus-workspace-down; }
+    Mod+Page_Up        { focus-workspace-up; }
     Mod+U              { focus-workspace-down; }
     Mod+I              { focus-workspace-up; }
     Mod+Ctrl+Page_Down { move-column-to-workspace-down; }
     Mod+Ctrl+Page_Up   { move-column-to-workspace-up; }
     Mod+Ctrl+U         { move-column-to-workspace-down; }
     Mod+Ctrl+I         { move-column-to-workspace-up; }
-
-    // Mod+Ctrl+Page_Down { move-window-to-workspace-down; }
 
     Mod+Shift+Page_Down { move-workspace-down; }
     Mod+Shift+Page_Up   { move-workspace-up; }
@@ -241,9 +234,6 @@ binds {
     Mod+Ctrl+Shift+WheelScrollDown { move-column-right; }
     Mod+Ctrl+Shift+WheelScrollUp   { move-column-left; }
 
-    // Mod+TouchpadScrollDown { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.02+"; }
-    // Mod+TouchpadScrollUp   { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.02-"; }
-
     Mod+1 { focus-workspace 1; }
     Mod+2 { focus-workspace 2; }
     Mod+3 { focus-workspace 3; }
@@ -263,9 +253,6 @@ binds {
     Mod+Ctrl+8 { move-column-to-workspace 8; }
     Mod+Ctrl+9 { move-column-to-workspace 9; }
 
-    // Mod+Ctrl+1 { move-window-to-workspace 1; }
-    // Mod+Tab { focus-workspace-previous; }
-
     Mod+BracketLeft  { consume-or-expel-window-left; }
     Mod+BracketRight { consume-or-expel-window-right; }
 
@@ -273,12 +260,14 @@ binds {
     Mod+Period { expel-window-from-column; }
 
     Mod+R { switch-preset-column-width; }
-    // Mod+R { switch-preset-column-width-back; }
     Mod+Shift+R { switch-preset-window-height; }
     Mod+Ctrl+R { reset-window-height; }
-    Mod+F { maximize-column; }
-    Mod+Shift+F { fullscreen-window; }
-    Mod+Ctrl+F { expand-column-to-available-width; }
+    // Mod+F { maximize-column; }
+    // Mod+Shift+F { fullscreen-window; }
+    // Mod+Ctrl+F { expand-column-to-available-width; }
+    Mod+Return { maximize-column; }
+    Mod+Shift+Return { fullscreen-window; }
+    Mod+Ctrl+Return { expand-column-to-available-width; }
     Mod+C { center-column; }
     Mod+Ctrl+C { center-visible-columns; }
     Mod+Minus { set-column-width "-10%"; }
@@ -288,8 +277,6 @@ binds {
     Mod+V       { toggle-window-floating; }
     Mod+Shift+V { switch-focus-between-floating-and-tiling; }
     Mod+W { toggle-column-tabbed-display; }
-    // Mod+Space       { switch-layout "next"; }
-    // Mod+Shift+Space { switch-layout "prev"; }
 
     Print { screenshot; }
     Ctrl+Print { screenshot-screen; }
@@ -300,6 +287,10 @@ binds {
     Ctrl+Alt+Delete { quit; }
     Mod+Shift+P { power-off-monitors; }
 }
+
+//--------------------------------------------------------------
+// Environment variables
+//--------------------------------------------------------------
 
 environment {
     QT_QPA_PLATFORM "wayland;xcb"

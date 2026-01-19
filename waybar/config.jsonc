@@ -2,7 +2,7 @@
     "layer": "top",
     "position": "top",
     "height": 36,
-    "spacing": 4,
+    // "spacing": 4,
     "target-fps": 60,
     "reload_style_on_change": true,
 
@@ -10,7 +10,8 @@
         "custom/launcher",
         "group/apps",
         "group/hardware",
-        // "network", 
+        // "clock",
+        "network",
         "niri/window"
     ],
 
@@ -19,7 +20,8 @@
     ],
 
     "modules-right": [
-        "network",
+        // "niri/window",
+        // "network",
         "mpris",
         "custom/nightlight",
         "custom/darkmode",
@@ -50,7 +52,7 @@
     },
 
     "custom/term": {
-        "format": "",
+        "format": "",
         "on-click": "alacritty",
         "tooltip": false
     },
@@ -77,7 +79,7 @@
     },
 
     "cpu": { "format": "   {usage}%", "interval": 2 },
-    "memory": { "format": "   {used:0.1f}G", "interval": 5 },
+    "memory": { "format": "    {used:0.1f}G", "interval": 5 },
     "temperature": {
         "hwmon-path": "/sys/class/hwmon/hwmon1/temp1_input", 
         "critical-threshold": 80,
@@ -95,12 +97,12 @@
 
     "niri/window": {
         "format": "{title}",
-        "max-length": 30,
+        "max-length": 25,
         "separate-outputs": true,
         "icon": true, // Enables the default app icon if available
-        "icon-size": 16,
+        "icon-size": 15,
         "rewrite": {
-            "^$": "" // If title is exactly empty, output nothing
+            "^\\s*$": "" // If title is exactly empty, output nothing
         }
     },
 
@@ -115,9 +117,10 @@
     // --- RIGHT MODULES ---
 
     "mpris": {
-        "format": "{player_icon} {title}",
-        "format-paused": "󰏤 {title}",
-        "format-stopped": "󰎆 Stopped", // Shows even when playback is stopped
+        "always-visible": true,
+        "format-playing": "{player_icon}   {title}",
+        "format-paused": "󰏤   {title}",
+        "format-stopped": "󰎆   {title}", // Shows even when playback is stopped
         "player-icons": { 
             "default": "󰎆", 
             "spotify": "",

@@ -36,7 +36,7 @@ input {
         // middle-emulation
     }
     // warp-mouse-to-focus
-    // focus-follows-mouse max-scroll-amount="0%"
+    focus-follows-mouse max-scroll-amount="0%"
 }
 
 /-output "eDP-1" {
@@ -136,19 +136,6 @@ window-rule {
 window-rule {
     geometry-corner-radius 8
     clip-to-geometry true
-}
-
-// Waybar blur effect
-layer-rule {
-    match title="^waybar$"
-    // match namespace="^waybar$"
-    
-    // This enables the blur effect
-    geometry {
-        blur {
-            radius 20
-        }
-    }
 }
 
 binds {

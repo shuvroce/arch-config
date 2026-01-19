@@ -9,13 +9,13 @@
 }
 
 window#waybar {
-    background: rgba(20, 20, 20, 0.6);
+    background: rgba(20, 20, 20, 0.8);
     color: #cdd6f4;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.187);
 }
 
 /* Base module styling for standard "pills" */
-#network, #niri-window, #mpris, #tray,
+#network, #window, #mpris, #tray,
 #custom-updates, #pulseaudio, #custom-backlight, 
 #clock, #custom-notification, #custom-nightlight, #custom-darkmode {
     padding: 0 10px;
@@ -25,19 +25,22 @@ window#waybar {
     /* box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); */
 }
 
-#niri-window:empty {
-    background: transparent;
-    margin: 0;
-    padding: 0;
-}
-
-#mpris:empty {
-    background: transparent;
-    margin: 0;
-    padding: 0;
-}
-
 /* --- Launcher & App Group --- */
+.modules-left > widget > box {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    margin: 4px 4px;
+    padding: 0 10px;
+}
+
+#window {
+    background: transparent;
+}
+
+#apps {
+    background: rgba(137, 180, 250, 0.15);
+}
+
 #custom-launcher {
     background: rgba(23, 147, 209, 0.15);
     color: #1793d1;
@@ -47,18 +50,11 @@ window#waybar {
     border-radius: 50px;
 }
 
-#group-apps,
-.modules-left > widget > box {
-    background: rgba(27, 175, 128, 0.19);
-    border-radius: 12px;
-    margin: 4px 2px;
-    padding: 0 4px;
-}
-
 #custom-term, #custom-files, #custom-browser {
     background: transparent;
     padding: 0 10px;
     color: #cdd6f4;
+    font-size: 15px;
 }
 
 #custom-term:hover, #custom-files:hover, #custom-browser:hover {
@@ -77,17 +73,10 @@ window#waybar {
 #workspaces button.active {
     color: #89b4fa;
     background: rgba(137, 180, 250, 0.15);
+    padding: 0 12px;
 }
 
 /* --- Hardware Group --- */
-#group-hardware,
-.modules-left > widget > box {
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 12px;
-    margin: 4px 2px;
-    padding: 0 4px;
-}
-
 #cpu, #memory, #temperature {
     background: transparent;
     padding: 0 8px;

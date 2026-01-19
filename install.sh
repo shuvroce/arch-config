@@ -5,13 +5,18 @@ sudo pacman -Sy
 
 # Install Pacman Packages
 echo "--- Installing Pacman Packages ---"
-sudo pacman -S --needed --noconfirm \
-curl wget git which \
-neofetch micro neovim fish btop pacman-contrib timeshift \
-reflector network-manager-applet thunar gvfs tumbler vlc firefox swaybg ddcutil brightnessctl \
-wireplumber wl-clipboard cliphist swaylock wlsunset evince gedit glances udiskie qt6-multimedia-ffmpeg \
-ifuse usbmuxd libplist libimobiledevice inter-font ttf-jetbrains-mono-nerd tar bzip2 gzip unzip unrar \
-wireguard-tools localsend playerctl libappindicator-gtk3
+PKGS=(
+    curl wget git which \
+    micro neovim fish btop pacman-contrib timeshift \
+    reflector network-manager-applet thunar gvfs tumbler vlc firefox swaybg ddcutil brightnessctl \
+    wireplumber wl-clipboard cliphist swaylock wlsunset evince gedit glances udiskie qt6-multimedia-ffmpeg \
+    ifuse usbmuxd libplist libimobiledevice inter-font ttf-jetbrains-mono-nerd tar bzip2 gzip unzip unrar \
+    wireguard-tools playerctl libappindicator-gtk3
+)
+
+for pkg in "${PKGS[@]}"; do
+    sudo pacman -S --noconfirm --needed "$pkg" || echo "Package $pkg not found, skipping..."
+done
 
 # Install Yay
 echo "--- Installing Yay ---"

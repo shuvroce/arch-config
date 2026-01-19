@@ -30,8 +30,6 @@
 
 
 #### Config / customize
-NetworkManager:
-    sudo systemctl enable --now NetworkManager
 
 gnome-portal:
     mkdir -p ~/.config/xdg-desktop-portal
@@ -40,20 +38,6 @@ gnome-portal:
         default=wlr;gtk
         org.freedesktop.impl.portal.Screencast=gnome
         org.freedesktop.impl.portal.Screenshot=gnome
-
-Alacritty:
-
-
-
-fish:
-    nano ~/.config/fish/config.fish
-
-    # For auto login: If we are on TTY1 and Niri isn't already running, start it
-    if status is-login
-        if test -z "$DISPLAY" -a "$XDG_VTNR" = 1
-            exec niri-session
-        end
-    end
 
 grub:
     copy <theme-folder> with root priviledge to /boot/grub/themes/
@@ -67,6 +51,19 @@ sddm:
     sudo nano /etc/sddm.conf
         [Theme]
         Current=astronaut
+
+
+## auto mount external drive
+sudo mkdir -p /mnt/external_drive
+
+sudo micro /etc/fstab
+    UUID=<your-uuid-here>  /mnt/external_drive  ext4  defaults,nofail  0  2
+
+sudo systemctl daemon-reload
+sudo mount -a
+
+sudo chown $USER:$USER /mnt/external_drive
+sudo chmod -R 755 /mnt/external_drive
 
 
 ## for auto log-in

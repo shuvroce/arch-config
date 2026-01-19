@@ -23,7 +23,9 @@ input {
     position x=1280 y=0
 }
 
-hotkey-overlay { skip-at-startup }
+hotkey-overlay { 
+    skip-at-startup 
+}
 
 gestures {
     hot-corners {
@@ -127,7 +129,7 @@ window-rule {
 }
 
 window-rule {
-    match-title="Firefox"
+    match app-id="firefox"
     open-maximized true
 }
 

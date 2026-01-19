@@ -19,14 +19,6 @@ else
     echo "Warning: ./wallpaper/wallpaper.jpg not found, skipping copy."
 fi
 
-# Portals Config
-cat <<EOF > ~/.config/xdg-desktop-portal/portals.conf
-[preferred]
-default=wlr;gtk
-org.freedesktop.impl.portal.Screencast=gnome
-org.freedesktop.impl.portal.Screenshot=gnome
-EOF
-
 # Fish Config
 cat <<EOF > ~/.config/fish/config.fish
 function rwb
@@ -37,7 +29,6 @@ function rwb
 end
 EOF
 
-# oh-my-fish
-curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install | fish
+# Fish
 curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
 fisher install IlanCosman/tide@v6

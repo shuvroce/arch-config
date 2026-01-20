@@ -43,6 +43,7 @@ prefer-no-csd
 layout {
     gaps 5
     center-focused-column "never"
+    always-center-single-column
     preset-column-widths {
         proportion 0.33333
         proportion 0.5
@@ -50,13 +51,13 @@ layout {
         // fixed 1920
     }
     // preset-window-heights { }
-    default-column-width { proportion 0.45; }
+    default-column-width { proportion 0.5; }
     // default-column-width {}
     // `draw-border-with-background`.
     focus-ring {
-        // off
+        off
         width 2
-        active-color "#7fc8ff"
+        active-color "#96d9dd"
         inactive-color "#505050"
     }
     border {
@@ -67,8 +68,8 @@ layout {
         urgent-color "#9b0000"
     }
     shadow {
-        // on
-        // draw-behind-window true
+        on
+        draw-behind-window true
         softness 30
         spread 5
         offset x=0 y=5
@@ -119,18 +120,23 @@ window-rule {
 }
 
 window-rule {
+    match is-active=false
+    opacity 0.8
+}
+
+window-rule {
     match app-id="thunar" title="^Rename "
     open-floating true
 }
 
-window-rule {
+/-window-rule {
     match app-id="vlc"
     open-floating true
 }
 
-/-window-rule {
+window-rule {
     match app-id="firefox"
-    default-column-width { proportion 0.8; }
+    default-column-width { proportion 0.65; }
 }
 
 window-rule {
@@ -149,6 +155,8 @@ binds {
     Mod+Space hotkey-overlay-title="Run an Application: Fuzzel" { spawn "fuzzel"; }
     Mod+B hotkey-overlay-title="Run an Application: Browser (Firefox)" { spawn "firefox"; }
     Mod+E hotkey-overlay-title="Run an Application: File Manager" { spawn "thunar"; }
+    // Mod+P repeat=false { spawn "wlogout"; }
+    Mod+Escape repeat=false { spawn "wlogout"; }
 
     Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
     Super+Alt+S allow-when-locked=true hotkey-overlay-title=null { spawn-sh "pkill orca || exec orca"; }
@@ -284,7 +292,7 @@ binds {
     Ctrl+Print { screenshot-screen; }
     Alt+Print { screenshot-window; }
 
-    Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
+    // Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
     Mod+Shift+E { quit; }
     Ctrl+Alt+Delete { quit; }
     Mod+Shift+P { power-off-monitors; }

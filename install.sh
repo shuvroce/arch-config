@@ -7,13 +7,12 @@ sudo pacman -Sy
 echo "--- Installing Pacman Packages ---"
 PKGS=(
     curl wget git which \
-    micro neovim fish btop fastfetch pacman-contrib timeshift \
+    micro gedit fish btop fastfetch pacman-contrib timeshift \
     reflector thunar gvfs tumbler vlc firefox swaybg ddcutil brightnessctl nethogs \
-    wireplumber wl-clipboard cliphist swaylock wlsunset evince gedit glances udiskie qt6-multimedia-ffmpeg \
+    wireplumber wl-clipboard cliphist swaylock wlsunset evince glances udiskie qt6-multimedia-ffmpeg \
     ifuse usbmuxd libplist libimobiledevice inter-font ttf-jetbrains-mono-nerd otf-codenewroman-nerd \
     tar bzip2 gzip unzip unrar python-pip \
-    wireguard-tools playerctl libappindicator-gtk3 nm-connection-editor
-)
+    wireguard-tools playerctl libappindicator-gtk3
 
 for pkg in "${PKGS[@]}"; do
     sudo pacman -S --noconfirm --needed "$pkg" || echo "Package $pkg not found, skipping..."

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+<action>
+	<icon>Alacritty</icon>
+	<name>Open Terminal Here</name>
+	<submenu></submenu>
+	<unique-id>alacritty-$(date +%s)</unique-id>
+	<command>/usr/bin/alacritty --working-directory %f</command>
+	<description>Example for a custom action</description>
+	<range></range>
+	<patterns>*</patterns>
+	<startup-notify/>
+	<directories/>
+</action>
+<action>
+	<icon>visual-studio-code</icon>
+	<name>Open in VS Code</name>
+	<submenu></submenu>
+	<unique-id>vscode-$(date +%s)</unique-id>
+	<command>/usr/bin/code %f</command>
+	<description>Open the folder or file in Visual Studio Code.</description>
+	<range>*</range>
+	<patterns>*</patterns>
+	<directories/>
+	<audio-files/>
+	<image-files/>
+	<other-files/>
+	<text-files/>
+	<video-files/>
+</action>
+<action>
+	<icon>application-audio</icon>
+	<name>Convert to Mp3</name>
+	<submenu></submenu>
+	<unique-id>v2mp3-$(date +%s)</unique-id>
+	<command>~/.local/bin/thunar-v2mp3.sh %F</command>
+	<description>Extract audio using ffmpeg</description>
+	<range>*</range>
+	<patterns>*</patterns>
+	<video-files/>
+</action>
+</actions>

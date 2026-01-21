@@ -55,9 +55,9 @@ layout {
     // default-column-width {}
     // `draw-border-with-background`.
     focus-ring {
-        off
+        // off
         width 2
-        active-color "#96d9dd"
+        active-color "#8691a3"
         inactive-color "#505050"
     }
     border {
@@ -119,7 +119,7 @@ window-rule {
     clip-to-geometry true
 }
 
-window-rule {
+/-window-rule {
     match is-active=false
     opacity 0.8
 }
@@ -151,8 +151,8 @@ window-rule {
 
 binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
-    Mod+T hotkey-overlay-title="Open a Terminal: Alacritty" { spawn "alacritty"; }
-    Mod+Space hotkey-overlay-title="Run an Application: Fuzzel" { spawn "fuzzel"; }
+    Mod+Return hotkey-overlay-title="Open a Terminal: Alacritty" { spawn "alacritty"; }
+    Alt+Space hotkey-overlay-title="Run an Application: Fuzzel" { spawn "fuzzel"; }
     Mod+B hotkey-overlay-title="Run an Application: Browser (Firefox)" { spawn "firefox"; }
     Mod+E hotkey-overlay-title="Run an Application: File Manager" { spawn "thunar"; }
     // Mod+P repeat=false { spawn "wlogout"; }
@@ -275,7 +275,7 @@ binds {
     // Mod+F { maximize-column; }
     // Mod+Shift+F { fullscreen-window; }
     // Mod+Ctrl+F { expand-column-to-available-width; }
-    Mod+Return { maximize-column; }
+    Mod+Space { maximize-column; }
     Mod+Shift+Return { fullscreen-window; }
     Mod+Ctrl+Return { expand-column-to-available-width; }
     Mod+C { center-column; }

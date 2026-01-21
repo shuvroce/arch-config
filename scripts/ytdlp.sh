@@ -17,7 +17,8 @@ echo "Select desired quality:"
 
 # Create a menu
 PS3="Enter choice (1-5): "
-options=("480p (MP4)" "720p (MP4)" "1080p (MP4)" "Best Available (Any)" "Quit")
+# These strings must match the case patterns below EXACTLY
+options=("480p" "720p" "1080p" "Best" "Quit")
 
 select opt in "${options[@]}"
 do
@@ -34,14 +35,16 @@ do
             FORMAT="bv*[height<=1080][ext=mp4]+ba[ext=m4a]/b[height<=1080]"
             break
             ;;
-        "Best Available (Any)")
+        "Best")
             FORMAT="bv+ba/b"
             break
             ;;
         "Quit")
             exit 0
             ;;
-        *) echo "Invalid option $REPLY";;
+        *) 
+            echo "Invalid option $REPLY. Please choose 1-5."
+            ;;
     esac
 done
 

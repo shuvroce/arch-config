@@ -2,13 +2,13 @@
 
 # Create Directories
 echo "--- Setting up Configs ---"
-mkdir -p ~/.config/{xdg-desktop-portal,fish,niri,waybar,alacritty,swaync}
+mkdir -p ~/.config/{xdg-desktop-portal,fish,niri,waybar,alacritty,fuzzel}
 
 # Copying files
 [ -d "./niri" ] && cp -v ./niri/config.kdl ~/.config/niri/
 [ -d "./waybar" ] && cp -v ./waybar/*.{jsonc,css} ~/.config/waybar/
 [ -d "./alacritty" ] && cp -v ./alacritty/alacritty.toml ~/.config/alacritty/
-[ -d "./swaync" ] && cp -v ./swaync/style.css ~/.config/swaync/
+[ -d "./fuzzel" ] && cp -v ./fuzzel/fuzzel.ini ~/.config/fuzzel/
 
 # Copy Wallpaper
 echo "--- Setting up Wallpaper ---"

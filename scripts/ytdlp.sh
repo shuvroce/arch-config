@@ -16,8 +16,8 @@ echo "URL: $URL"
 echo "Select desired quality:"
 
 # Create a menu
-PS3="Enter choice (1-4): "
-options=("720p (MP4)" "1080p (MP4)" "Best Available (Any)" "Quit")
+PS3="Enter choice (1-5): "
+options=("480p (MP4)" "720p (MP4)" "1080p (MP4)" "Best Available (Any)" "Quit")
 
 select opt in "${options[@]}"
 do

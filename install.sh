@@ -13,6 +13,7 @@ PKGS=(
     ifuse usbmuxd libplist libimobiledevice inter-font ttf-jetbrains-mono-nerd otf-codenewroman-nerd \
     tar bzip2 gzip unzip unrar python-pip \
     wireguard-tools playerctl libappindicator-gtk3
+    )
 
 for pkg in "${PKGS[@]}"; do
     sudo pacman -S --noconfirm --needed "$pkg" || echo "Package $pkg not found, skipping..."

@@ -13,10 +13,10 @@ mkdir -p ~/.config/{xdg-desktop-portal,fish,niri,waybar,alacritty,fuzzel}
 # Copy Wallpaper
 echo "--- Setting up Wallpaper ---"
 mkdir -p ~/Pictures/Wallpaper
-if [ -f "./wallpaper/wallpaper.jpg" ]; then
-    cp -v ./wallpaper/wallpaper.jpg ~/Pictures/Wallpaper/
+if [ -f "./wallpaper/*" ]; then
+    cp -v ./wallpaper/* ~/Pictures/Wallpaper/
 else
-    echo "Warning: ./wallpaper/wallpaper.jpg not found, skipping copy."
+    echo "Warning: No wallpaper found, skipping copy."
 fi
 
 # Fish Config

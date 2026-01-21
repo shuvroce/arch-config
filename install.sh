@@ -9,9 +9,9 @@ PKGS=(
     curl wget git which \
     micro gedit fish btop fastfetch pacman-contrib timeshift \
     reflector thunar gvfs tumbler vlc firefox swaybg ddcutil brightnessctl nethogs \
-    wireplumber wl-clipboard cliphist swaylock wlsunset evince glances udiskie qt6-multimedia-ffmpeg \
+    wireplumber wl-clipboard cliphist swaylock wlsunset evince glances udiskie ffmpeg qt6-multimedia-ffmpeg \
     ifuse usbmuxd libplist libimobiledevice inter-font ttf-jetbrains-mono-nerd otf-codenewroman-nerd \
-    tar bzip2 gzip unzip unrar python-pip \
+    tar bzip2 gzip unzip unrar python-pip yt-dlp \
     wireguard-tools playerctl libappindicator-gtk3
     )
 

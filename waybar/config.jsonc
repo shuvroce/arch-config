@@ -1,7 +1,7 @@
 {
-    "layer": "top",
-    "position": "top",
-    "height": 36,
+    "layer": "bottom",
+    "position": "bottom",
+    // "height": 36,
     // "spacing": 4,
     "target-fps": 60,
     "reload_style_on_change": true,
@@ -25,7 +25,7 @@
         "tray",
         "custom/updates", 
         "pulseaudio", 
-        "custom/backlight", 
+        "custom/brightness", 
         "clock", 
         "custom/notification", 
         "custom/power"
@@ -44,7 +44,8 @@
         "modules": [
             "custom/term",
             "custom/files",
-            "custom/browser"
+            "custom/browser",
+            "custom/vscode"
         ]
     },
 
@@ -63,6 +64,12 @@
     "custom/browser": {
         "format": "",
         "on-click": "firefox",
+        "tooltip": false
+    },
+
+    "custom/vscode": {
+        "format": "",
+        "on-click": "code",
         "tooltip": false
     },
 
@@ -141,7 +148,7 @@
             "spotify": "",
             "firefox": "" 
         },
-        "max-length": 30, // Increased to fit the title better
+        "max-length": 25, // Increased to fit the title better
         "interval": 1,
         // Ensures the module doesn't disappear if no player is found
         "on-click": "playerctl play-pause",
@@ -180,16 +187,18 @@
         "tooltip": false
     },
 
-    "custom/backlight": {
-        "exec": "ddcutil getvcp 10 --bus 1 --sleep-multiplier .5 | grep -oP 'current value=\\s*\\K[0-9]+'",
-        "interval": 15,
+    "custom/brightness": {
+        "exec": "~/.local/bin/brightness.sh",
+        "return-type": "json",
+        "interval": 20,
         "format": "󰃠  {}%",
-        "on-scroll-up": "ddcutil setvcp 10 + 10 --bus 1",
-        "on-scroll-down": "ddcutil setvcp 10 - 10 --bus 1"
+        "on-scroll-up": "ddcutil setvcp 10 + 5",
+        "on-scroll-down": "ddcutil setvcp 10 - 5",
+        "exec-on-event": true
     },
 
     "clock": {
-        "format": "{:%d %b, %Y  |  %I:%M %p}",
+        "format": "{:%I:%M %p  |  %d %b, %Y}",
         "tooltip": false
         // "tooltip-format": "<tt>{calendar}</tt>"
     },

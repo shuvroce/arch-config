@@ -9,25 +9,25 @@
 }
 
 window#waybar {
-    background: rgba(20, 20, 20, 0.7);
+    background: rgba(20, 20, 20, 0.8);
     color: #cdd6f4;
     /* border-bottom: 1px solid rgba(255, 255, 255, 0.187); */
 }
 
 /* Base module styling for standard "pills" */
 #network, #window, #mpris, #tray,
-#custom-updates, #pulseaudio, #custom-backlight, 
+#custom-updates, #pulseaudio, #custom-brightness, 
 #clock, #custom-notification, #custom-nightlight, #custom-darkmode {
     padding: 0 10px;
     margin: 4px 4px;
-    background: rgba(181, 181, 181, 0.15);
+    background: rgba(181, 181, 181, 0.25);
     border-radius: 12px;
     /* box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); */
 }
 
 /* --- Launcher & App Group --- */
 .modules-left > widget > box {
-    background: rgba(181, 181, 181, 0.15);
+    background: rgba(181, 181, 181, 0.25);
     border-radius: 12px;
     margin: 4px 4px;
     padding: 0 10px;
@@ -38,7 +38,7 @@ window#waybar {
 }
 
 #apps {
-    background: rgba(137, 180, 250, 0.15);
+    background: rgba(137, 180, 250, 0.2);
 }
 
 #custom-launcher {
@@ -50,28 +50,28 @@ window#waybar {
     border-radius: 50px;
 }
 
-#custom-term, #custom-files, #custom-browser {
+#custom-term, #custom-files, #custom-browser, #custom-vscode {
     background: transparent;
     padding: 0 10px;
     color: #cdd6f4;
     font-size: 15px;
 }
 
-#custom-term:hover, #custom-files:hover, #custom-browser:hover {
+#custom-term:hover, #custom-files:hover, #custom-browser:hover, #custom-vscode:hover {
     color: #89b4fa;
 }
 
 /* --- Workspaces --- */
 #workspaces button {
-    color: #6c7086;
+    color: #cdd6f4;
     padding: 4px 8px;
     margin: 5px 2px;
     border-radius: 8px;
-    background: rgba(181, 181, 181, 0.15);
+    background: rgba(181, 181, 181, 0.3);
 }
 
 #workspaces button.active {
-    color: #89b4fa;
+    color: #9ec2fc;
     background: rgba(137, 180, 250, 0.15);
     padding: 0 12px;
 }

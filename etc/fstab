@@ -1,0 +1,18 @@
+# Static information about the filesystems.
+# See fstab(5) for details.
+
+# <file system> <dir> <type> <options> <dump> <pass>
+# /dev/sdc2
+UUID=e8aed052-029d-448f-9964-46cb12fa8d52	/         	ext4      	rw,relatime	0 1
+
+# /dev/sdc1
+UUID=FAC7-F41E      	/boot     	vfat      	rw,relatime,fmask=0022,dmask=0022,codepage=437,iocharset=ascii,shortname=mixed,utf8,errors=remount-ro	0 2
+
+# Linux data drive
+UUID=96bf03b7-aacc-496d-bdb9-7cd89c7812d5 /mnt/linux-files  ext4  defaults,nofail  0  2
+
+# Windows drives
+UUID=7618E09718E0579F  /mnt/windows-study   ntfs-3g  defaults,nofail,uid=1000,gid=1000,umask=000   0   0
+UUID=72A0EBE0A0EBA935  /mnt/windows-gd      ntfs-3g  defaults,nofail,uid=1000,gid=1000,umask=000   0   0
+UUID=928249FD8249E5F7  /mnt/windows-media   ntfs-3g  defaults,nofail,uid=1000,gid=1000,umask=000   0   0
+UUID=1E2C36082C35DC09  /mnt/windows-misc    ntfs-3g  defaults,nofail,uid=1000,gid=1000,umask=000   0   0

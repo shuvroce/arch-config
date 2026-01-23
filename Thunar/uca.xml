@@ -55,7 +55,7 @@
 	<name>Download YouTube Video (Clipboard)</name>
 	<submenu></submenu>
 	<unique-id>ytdlp-$(date +%s)</unique-id>
-	<command>alacritty -e "~/.local/bin/ytdlp.sh %f"</command>
+	<command>alacritty -e ~/.local/bin/ytdlp.sh %f</command>
 	<description>Download YouTube Video (Clipboard)</description>
 	<range>*</range>
 	<patterns>*</patterns>

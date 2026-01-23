@@ -1,7 +1,7 @@
 {
-    "layer": "bottom",
-    "position": "bottom",
-    // "height": 36,
+    "layer": "top",
+    "position": "top",
+    "height": 32,
     // "spacing": 4,
     "target-fps": 60,
     "reload_style_on_change": true,
@@ -22,12 +22,12 @@
         "mpris",
         "custom/nightlight",
         "custom/darkmode",
+        "custom/brightness",
         "tray",
-        "custom/updates", 
-        "pulseaudio", 
-        "custom/brightness", 
-        "clock", 
-        "custom/notification", 
+        "custom/updates",
+        "pulseaudio",
+        "clock",
+        "custom/notification",
         "custom/power"
     ],
 
@@ -116,7 +116,7 @@
 
     "niri/window": {
         "format": "{title}",
-        "max-length": 25,
+        "max-length": 20,
         "separate-outputs": true,
         "icon": true,
         "icon-size": 15,
@@ -191,9 +191,9 @@
         "exec": "~/.local/bin/brightness.sh",
         "return-type": "json",
         "interval": 20,
-        "format": "󰃠  {}%",
-        "on-scroll-up": "ddcutil setvcp 10 + 5",
-        "on-scroll-down": "ddcutil setvcp 10 - 5",
+        "format": "󰃠   {}%",
+        // "on-scroll-up": "ddcutil setvcp 10 + 5",
+        // "on-scroll-down": "ddcutil setvcp 10 - 5",
         "exec-on-event": true
     },
 

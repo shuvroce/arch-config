@@ -33,7 +33,7 @@
 	<name>Convert to Mp3</name>
 	<submenu></submenu>
 	<unique-id>v2mp3-$(date +%s)</unique-id>
-	<command>alacritty -e bash -c ~/.local/bin/v2mp3.sh %F</command>
+	<command>alacritty -e bash -c "~/.local/bin/v2mp3.sh %F"</command>
 	<description>Extract audio using ffmpeg</description>
 	<range>*</range>
 	<patterns>*</patterns>
@@ -44,7 +44,7 @@
 	<name>Convert to Mp4</name>
 	<submenu></submenu>
 	<unique-id>ts2mp4-$(date +%s)</unique-id>
-	<command>alacritty -e bash -c ~/.local/bin/ts2mp4.sh %F</command>
+	<command>alacritty -e bash -c "~/.local/bin/ts2mp4.sh %F"</command>
 	<description>Convert ts file to mp4 format</description>
 	<range>*</range>
 	<patterns>*.ts</patterns>
@@ -55,7 +55,7 @@
 	<name>Download YouTube Video (Clipboard)</name>
 	<submenu></submenu>
 	<unique-id>ytdlp-$(date +%s)</unique-id>
-	<command>alacritty -e ~/.local/bin/ytdlp.sh %f</command>
+	<command>alacritty -e "~/.local/bin/ytdlp.sh %f"</command>
 	<description>Download YouTube Video (Clipboard)</description>
 	<range>*</range>
 	<patterns>*</patterns>
@@ -66,7 +66,7 @@
 	<name>Open as Root</name>
 	<submenu></submenu>
 	<unique-id>root-$(date +%s)</unique-id>
-	<command>THUNAR_DAEMON_STANDALONE=1 pkexec thunar %f</command>
+	<command>pkexec thunar %f</command>
 	<description>Open directory and files with root previledge</description>
 	<range>*</range>
 	<patterns>*</patterns>

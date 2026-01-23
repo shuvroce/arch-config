@@ -1,16 +1,16 @@
-anchor=bottom-right
-font=monospace 12
-background-color=#285577FF
+anchor=top-right
+font=monospace 10
+background-color=#37404fFF
 text-color=#FFFFFFFF
-width=300
-height=600
+width=350
+## height=600
 max-history=10
-margin=0,20,20
+margin=10,10,10
 padding=5
 border-size=1
-border-color=#4C7899FF
+border-color=#8691a3FF
 border-radius=4
-default-timeout=20000
+default-timeout=10000
 group-by=summary
 icons=1
 

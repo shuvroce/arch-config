@@ -1,10 +1,19 @@
 #!/bin/bash
 
-for input_file in "$@"
-do
+for input_file in "$@"; do
     output_file="${input_file%.*}.mp4"
-    # -c copy tells ffmpeg to copy the streams without re-encoding (instant!)
-    # -bsf:a aac_adtstoasc fixes bitstream filter issues common in .ts files
-    ffmpeg -i "$input_file" -c copy -bsf:a aac_adtstoasc "$output_file" -y -loglevel quiet
+    if [[ "$input_file" == *.mp4 ]]; then
+        continue
+    fi
+    
+    input_name=$(basename "$input_file")
+    output_name=$(basename "$output_file")
+    
+    echo "Converting: $input_name ..."
+    
+    ffmpeg -i "$input_file" -c copy -movflags +faststart "$output_file" -y -loglevel error
+    
+    echo "Converted to: $output_name"
+    echo -e "--------------------------------------------------- \n"
 done
 notify-send "Conversion Complete" "TS files converted to MP4"

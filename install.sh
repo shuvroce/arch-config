@@ -29,4 +29,4 @@ fi
 
 # Install AUR Packages
 echo "--- Installing AUR Packages ---"
-yay -S --noconfirm waypaper wlogout nwg-look unimatrix-git visual-studio-code-bin google-chrome
+yay -S --noconfirm waypaper wlogout nwg-look unimatrix-git visual-studio-code-bin google-chrome numix-circle-icon-theme-git

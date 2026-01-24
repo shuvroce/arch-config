@@ -12,7 +12,7 @@ PKGS=(
     wireplumber wl-clipboard cliphist swaylock wlsunset evince glances udiskie ffmpeg qt6-multimedia-ffmpeg \
     ifuse usbmuxd libplist libimobiledevice inter-font ttf-jetbrains-mono-nerd otf-codenewroman-nerd \
     tar bzip2 gzip unzip unrar python-pip yt-dlp ristretto zathura \
-    wireguard-tools playerctl libappindicator-gtk3
+    wireguard-tools playerctl libappindicator-gtk3 adw-gtk-theme
     )
 
 for pkg in "${PKGS[@]}"; do

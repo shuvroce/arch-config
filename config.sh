@@ -2,7 +2,7 @@
 
 # Create Directories
 echo "--- Setting up Configs ---"
-mkdir -p ~/.config/{xdg-desktop-portal,fish,niri,waybar,alacritty,fuzzel,Thunar,mako,qt5ct,qt6ct,wlogout}
+mkdir -p ~/.config/{fish,niri,waybar,alacritty,fuzzel,Thunar,mako,qt5ct,qt6ct,wlogout}
 mkdir -p ~/.config/fish/functions
 mkdir -p ~/.config/qt5ct/colors
 mkdir -p ~/.config/qt6ct/colors

@@ -9,7 +9,7 @@ PKGS=(
     curl wget git which \
     micro gedit fish btop fastfetch pacman-contrib timeshift \
     reflector thunar gvfs tumbler ffmpegthumbnailer vlc vlc-plugins-all firefox swaybg ddcutil brightnessctl nethogs nnn \
-    wireplumber wl-clipboard cliphist swaylock wlsunset evince glances udiskie ffmpeg qt6-multimedia-ffmpeg \
+    wireplumber wl-clipboard cliphist swaylock wlsunset evince glances udiskie ffmpeg qt6-multimedia-ffmpeg qt5ct qt6ct \
     ifuse usbmuxd libplist libimobiledevice inter-font ttf-jetbrains-mono-nerd otf-codenewroman-nerd \
     tar bzip2 gzip unzip unrar python-pip yt-dlp ristretto zathura \
     wireguard-tools playerctl libappindicator-gtk3 adw-gtk-theme

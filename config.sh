@@ -38,7 +38,7 @@ else
 fi
 
 # Extract themes to ~/.themes
-for f in /themes/*.tar.xz; do tar -xf "$f" -C ~/.themes; done
+[ -d "./themes" ] && for f in ./themes/*.tar.xz; do tar -xf "$f" -C ~/.themes; done
 
 # Fish Config
 cat <<EOF > ~/.config/fish/config.fish

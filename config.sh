@@ -8,6 +8,7 @@ mkdir -p ~/.config/qt5ct/colors
 mkdir -p ~/.config/qt6ct/colors
 mkdir -p ~/.local/bin
 mkdir -p ~/Pictures/Wallpaper
+mkdir -p ~/.themes
 
 # Copying files
 [ -d "./niri" ]           && cp -rv ./niri/config.kdl ~/.config/niri/
@@ -35,6 +36,9 @@ if ls ./wallpaper/* >/dev/null 2>&1; then
 else
     echo "Warning: No wallpaper found."
 fi
+
+# Extract themes to ~/.themes
+for f in /themes/*.tar.xz; do tar -xf "$f" -C ~/.themes; done
 
 # Fish Config
 cat <<EOF > ~/.config/fish/config.fish

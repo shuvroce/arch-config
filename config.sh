@@ -64,4 +64,4 @@ fish -c "fisher install IlanCosman/tide@v6"
 
 # Basic setting/service
 sudo systemctl enable --now lightdm.service
-sudo usermod -aG wheel,video,storage,vboxsf $USER
+sudo usermod -aG wheel,video,storage $USER

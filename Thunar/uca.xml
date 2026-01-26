@@ -2,7 +2,7 @@
 <actions>
 <action>
 	<icon>Alacritty</icon>
-	<name>Open Terminal Here</name>
+	<name>Open in Terminal</name>
 	<submenu></submenu>
 	<unique-id>alacritty-$(date +%s)</unique-id>
 	<command>/usr/bin/alacritty --working-directory %f</command>
@@ -14,7 +14,7 @@
 </action>
 <action>
 	<icon>visual-studio-code</icon>
-	<name>Open in VS Code</name>
+	<name>Open with Code</name>
 	<submenu></submenu>
 	<unique-id>vscode-$(date +%s)</unique-id>
 	<command>/usr/bin/code %f</command>
@@ -30,7 +30,7 @@
 </action>
 <action>
 	<icon>application-audio</icon>
-	<name>Convert to Mp3</name>
+	<name>Convert to MP3</name>
 	<submenu></submenu>
 	<unique-id>v2mp3-$(date +%s)</unique-id>
 	<command>alacritty -e bash -c "~/.local/bin/v2mp3.sh %F"</command>
@@ -41,7 +41,7 @@
 </action>
 <action>
 	<icon>application-video</icon>
-	<name>Convert to Mp4</name>
+	<name>Convert to MP4</name>
 	<submenu></submenu>
 	<unique-id>ts2mp4-$(date +%s)</unique-id>
 	<command>alacritty -e bash -c "~/.local/bin/ts2mp4.sh %F"</command>
@@ -52,7 +52,7 @@
 </action>
 <action>
 	<icon>youtube-dl</icon>
-	<name>Download YouTube Video (Clipboard)</name>
+	<name>Download Video (Clipboard)</name>
 	<submenu></submenu>
 	<unique-id>ytdlp-$(date +%s)</unique-id>
 	<command>alacritty -e ~/.local/bin/ytdlp.sh %f</command>
@@ -60,6 +60,33 @@
 	<range>*</range>
 	<patterns>*</patterns>
 	<directories/>
+</action>
+<action>
+	<icon>application-archive-zip</icon>
+	<name>Extract</name>
+	<submenu></submenu>
+	<unique-id>ext-$(date +%s)</unique-id>
+	<command>alacritty -e bash -c "~/.local/bin/extract.sh %F"</command>
+	<description>Extract zip, rar, 7z, tar archives</description>
+	<range>*</range>
+	<patterns>*.zip;*.tar.gz;*.7z;*.rar;*.tgz;*.tar.xz;*.tar.bz2</patterns>
+	<other-files/>
+</action>
+<action>
+	<icon>application-archive-zip</icon>
+	<name>Compress to Zip</name>
+	<submenu></submenu>
+	<unique-id>zip-$(date +%s)</unique-id>
+	<command>alacritty -e bash -c "~/.local/bin/archive.sh %F"</command>
+	<description>Compress to zip archive</description>
+	<range>*</range>
+	<patterns>*</patterns>
+	<directories/>
+	<audio-files/>
+	<image-files/>
+	<other-files/>
+	<text-files/>
+	<video-files/>
 </action>
 <action>
 	<icon>dialog-password</icon>

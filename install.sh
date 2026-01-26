@@ -11,8 +11,8 @@ PKGS=(
     reflector thunar gvfs tumbler ffmpegthumbnailer vlc vlc-plugins-all firefox swaybg ddcutil brightnessctl nethogs nnn \
     wireplumber wl-clipboard cliphist swaylock wlsunset evince glances udiskie ffmpeg qt6-multimedia-ffmpeg qt5ct qt6ct \
     ifuse usbmuxd libplist libimobiledevice inter-font ttf-jetbrains-mono-nerd otf-codenewroman-nerd \
-    tar bzip2 gzip unzip unrar python-pip yt-dlp ristretto zathura \
-    wireguard-tools playerctl libappindicator-gtk3 adw-gtk-theme
+    tar bzip2 gzip unzip unrar 7zip python-pip yt-dlp ristretto zathura gnome-disk-utility \
+    wireguard-tools playerctl libappindicator-gtk3 adw-gtk-theme nwg-look nwg-menu
     )
 
 for pkg in "${PKGS[@]}"; do
@@ -29,4 +29,4 @@ fi
 
 # Install AUR Packages
 echo "--- Installing AUR Packages ---"
-yay -S --noconfirm waypaper wlogout nwg-look unimatrix-git visual-studio-code-bin google-chrome numix-circle-icon-theme-git
+yay -S --noconfirm waypaper wlogout visual-studio-code-bin google-chrome numix-circle-icon-theme-git

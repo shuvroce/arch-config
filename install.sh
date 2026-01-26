@@ -1,19 +1,48 @@
 #!/bin/bash
 
 # Refresh package database
-sudo pacman -Sy
+sudo pacman -Syu --noconfirm
 
 # Install Pacman Packages
 echo "--- Installing Pacman Packages ---"
 PKGS=(
-    curl wget git which \
-    micro gedit fish btop fastfetch pacman-contrib timeshift \
-    reflector thunar gvfs tumbler ffmpegthumbnailer vlc vlc-plugins-all firefox swaybg ddcutil brightnessctl nethogs nnn \
-    wireplumber wl-clipboard cliphist swaylock wlsunset evince glances udiskie ffmpeg qt6-multimedia-ffmpeg qt5ct qt6ct \
-    ifuse usbmuxd libplist libimobiledevice inter-font ttf-jetbrains-mono-nerd otf-codenewroman-nerd \
-    tar bzip2 gzip unzip unrar 7zip python-pip yt-dlp ristretto zathura gnome-disk-utility \
-    wireguard-tools playerctl libappindicator-gtk3 adw-gtk-theme nwg-look nwg-menu
-    )
+    # System Core & Drivers
+    base-devel xwayland-satellite xdg-desktop-portal-gtk xdg-desktop-portal-wlr xdg-utils 
+    polkit-gnome udiskie 
+    
+    # Niri Environment
+    niri waybar fuzzel mako swaybg swayidle swaylock
+    alacritty wl-clipboard cliphist wlsunset playerctl
+    
+    # Tools & Shell
+    curl wget git fish btop fastfetch nano micro gedit
+    pacman-contrib timeshift reflector
+    ddcutil brightnessctl nethogs
+    
+    # Networking & Audio
+    iwd openssh wireguard-tools wireplumber
+    
+    # File Management (The Thunar Stack)
+    thunar gvfs gvfs-mtp tumbler ffmpegthumbnailer 
+    
+    # Media & Graphics
+    vlc vlc-plugins-all firefox ristretto zathura evince gnome-disk-utility
+    yt-dlp ffmpeg nwg-look nwg-menu waypaper
+    ifuse usbmuxd libplist libimobiledevice
+    
+    # Fonts & Themes
+    inter-font ttf-jetbrains-mono-nerd otf-codenewroman-nerd
+    adw-gtk-theme libappindicator-gtk3 qt5ct qt6ct
+    
+    # Archives
+    tar bzip2 gzip unzip unrar 7zip
+
+    # Development
+    python-pip nodejs
+
+    # Greeter
+    lightdm lightdm-gtk-greeter
+)
 
 for pkg in "${PKGS[@]}"; do
     sudo pacman -S --noconfirm --needed "$pkg" || echo "Package $pkg not found, skipping..."
@@ -29,4 +58,8 @@ fi
 
 # Install AUR Packages
 echo "--- Installing AUR Packages ---"
-yay -S --noconfirm waypaper wlogout visual-studio-code-bin google-chrome
+yay -S --noconfirm waypaper wlogout visual-studio-code-bin google-chrome numix-circle-icon-theme-git
+
+# Basic setting/service
+sudo systemctl enable --now lightdm.service
+sudo usermod -aG wheel,video,storage,vboxsf $USER

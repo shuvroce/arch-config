@@ -27,7 +27,7 @@ PKGS=(
     
     # Media & Graphics
     vlc vlc-plugins-all firefox ristretto zathura evince gnome-disk-utility
-    yt-dlp ffmpeg nwg-look nwg-menu
+    yt-dlp ffmpeg nwg-look
     ifuse usbmuxd libplist libimobiledevice
     
     # Fonts & Themes

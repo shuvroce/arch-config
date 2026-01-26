@@ -20,14 +20,14 @@ window#waybar {
 #clock, #custom-notification, #custom-nightlight, #custom-darkmode {
     padding: 0 8px;
     margin: 4px 3px;
-    background: rgba(181, 181, 181, 0.25);
+    background: rgba(181, 181, 181, 0.2);
     border-radius: 12px;
     /* box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); */
 }
 
 /* --- Launcher & App Group --- */
 .modules-left > widget > box {
-    background: rgba(181, 181, 181, 0.25);
+    background: rgba(181, 181, 181, 0.2);
     border-radius: 12px;
     margin: 4px 3px;
     padding: 0 8px;

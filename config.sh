@@ -40,7 +40,7 @@ fi
 # Extract themes to ~/.themes
 echo "--- Extracting themes ---"
 # [ -d "./themes" ] && for f in ./themes/*.tar.xz; do tar -xf "$f" -C ~/.themes; done
-[ -d "./themes" ] && for f in ./themes/*.zip; do sudo unzip -o -q "$f" -d ~/.themes; done
+[ -d "./themes" ] && for f in ./themes/*.zip; do unzip -o -q "$f" -d ~/.themes; done
 
 # Remove min/max/close button from window
 gsettings set org.gnome.desktop.wm.preferences button-layout ":"

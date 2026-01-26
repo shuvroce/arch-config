@@ -27,7 +27,7 @@ PKGS=(
     
     # Media & Graphics
     vlc vlc-plugins-all firefox ristretto zathura evince gnome-disk-utility
-    yt-dlp ffmpeg nwg-look nwg-menu waypaper
+    yt-dlp ffmpeg nwg-look nwg-menu
     ifuse usbmuxd libplist libimobiledevice
     
     # Fonts & Themes
@@ -60,6 +60,3 @@ fi
 echo "--- Installing AUR Packages ---"
 yay -S --noconfirm waypaper wlogout visual-studio-code-bin google-chrome numix-circle-icon-theme-git
 
-# Basic setting/service
-sudo systemctl enable --now lightdm.service
-sudo usermod -aG wheel,video,storage,vboxsf $USER

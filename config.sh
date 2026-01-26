@@ -61,3 +61,7 @@ EOF
 echo "--- Installing Fish Plugins ---"
 fish -c "curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher"
 fish -c "fisher install IlanCosman/tide@v6"
+
+# Basic setting/service
+sudo systemctl enable --now lightdm.service
+sudo usermod -aG wheel,video,storage,vboxsf $USER

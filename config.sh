@@ -8,7 +8,7 @@ mkdir -p ~/.config/qt5ct/colors
 mkdir -p ~/.config/qt6ct/colors
 mkdir -p ~/.local/bin
 mkdir -p ~/Pictures/Wallpaper
-mkdir -p ~/.themes
+# mkdir -p ~/.themes
 
 # Copying files
 [ -d "./niri" ]           && cp -rv ./niri/config.kdl ~/.config/niri/
@@ -39,8 +39,8 @@ fi
 
 # Extract themes to ~/.themes
 echo "--- Extracting themes ---"
-[ -d "./themes" ] && for f in ./themes/*.tar.xz; do tar -xf "$f" -C ~/.themes; done
-[ -d "./themes" ] && for f in ./themes/*.zip; do unzip -q "$f" -d ~/.themes; done
+# [ -d "./themes" ] && for f in ./themes/*.tar.xz; do tar -xf "$f" -C ~/.themes; done
+[ -d "./themes" ] && for f in ./themes/*.zip; do sudo unzip -o -q "$f" -d ~/.themes; done
 
 # Remove min/max/close button from window
 gsettings set org.gnome.desktop.wm.preferences button-layout ":"

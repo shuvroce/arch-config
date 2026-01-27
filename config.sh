@@ -64,18 +64,26 @@ gsettings set org.gnome.desktop.wm.preferences button-layout ":"
 
 
 # lightdm
-sudo systemctl enable --now lightdm.service
+sudo systemctl enable lightdm.service
 sudo mkdir -p /usr/share/pixmaps/lightdm
-[ -d "./lightdm" ] && cp -rv ./lightdm/* /usr/share/pixmaps/lightdm/
+if [ -d "./lightdm" ]; then
+    sudo cp -rv ./lightdm/* /usr/share/pixmaps/lightdm/
+    sudo chmod 755 /usr/share/pixmaps/lightdm
+    sudo chmod 644 /usr/share/pixmaps/lightdm/*
+fi
 
-cat <<EOF | sudo tee -a /etc/lightdm/lightdm.conf
+# Overwrite (don't append) to ensure clean config
+cat <<EOF | sudo tee /etc/lightdm/lightdm.conf
+[LightDM]
+run-directory=/run/lightdm
 
 [Seat:*]
 greeter-session=lightdm-gtk-greeter
+session-wrapper=/etc/lightdm/Xsession
+user-session=niri
 EOF
 
-cat <<EOF | sudo tee -a /etc/lightdm/lightdm-gtk-greeter.conf
-
+cat <<EOF | sudo tee /etc/lightdm/lightdm-gtk-greeter.conf
 [greeter]
 background=/usr/share/pixmaps/lightdm/bg.jpg
 theme-name=adw-gtk3-dark
@@ -83,4 +91,5 @@ icon-theme-name=Numix-Circle
 font-name=Inter 10
 default-user-image=/usr/share/pixmaps/lightdm/user.png
 round-user-image=true
+indicators=~host;~spacer;~clock;~spacer;~session;~power
 EOF

@@ -42,3 +42,8 @@ sudo mount -a
 
 sudo chown $USER:$USER /mnt/external_drive      # for ext4
 sudo chmod -R 755 /mnt/external_drive           # for ext4
+
+
+## For virtualbox
+sudo pacman -S virtualbox-guest-utils
+sudo systemctl enable --now vboxservice.service

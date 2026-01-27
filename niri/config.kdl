@@ -129,13 +129,19 @@ window-rule {
     match title="^File Operation Progress$"
     match title="^Confirm to replace files$"
     match title="^Create New Folder$"
-    open-floating true
-}
-
-window-rule {
     match title="^Open File$"
     match title="^Save File$"
     match title="^Select a File$"
+    match app-id="nwg-look"
+    match app-id="waypaper"
+    match app-id="timeshift"
+    match app-id="qt5ct"
+    match app-id="qt6ct"
+    match app-id="kvantummanager"
+    match app-id="ristretto"
+    match app-id="sddm-conf"
+    match app-id="gnome-calculator"
+
     open-floating true
 }
 
@@ -146,6 +152,8 @@ window-rule {
 
 window-rule {
     match app-id="firefox"
+    match app-id="google-chrome"
+    match app-id="code"
     default-column-width { proportion 0.65; }
 }
 
@@ -153,17 +161,6 @@ window-rule {
     match app-id=r#"firefox$"# title="^Picture-in-Picture$"
     open-floating true
 }
-
-window-rule {
-    match app-id="google-chrome"
-    default-column-width { proportion 0.65; }
-}
-
-window-rule {
-    match app-id="code"
-    default-column-width { proportion 0.65; }
-}
-
 
 //--------------------------------------------------------------
 // Key bindings

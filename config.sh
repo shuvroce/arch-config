@@ -8,7 +8,6 @@ mkdir -p ~/.config/qt5ct/colors
 mkdir -p ~/.config/qt6ct/colors
 mkdir -p ~/.local/bin
 mkdir -p ~/Pictures/Wallpaper
-# mkdir -p ~/.themes
 
 # Copying files
 [ -d "./niri" ]           && cp -rv ./niri/config.kdl ~/.config/niri/
@@ -39,11 +38,7 @@ fi
 
 # Extract themes to ~/.themes
 echo "--- Extracting themes ---"
-# [ -d "./themes" ] && for f in ./themes/*.tar.xz; do tar -xf "$f" -C ~/.themes; done
-[ -d "./themes" ] && for f in ./themes/*.zip; do unzip -o -q "$f" -d ~/.themes; done
-
-# Remove min/max/close button from window
-gsettings set org.gnome.desktop.wm.preferences button-layout ":"
+[ -d "./themes" ] && for f in ./themes/*.zip; do sudo unzip -o -q "$f" -d /usr/share/themes; done
 
 # Fish Config
 cat <<EOF > ~/.config/fish/config.fish
@@ -57,15 +52,15 @@ function rwb
 end
 EOF
 
-# Fish
+# Fish plugins
 echo "--- Installing Fish Plugins ---"
 fish -c "curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher"
 fish -c "fisher install IlanCosman/tide@v6"
 
 
 # Basic setting/service
-<<<<<<< HEAD
-sudo usermod -aG wheel,video,storage,vboxsf $USER
+sudo usermod -aG wheel,video,storage $USER
+gsettings set org.gnome.desktop.wm.preferences button-layout ":"
 
 
 # lightdm
@@ -89,7 +84,3 @@ font-name=Inter 10
 default-user-image=/usr/share/pixmaps/lightdm/user.png
 round-user-image=true
 EOF
-=======
-sudo systemctl enable --now lightdm.service
-sudo usermod -aG wheel,video,storage $USER
->>>>>>> 6895ea6ed68acaf48333f7a073fa24873dd65140

@@ -34,7 +34,7 @@ PKGS=(
     ifuse usbmuxd libplist libimobiledevice
     
     # Fonts & Themes
-    inter-font ttf-jetbrains-mono-nerd otf-codenewroman-nerd
+    inter-font ttf-jetbrains-mono-nerd otf-codenewroman-nerd noto-fonts
     adw-gtk-theme libappindicator-gtk3 qt5ct qt6ct
     
     # Archives

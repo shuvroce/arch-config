@@ -2,7 +2,7 @@
 
 # Create Directories
 echo "--- Setting up Configs ---"
-mkdir -p ~/.config/{fish,niri,waybar,alacritty,fuzzel,Thunar,mako,qt5ct,qt6ct,wlogout}
+mkdir -p ~/.config/{xdg-desktop-portal,fish,niri,waybar,alacritty,fuzzel,Thunar,mako,qt5ct,qt6ct,wlogout}
 mkdir -p ~/.config/fish/functions
 mkdir -p ~/.config/qt5ct/colors
 mkdir -p ~/.config/qt6ct/colors
@@ -36,9 +36,17 @@ else
     echo "Warning: No wallpaper found."
 fi
 
-# Extract themes to ~/.themes
+# Extract themes
 echo "--- Extracting themes ---"
 [ -d "./themes" ] && for f in ./themes/*.zip; do sudo unzip -o -q "$f" -d /usr/share/themes; done
+
+# desktop-portal
+cat <<EOF > ~/.config/xdg-desktop-portal/portals.conf
+[preferred]
+default=wlr;gtk
+org.freedesktop.impl.portal.Screencast=gnome
+org.freedesktop.impl.portal.Screenshot=gnome
+EOF
 
 # Fish Config
 cat <<EOF > ~/.config/fish/config.fish
@@ -57,14 +65,35 @@ echo "--- Installing Fish Plugins ---"
 fish -c "curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher"
 fish -c "fisher install IlanCosman/tide@v6"
 
-
 # Basic setting/service
 sudo usermod -aG wheel,video,storage $USER
 gsettings set org.gnome.desktop.wm.preferences button-layout ":"
 
+# Set GTK theme for Wayland apps
+gsettings set org.gnome.desktop.interface gtk-theme "cat-mocha"
+gsettings set org.gnome.desktop.interface icon-theme "Numix-Circle"
+gsettings set org.gnome.desktop.interface font-name "Inter 11"
+gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"
+
+# Set Qt themeing to follow GTK
+sudo tee -a /etc/environment <<EOF
+QT_QPA_PLATFORMTHEME=qt5ct
+GDK_BACKEND=wayland,x11
+EOF
 
 # lightdm
 sudo systemctl enable lightdm.service
+
+sudo mkdir -p /usr/share/wayland-sessions
+cat <<EOF | sudo tee /usr/share/wayland-sessions/niri.desktop
+[Desktop Entry]
+Name=Niri
+Comment=A scrollable tiling compositor for Wayland
+Exec=niri
+Type=Application
+DesktopNames=Niri
+EOF
+
 sudo mkdir -p /usr/share/pixmaps/lightdm
 if [ -d "./lightdm" ]; then
     sudo cp -rv ./lightdm/* /usr/share/pixmaps/lightdm/
@@ -86,10 +115,12 @@ EOF
 cat <<EOF | sudo tee /etc/lightdm/lightdm-gtk-greeter.conf
 [greeter]
 background=/usr/share/pixmaps/lightdm/bg.jpg
-theme-name=adw-gtk3-dark
+theme-name=cat-mocha
 icon-theme-name=Numix-Circle
 font-name=Inter 10
 default-user-image=/usr/share/pixmaps/lightdm/user.png
 round-user-image=true
 indicators=~host;~spacer;~clock;~spacer;~session;~power
 EOF
+
+echo "--- Setup Complete. Please reboot. ---"

@@ -1,5 +1,8 @@
 #!/bin/bash
 
+sudo -v
+while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+
 # Refresh package database
 sudo pacman -Syu --noconfirm
 
@@ -58,7 +61,10 @@ fi
 
 # Install AUR Packages
 echo "--- Installing AUR Packages ---"
-yay -S --noconfirm wlogout visual-studio-code-bin google-chrome numix-circle-icon-theme-git
+AUR_PKGS=(
+    wlogout visual-studio-code-bin google-chrome numix-circle-icon-theme-git
+)
+yay -S --noconfirm --needed "${AUR_PKGS[@]}"
 # yay -S --noconfirm waypaper
 
 
@@ -75,7 +81,7 @@ mkdir -p ~/Pictures/Wallpaper
 # Copying files
 [ -d "./niri" ]           && cp -rv ./niri/config.kdl ~/.config/niri/
 [ -d "./waybar" ]         && cp -rv ./waybar/* ~/.config/waybar/
-[ -d "./alacritty" ]      && cp -rv ./alacritty/alacritty.toml ~/.config/alacritty/
+[ -d "./alacritty" ]      && cp -rv ./alacritty/* ~/.config/alacritty/
 [ -d "./fish/functions" ] && cp -rv ./fish/functions/* ~/.config/fish/functions/
 [ -d "./fuzzel" ]         && cp -rv ./fuzzel/fuzzel.ini ~/.config/fuzzel/
 [ -d "./Thunar" ]         && cp -rv ./Thunar/uca.xml ~/.config/Thunar/

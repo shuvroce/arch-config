@@ -35,7 +35,7 @@ PKGS=(
     adw-gtk-theme libappindicator-gtk3 qt5ct qt6ct
     
     # Archives
-    tar bzip2 gzip unzip unrar 7zip
+    tar bzip2 gzip unzip unrar 7zip xarchiver
 
     # Development
     python-pip nodejs
@@ -58,7 +58,8 @@ fi
 
 # Install AUR Packages
 echo "--- Installing AUR Packages ---"
-yay -S --noconfirm waypaper wlogout visual-studio-code-bin google-chrome numix-circle-icon-theme-git
+yay -S --noconfirm wlogout visual-studio-code-bin google-chrome numix-circle-icon-theme-git
+# yay -S --noconfirm waypaper
 
 
 ## Config

@@ -4,7 +4,7 @@
 	<icon>Alacritty</icon>
 	<name>Open in Terminal</name>
 	<submenu></submenu>
-	<unique-id>alacritty-$(date +%s)</unique-id>
+	<unique-id>alacritty-1000</unique-id>
 	<command>/usr/bin/alacritty --working-directory %f</command>
 	<description>Example for a custom action</description>
 	<range></range>
@@ -16,7 +16,7 @@
 	<icon>visual-studio-code</icon>
 	<name>Open with Code</name>
 	<submenu></submenu>
-	<unique-id>vscode-$(date +%s)</unique-id>
+	<unique-id>vscode-1000</unique-id>
 	<command>/usr/bin/code %f</command>
 	<description>Open the folder or file in Visual Studio Code.</description>
 	<range>*</range>
@@ -29,10 +29,20 @@
 	<video-files/>
 </action>
 <action>
+    <icon>background</icon>
+    <name>Set as Wallpaper</name>
+    <unique-id>wall-1000</unique-id>
+    <command>~/.local/bin/wallp.sh %f</command>
+    <description>Set the selected image as Niri wallpaper</description>
+	<range>*</range>
+    <patterns>*.jpg;*.jpeg;*.png;*.gif;*.webp</patterns>
+    <image-files/>
+</action>
+<action>
 	<icon>application-audio</icon>
 	<name>Convert to MP3</name>
 	<submenu></submenu>
-	<unique-id>v2mp3-$(date +%s)</unique-id>
+	<unique-id>v2mp3-1000</unique-id>
 	<command>alacritty -e bash -c "~/.local/bin/v2mp3.sh %F"</command>
 	<description>Extract audio using ffmpeg</description>
 	<range>*</range>
@@ -43,7 +53,7 @@
 	<icon>application-video</icon>
 	<name>Convert to MP4</name>
 	<submenu></submenu>
-	<unique-id>ts2mp4-$(date +%s)</unique-id>
+	<unique-id>ts2mp4-1000</unique-id>
 	<command>alacritty -e bash -c "~/.local/bin/ts2mp4.sh %F"</command>
 	<description>Convert ts file to mp4 format</description>
 	<range>*</range>
@@ -54,7 +64,7 @@
 	<icon>youtube-dl</icon>
 	<name>Download Video (Clipboard)</name>
 	<submenu></submenu>
-	<unique-id>ytdlp-$(date +%s)</unique-id>
+	<unique-id>ytdlp-1000</unique-id>
 	<command>alacritty -e ~/.local/bin/ytdlp.sh %f</command>
 	<description>Download YouTube Video (Clipboard)</description>
 	<range>*</range>
@@ -65,7 +75,7 @@
 	<icon>application-archive-zip</icon>
 	<name>Extract</name>
 	<submenu></submenu>
-	<unique-id>ext-$(date +%s)</unique-id>
+	<unique-id>ext-1000</unique-id>
 	<command>alacritty -e bash -c "~/.local/bin/extract.sh %F"</command>
 	<description>Extract zip, rar, 7z, tar archives</description>
 	<range>*</range>
@@ -76,7 +86,7 @@
 	<icon>application-archive-zip</icon>
 	<name>Compress to Zip</name>
 	<submenu></submenu>
-	<unique-id>zip-$(date +%s)</unique-id>
+	<unique-id>zip-1000</unique-id>
 	<command>alacritty -e bash -c "~/.local/bin/archive.sh %F"</command>
 	<description>Compress to zip archive</description>
 	<range>*</range>
@@ -92,7 +102,7 @@
 	<icon>dialog-password</icon>
 	<name>Open as Root</name>
 	<submenu></submenu>
-	<unique-id>root-$(date +%s)</unique-id>
+	<unique-id>root-1000</unique-id>
 	<command>pkexec thunar %f</command>
 	<description>Open directory and files with root previledge</description>
 	<range>*</range>

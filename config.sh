@@ -62,6 +62,29 @@ echo "--- Installing Fish Plugins ---"
 fish -c "curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher"
 fish -c "fisher install IlanCosman/tide@v6"
 
+
 # Basic setting/service
-sudo systemctl enable --now lightdm.service
 sudo usermod -aG wheel,video,storage,vboxsf $USER
+
+
+# lightdm
+sudo systemctl enable --now lightdm.service
+sudo mkdir -p /usr/share/pixmaps/lightdm
+[ -d "./lightdm" ] && cp -rv ./lightdm/* /usr/share/pixmaps/lightdm/
+
+cat <<EOF | sudo tee -a /etc/lightdm/lightdm.conf
+
+[Seat:*]
+greeter-session=lightdm-gtk-greeter
+EOF
+
+cat <<EOF | sudo tee -a /etc/lightdm/lightdm-gtk-greeter.conf
+
+[greeter]
+background=/usr/share/pixmaps/lightdm/bg.jpg
+theme-name=adw-gtk3-dark
+icon-theme-name=Numix-Circle
+font-name=Inter 10
+default-user-image=/usr/share/pixmaps/lightdm/user.png
+round-user-image=true
+EOF

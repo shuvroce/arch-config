@@ -14,6 +14,24 @@ grub:
         GRUB_THEME=/boot/grub/themes/<theme-folder>/theme.txt
     sudo grub-mkconfig -o /boot/grub/grub.cfg
 
+lightdm:
+    sudo mkdir -p /usr/share/pixmaps/lightdm
+    
+    copy bg.jpg and user.png with root priviledge to /usr/share/pixmaps/lightdm
+    
+    sudo micro /etc/lightdm/lightdm.conf
+        [Seat:*]
+        greeter-session=lightdm-gtk-greeter
+
+    sudo micro /etc/lightdm/lightdm-gtk-greeter.conf
+        [greeter]
+        background=/usr/share/pixmaps/lightdm/bg.jpg
+        theme-name=adw-gtk3-dark
+        icon-theme-name=Numix-Circle
+        font-name=Inter 10
+        default-user-image=/usr/share/pixmaps/lightdm/user.png
+        round-user-image=true
+
 
 ## auto mount external drive
 sudo mkdir -p /mnt/external_drive

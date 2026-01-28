@@ -79,7 +79,7 @@ mkdir -p ~/.config/fish/functions
 mkdir -p ~/.config/qt5ct/colors
 mkdir -p ~/.config/qt6ct/colors
 mkdir -p ~/.local/bin
-mkdir -p ~/Pictures/Wallpaper
+mkdir -p ~/Pictures/Wallpapers
 
 # Copying files
 [ -d "./niri" ]           && cp -rv ./niri/config.kdl ~/.config/niri/
@@ -100,10 +100,10 @@ if [ "$(ls -A ~/.local/bin)" ]; then
     chmod +x ~/.local/bin/*
 fi
 
-# Copy Wallpaper
-echo "--- Setting up Wallpaper ---"
-if ls ./wallpaper/* >/dev/null 2>&1; then
-    cp -v ./wallpaper/* ~/Pictures/Wallpaper/
+# Copy Wallpapers
+echo "--- Setting up Wallpapers ---"
+if ls ./wallpapers/* >/dev/null 2>&1; then
+    cp -v ./wallpapers/* ~/Pictures/Wallpapers/
 else
     echo "Warning: No wallpaper found."
 fi

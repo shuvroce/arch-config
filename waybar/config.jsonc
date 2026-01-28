@@ -120,20 +120,30 @@
         "separate-outputs": true,
         "icon": true,
         "icon-size": 15,
-        "rewrite": {
-            "^\\s*$": ""
-        },
         "tooltip": false,
         "on-click-middle": "niri msg action close-window"
     },
 
 
     // --- CENTER MODULES ---
+    // "niri/workspaces": {
+    //     "format": "{index}",
+    //     "active-only": false,
+    //     "all-outputs": true,
+    //     "on-click": "activate"
+    // },
+
     "niri/workspaces": {
-        "format": "{index}",
-        "active-only": false,
-        "all-outputs": true,
-        "on-click": "activate"
+        "format": "{icon}",
+        "format-icons": {
+            // Named workspaces
+            "browser": "󰖟",
+            "social": "󰙯",
+            "media": "󰝚",
+            "chat": "󰭹",
+            
+            "default": "{index}"
+        }
     },
 
 

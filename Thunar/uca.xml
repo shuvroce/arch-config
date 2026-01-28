@@ -30,7 +30,7 @@
 </action>
 <action>
     <icon>background</icon>
-    <name>Set as Wallpaper</name>
+    <name>Set as Niri Wallpaper</name>
     <unique-id>wall-1000</unique-id>
     <command>~/.local/bin/wallp.sh %f</command>
     <description>Set the selected image as Niri wallpaper</description>

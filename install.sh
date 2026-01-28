@@ -30,9 +30,12 @@ PKGS=(
     
     # Media & Graphics
     vlc vlc-plugins-all firefox ristretto zathura evince gnome-disk-utility
-    yt-dlp ffmpeg nwg-look
+    yt-dlp ffmpeg nwg-look obs-studio qbittorrent
     ifuse usbmuxd libplist libimobiledevice
     
+    # Social
+    telegram-desktop discord
+
     # Fonts & Themes
     inter-font ttf-jetbrains-mono-nerd otf-codenewroman-nerd noto-fonts
     adw-gtk-theme libappindicator-gtk3 qt5ct qt6ct
@@ -62,7 +65,7 @@ fi
 # Install AUR Packages
 echo "--- Installing AUR Packages ---"
 AUR_PKGS=(
-    wlogout visual-studio-code-bin google-chrome numix-circle-icon-theme-git
+    wlogout visual-studio-code-bin google-chrome numix-circle-icon-theme-git spicetify-cli
 )
 yay -S --noconfirm --needed "${AUR_PKGS[@]}"
 # yay -S --noconfirm waypaper

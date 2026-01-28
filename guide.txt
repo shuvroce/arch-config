@@ -43,3 +43,7 @@ sudo mount -a
 sudo chown $USER:$USER /mnt/external_drive      # for ext4
 sudo chmod -R 755 /mnt/external_drive           # for ext4
 
+
+## remove thunar right click 'set as wallpaper'
+sudo mv /usr/lib/thunarx-3/thunar-wallpaper-plugin.so /usr/lib/thunarx-3/thunar-wallpaper-plugin.so.disabled
+

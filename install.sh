@@ -140,6 +140,7 @@ fish -c "fisher install IlanCosman/tide@v6"
 # Basic setting/service
 sudo usermod -aG wheel,video,storage $USER
 gsettings set org.gnome.desktop.wm.preferences button-layout ":"
+sudo mv /usr/lib/thunarx-3/thunar-wallpaper-plugin.so /usr/lib/thunarx-3/thunar-wallpaper-plugin.so.disabled
 
 # Set GTK theme for Wayland apps
 gsettings set org.gnome.desktop.interface gtk-theme "cat-mocha"

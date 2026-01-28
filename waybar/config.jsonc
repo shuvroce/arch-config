@@ -126,24 +126,11 @@
 
 
     // --- CENTER MODULES ---
-    // "niri/workspaces": {
-    //     "format": "{index}",
-    //     "active-only": false,
-    //     "all-outputs": true,
-    //     "on-click": "activate"
-    // },
-
     "niri/workspaces": {
-        "format": "{icon}",
-        "format-icons": {
-            // Named workspaces
-            "browser": "󰖟",
-            "social": "󰙯",
-            "media": "󰝚",
-            "chat": "󰭹",
-            
-            "default": "{index}"
-        }
+        "format": "{index}",
+        "active-only": false,
+        "all-outputs": true,
+        "on-click": "activate"
     },
 
 

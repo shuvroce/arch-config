@@ -65,7 +65,7 @@ fi
 # Install AUR Packages
 echo "--- Installing AUR Packages ---"
 AUR_PKGS=(
-    wlogout visual-studio-code-bin google-chrome numix-circle-icon-theme-git spicetify-cli
+    wlogout visual-studio-code-bin google-chrome numix-circle-icon-theme-git spotify spicetify-cli
 )
 yay -S --noconfirm --needed "${AUR_PKGS[@]}"
 # yay -S --noconfirm waypaper

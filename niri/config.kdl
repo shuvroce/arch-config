@@ -112,32 +112,6 @@ animations {
 
 
 //--------------------------------------------------------------
-// Workspaces
-//--------------------------------------------------------------
-
-workspace "media" { }
-workspace "social" { }
-workspace "browser" { }
-
-window-rule {
-    match app-id="firefox"
-    match app-id="google-chrome"
-    open-on-workspace "browser"
-}
-
-window-rule {
-    match app-id="telegram-desktop"
-    match app-id="discord"
-    open-on-workspace "social"
-}
-
-window-rule {
-    match app-id="spotify"
-    open-on-workspace "media"
-}
-
-
-//--------------------------------------------------------------
 // Winddow rules
 //--------------------------------------------------------------
 

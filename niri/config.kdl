@@ -115,9 +115,9 @@ animations {
 // Workspaces
 //--------------------------------------------------------------
 
-workspace "browser" { }
-workspace "social" { }
 workspace "media" { }
+workspace "social" { }
+workspace "browser" { }
 
 window-rule {
     match app-id="firefox"

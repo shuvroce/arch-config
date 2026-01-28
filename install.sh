@@ -102,8 +102,8 @@ fi
 
 # Copy Wallpapers
 echo "--- Setting up Wallpapers ---"
-if ls ./wallpapers/* >/dev/null 2>&1; then
-    cp -v ./wallpapers/* ~/Pictures/Wallpapers/
+if ls ./wallpaper/* >/dev/null 2>&1; then
+    cp -v ./wallpaper/* ~/Pictures/Wallpapers/
 else
     echo "Warning: No wallpaper found."
 fi
@@ -182,6 +182,14 @@ run-directory=/run/lightdm
 greeter-session=lightdm-slick-greeter
 session-wrapper=/etc/lightdm/Xsession
 user-session=niri
+EOF
+
+cat <<EOF | sudo tee /etc/lightdm/lightdm-gtk-greeter.conf
+[greeter]
+background=/usr/share/pixmaps/lightdm/bg.jpg
+theme-name=cat-mocha
+icon-theme-name=Numix-Circle
+font-name=Inter 10
 EOF
 
 cat <<EOF | sudo tee /etc/lightdm/slick-greeter.conf

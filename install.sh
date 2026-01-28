@@ -47,7 +47,7 @@ PKGS=(
     python-pip nodejs
 
     # Greeter
-    lightdm lightdm-gtk-greeter
+    lightdm lightdm-gtk-greeter lightdm-slick-greeter
 )
 
 for pkg in "${PKGS[@]}"; do
@@ -179,20 +179,17 @@ cat <<EOF | sudo tee /etc/lightdm/lightdm.conf
 run-directory=/run/lightdm
 
 [Seat:*]
-greeter-session=lightdm-gtk-greeter
+greeter-session=lightdm-slick-greeter
 session-wrapper=/etc/lightdm/Xsession
 user-session=niri
 EOF
 
-cat <<EOF | sudo tee /etc/lightdm/lightdm-gtk-greeter.conf
-[greeter]
+cat <<EOF | sudo tee /etc/lightdm/slick-greeter.conf
+[Greeter]
 background=/usr/share/pixmaps/lightdm/bg.jpg
 theme-name=cat-mocha
 icon-theme-name=Numix-Circle
 font-name=Inter 10
-default-user-image=/usr/share/pixmaps/lightdm/user.png
-round-user-image=true
-indicators=~host;~spacer;~clock;~spacer;~session;~power
 EOF
 
 echo "--- Setup Complete. Please reboot. ---"

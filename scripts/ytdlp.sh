@@ -23,20 +23,21 @@ case $CHOICE in
 esac
 
 # 4. DOWNLOAD & PROGRESS PARSING
-# --newline: sends each update on a new line
-# --nopart: prevents the "tiny parts" flooding
-# stdbuf & sed: extracts the number (e.g. 45.2) for Zenity to move the bar
+# We remove --nopart to ensure stability
+# We add --progress-template to give Zenity exactly what it needs
 yt-dlp -f "$FORMAT" \
     -P "$TARGET_DIR" \
     --newline \
-    --nopart \
     --merge-output-format mp4 \
-    "$URL" | stdbuf -oL sed -n 's/^.*\[download\][[:space:]]*\([0-9.]*\)%.*$/\1/p' | \
+    --progress-template "download:%(progress._percent_str)s" \
+    "$URL" | stdbuf -oL sed -n 's/^download:[[:space:]]*\([0-9.]*\)%/\1/p' | \
     zenity --progress --title="Downloading..." \
     --text="Downloading to $TARGET_DIR" --percentage=0 --auto-close
 
+# Check if the download actually succeeded
 if [ ${PIPESTATUS[0]} -eq 0 ]; then
     notify-send "yt-dlp" "Success! Video saved to Downloads."
 else
-    notify-send "yt-dlp" "Download failed or check your connection."
+    # If it fails, show the error in a box so you can see WHY
+    zenity --error --title="Download Failed" --text="Check if the video is private or if FFmpeg is installed."
 fi

@@ -41,7 +41,7 @@ PKGS=(
     adw-gtk-theme libappindicator-gtk3 qt5ct qt6ct
     
     # Archives
-    tar bzip2 gzip unzip unrar 7zip xarchiver
+    zip tar bzip2 gzip unzip unrar 7zip xarchiver
 
     # Development
     python-pip nodejs

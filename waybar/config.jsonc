@@ -10,6 +10,7 @@
         "custom/launcher",
         "group/apps",
         "group/hardware",
+        "group/dload",
         "network",
         "niri/window"
     ],
@@ -20,7 +21,7 @@
 
     "modules-right": [
         "mpris",
-        "group/dload",
+        // "group/dload",
         "custom/nightlight",
         "custom/darkmode",
         "custom/brightness",
@@ -163,17 +164,17 @@
     },
 
     "custom/downloader": {
-        "format": "󰅢",
+        "format": "󰉍",
         "on-click": "~/.local/bin/area2.sh",
         "tooltip": false
     },
-    
+
     "custom/ytdlp": {
-        "format": "",
+        "format": "󰅢",
         "on-click": "~/.local/bin/ytdlp.sh",
         "tooltip": false
     },
-
+    
     "custom/nightlight": {
         "format": "󰛨",
         "on-click": "pkill wlsunset || wlsunset -t 4500 -T 6500",

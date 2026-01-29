@@ -20,6 +20,7 @@
 
     "modules-right": [
         "mpris",
+        "group/dload",
         "custom/nightlight",
         "custom/darkmode",
         "custom/brightness",
@@ -45,9 +46,7 @@
             "custom/term",
             "custom/files",
             "custom/browser",
-            "custom/vscode",
-            "custom/downloader",
-            "custom/ytdlp"
+            "custom/vscode"
         ]
     },
 
@@ -75,18 +74,6 @@
         "tooltip": false
     },
     
-    "custom/downloader": {
-        "format": "󰅢",
-        "on-click": "~/.local/bin/area2.sh",
-        "tooltip": false
-    },
-    
-    "custom/ytdlp": {
-        "format": "󰍫",
-        "on-click": "~/.local/bin/ytdlp.sh",
-        "tooltip": false
-    },
-
     "group/hardware": {
         "orientation": "horizontal",
         "modules": [
@@ -165,6 +152,26 @@
         "on-click": "playerctl play-pause",
         "on-scroll-up": "playerctl next",
         "on-scroll-down": "playerctl previous"
+    },
+
+    "group/dload": {
+        "orientation": "horizontal",
+        "modules": [
+            "custom/downloader",
+            "custom/ytdlp"
+        ]
+    },
+
+    "custom/downloader": {
+        "format": "󰅢",
+        "on-click": "~/.local/bin/area2.sh",
+        "tooltip": false
+    },
+    
+    "custom/ytdlp": {
+        "format": "󰍫",
+        "on-click": "~/.local/bin/ytdlp.sh",
+        "tooltip": false
     },
 
     "custom/nightlight": {

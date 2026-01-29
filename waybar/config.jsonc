@@ -45,7 +45,8 @@
             "custom/term",
             "custom/files",
             "custom/browser",
-            "custom/vscode"
+            "custom/vscode",
+            "custom/ytdlp"
         ]
     },
 
@@ -70,6 +71,12 @@
     "custom/vscode": {
         "format": "",
         "on-click": "code",
+        "tooltip": false
+    },
+    
+    "custom/ytdlp": {
+        "format": "󰅢",
+        "on-click": "~/.local/bin/ytdlp.sh",
         "tooltip": false
     },
 

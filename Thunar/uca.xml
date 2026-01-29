@@ -60,7 +60,7 @@
 	<patterns>*.ts</patterns>
 	<video-files/>
 </action>
-<action>
+<!-- <action>
 	<icon>youtube-dl</icon>
 	<name>Download Video (Clipboard)</name>
 	<submenu></submenu>
@@ -70,7 +70,7 @@
 	<range>*</range>
 	<patterns>*</patterns>
 	<directories/>
-</action>
+</action> -->
 <action>
 	<icon>application-archive-zip</icon>
 	<name>Extract</name>

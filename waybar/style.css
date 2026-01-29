@@ -50,14 +50,14 @@ window#waybar {
     border-radius: 50px;
 }
 
-#custom-term, #custom-files, #custom-browser, #custom-vscode {
+#custom-term, #custom-files, #custom-browser, #custom-vscode, #custom-ytdlp {
     background: transparent;
     padding: 0 8px;
     color: #cdd6f4;
     font-size: 15px;
 }
 
-#custom-term:hover, #custom-files:hover, #custom-browser:hover, #custom-vscode:hover {
+#custom-term:hover, #custom-files:hover, #custom-browser:hover, #custom-vscode:hover, #custom-ytdlp:hover {
     color: #89b4fa;
 }
 

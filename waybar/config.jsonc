@@ -46,6 +46,7 @@
             "custom/files",
             "custom/browser",
             "custom/vscode",
+            "custom/downloader",
             "custom/ytdlp"
         ]
     },
@@ -74,8 +75,14 @@
         "tooltip": false
     },
     
-    "custom/ytdlp": {
+    "custom/downloader": {
         "format": "󰅢",
+        "on-click": "~/.local/bin/area2.sh",
+        "tooltip": false
+    },
+    
+    "custom/ytdlp": {
+        "format": "󰍫",
         "on-click": "~/.local/bin/ytdlp.sh",
         "tooltip": false
     },

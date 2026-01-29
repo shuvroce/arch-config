@@ -76,7 +76,7 @@
 	<name>Extract</name>
 	<submenu></submenu>
 	<unique-id>ext-1000</unique-id>
-	<command>alacritty -e bash -c "~/.local/bin/extract.sh %F"</command>
+	<command>~/.local/bin/extract.sh %F</command>
 	<description>Extract zip, rar, 7z, tar archives</description>
 	<range>*</range>
 	<patterns>*.zip;*.tar.gz;*.7z;*.rar;*.tgz;*.tar.xz;*.tar.bz2</patterns>
@@ -87,7 +87,7 @@
 	<name>Compress to Zip</name>
 	<submenu></submenu>
 	<unique-id>zip-1000</unique-id>
-	<command>alacritty -e bash -c "~/.local/bin/archive.sh %F"</command>
+	<command>~/.local/bin/archive.sh %F</command>
 	<description>Compress to zip archive</description>
 	<range>*</range>
 	<patterns>*</patterns>

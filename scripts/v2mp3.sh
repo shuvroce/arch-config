@@ -13,6 +13,6 @@ for input_file in "$@"; do
     
     ffmpeg -i "$input_file" -vn -acodec libmp3lame -q:a 2 "$output_file" -y -loglevel error
 done
-) | zenity --progress --title="Audio Extractor" --auto-close --percentage=0
+) | zenity --progress --title="Video to MP3" --percentage=0 --auto-close
 
 notify-send "Extraction Complete" "Audio files saved as MP3"

@@ -8,13 +8,13 @@ mkdir -p "$TARGET_DIR"
 URL=$(wl-paste)
 
 if [[ ! $URL =~ ^https?:// ]]; then
-    zenity --error --title="yt-dlp Error" --text="No valid URL found in clipboard."
+    zenity --error --title="Error" --text="No valid URL found in clipboard."
     exit 1
 fi
 
 # 3. Quality Selection Menu
 CHOICE=$(zenity --list --title="Download Video" --width=300 --height=350 \
-    --column="Quality Options" "480p" "720p" "1080p" "Best (Max)")
+    --column="Quality" "480p" "720p" "1080p" "Best (Max)")
 
 [ -z "$CHOICE" ] && exit 0 # Exit if user hits Cancel
 
@@ -26,15 +26,8 @@ case $CHOICE in
 esac
 
 # 4. Run Download and Pipe Progress to Zenity
-# We use -P to tell yt-dlp exactly where to save the file
-yt-dlp -f "$FORMAT" \
-       -P "$TARGET_DIR" \
-       --newline \
-       --merge-output-format mp4 \
-       "$URL" | \
-    stdbuf -oL sed -n 's/^.*\[download\][[:space:]]*\([0-9.]*\)%.*$/\1/p' | \
-    zenity --progress --title="Downloading to $TARGET_DIR" \
-    --text="Fetching video..." --percentage=0 --auto-close
+yt-dlp -f "$FORMAT" -P "$TARGET_DIR" --newline --merge-output-format mp4 "$URL" | zenity --progress --title="Downloading..." \
+    --text="Fetching video..." --percentage=0 --pulsate --auto-close
 
 # 5. Final Notification
 if [ $? -eq 0 ]; then

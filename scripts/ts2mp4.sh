@@ -15,6 +15,6 @@ for input_file in "$@"; do
         ffmpeg -i "$input_file" -c copy -movflags +faststart "$output_file" -y -loglevel error
     fi
 done
-) | zenity --progress --title="Video Converter" --auto-close --percentage=0
+) | zenity --progress --title="Video Converter" --percentage=0 --auto-close
 
 notify-send "Conversion Complete" "TS files converted to MP4"

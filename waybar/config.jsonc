@@ -169,7 +169,7 @@
     },
     
     "custom/ytdlp": {
-        "format": "󰍫",
+        "format": "",
         "on-click": "~/.local/bin/ytdlp.sh",
         "tooltip": false
     },

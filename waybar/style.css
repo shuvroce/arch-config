@@ -15,7 +15,7 @@ window#waybar {
 }
 
 /* Base module styling for standard "pills" */
-#network, #window, #mpris, #tray,
+#network, #window, #mpris, #tray, #dload,
 #custom-updates, #pulseaudio, #custom-brightness, 
 #clock, #custom-notification, #custom-nightlight, #custom-darkmode {
     padding: 0 8px;

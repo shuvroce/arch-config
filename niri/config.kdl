@@ -152,6 +152,8 @@ window-rule {
     match app-id="sddm-conf"
     match app-id="gnome-calculator"
 
+    match app-id="zenity"
+
     open-floating true
 }
 

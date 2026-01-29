@@ -1,4 +1,4 @@
-function clean_arch
+function clean
     set orphans (pacman -Qtdq)
     if test -n "$orphans"
         echo "Removing orphaned packages..."

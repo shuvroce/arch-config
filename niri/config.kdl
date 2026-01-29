@@ -50,9 +50,15 @@ layout {
         proportion 0.66667
         // fixed 1920
     }
-    // preset-window-heights { }
+
+    preset-window-heights {
+        proportion 0.5
+        proportion 0.66667
+        proportion 1.0
+    }
+
     default-column-width { proportion 0.5; }
-    // default-column-width {}
+
     // `draw-border-with-background`.
     focus-ring {
         // off
@@ -60,6 +66,7 @@ layout {
         active-color "#7185a1"
         inactive-color "#505050"
     }
+
     border {
         off
         width 2
@@ -67,6 +74,7 @@ layout {
         inactive-color "#505050"
         urgent-color "#9b0000"
     }
+
     shadow {
         on
         draw-behind-window true
@@ -75,6 +83,7 @@ layout {
         offset x=0 y=5
         color "#0007"
     }
+    
     struts {
         // left 64
         // right 64

@@ -30,7 +30,7 @@
 </action>
 <action>
     <icon>background</icon>
-    <name>Set as Niri Wallpaper</name>
+    <name>Set as Wallpaper</name>
     <unique-id>wall-1000</unique-id>
     <command>~/.local/bin/wallp.sh %f</command>
     <description>Set the selected image as Niri wallpaper</description>
@@ -43,7 +43,7 @@
 	<name>Convert to MP3</name>
 	<submenu></submenu>
 	<unique-id>v2mp3-1000</unique-id>
-	<command>alacritty -e bash -c "~/.local/bin/v2mp3.sh %F"</command>
+	<command>~/.local/bin/v2mp3.sh %F</command>
 	<description>Extract audio using ffmpeg</description>
 	<range>*</range>
 	<patterns>*</patterns>
@@ -54,7 +54,7 @@
 	<name>Convert to MP4</name>
 	<submenu></submenu>
 	<unique-id>ts2mp4-1000</unique-id>
-	<command>alacritty -e bash -c "~/.local/bin/ts2mp4.sh %F"</command>
+	<command>~/.local/bin/ts2mp4.sh %F</command>
 	<description>Convert ts file to mp4 format</description>
 	<range>*</range>
 	<patterns>*.ts</patterns>
@@ -65,7 +65,7 @@
 	<name>Download Video (Clipboard)</name>
 	<submenu></submenu>
 	<unique-id>ytdlp-1000</unique-id>
-	<command>alacritty -e ~/.local/bin/ytdlp.sh %f</command>
+	<command>~/.local/bin/ytdlp.sh %f</command>
 	<description>Download YouTube Video (Clipboard)</description>
 	<range>*</range>
 	<patterns>*</patterns>

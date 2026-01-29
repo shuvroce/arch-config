@@ -1,19 +1,20 @@
 #!/bin/bash
 
+(
+total=$#
+count=0
 for input_file in "$@"; do
+    ((count++))
+    percent=$((count * 100 / total))
     output_file="${input_file%.*}.mp4"
-    if [[ "$input_file" == *.mp4 ]]; then
-        continue
+    
+    echo "# Converting: $(basename "$input_file") ($count/$total)"
+    echo "$percent"
+    
+    if [[ "$input_file" != *.mp4 ]]; then
+        ffmpeg -i "$input_file" -c copy -movflags +faststart "$output_file" -y -loglevel error
     fi
-    
-    input_name=$(basename "$input_file")
-    output_name=$(basename "$output_file")
-    
-    echo "Converting: $input_name ..."
-    
-    ffmpeg -i "$input_file" -c copy -movflags +faststart "$output_file" -y -loglevel error
-    
-    echo "Converted to: $output_name"
-    echo -e "--------------------------------------------------- \n"
 done
+) | zenity --progress --title="Video Converter" --auto-close --percentage=0
+
 notify-send "Conversion Complete" "TS files converted to MP4"

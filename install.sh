@@ -11,14 +11,14 @@ echo "--- Installing Pacman Packages ---"
 PKGS=(
     # System Core & Drivers
     base-devel xwayland-satellite xdg-desktop-portal-gtk xdg-desktop-portal-wlr xdg-utils 
-    polkit-gnome udiskie 
+    polkit-gnome udiskie zenity
     
     # Niri Environment
     niri waybar fuzzel mako swaybg swayidle swaylock
     alacritty wl-clipboard cliphist wlsunset playerctl
     
     # Tools & Shell
-    curl wget git fish btop fastfetch nano micro gedit
+    curl wget git fish btop fastfetch gedit nano micro
     pacman-contrib timeshift reflector
     ddcutil brightnessctl nethogs
     

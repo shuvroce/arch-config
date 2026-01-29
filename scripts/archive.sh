@@ -1,16 +1,14 @@
 #!/bin/bash
 
-# Use the name of the current directory for the archive name
-ARCHIVE_NAME=$(basename "$PWD").zip
+# Ask user for the archive name
+ARCHIVE_NAME=$(zenity --entry --title="Create Archive" --text="Enter archive name:" --entry-text="$(basename "$PWD").zip")
 
-# If the archive already exists, add a timestamp
-if [ -f "$ARCHIVE_NAME" ]; then
-    ARCHIVE_NAME="$(basename "$PWD")_$(date +%H%M%S).zip"
-fi
+[ -z "$ARCHIVE_NAME" ] && exit 0 # Exit if user hits cancel
 
-echo "Creating archive: $ARCHIVE_NAME"
+# Ensure it ends in .zip
+[[ "$ARCHIVE_NAME" != *.zip ]] && ARCHIVE_NAME="${ARCHIVE_NAME}.zip"
 
-# Zip the selected files
-zip -r "$ARCHIVE_NAME" "$@"
+# Zip with a progress pulse
+zip -r "$ARCHIVE_NAME" "$@" | zenity --progress --title="Archiving" --text="Compressing files..." --pulsate --auto-close
 
 notify-send "Compression Complete" "Created $ARCHIVE_NAME"

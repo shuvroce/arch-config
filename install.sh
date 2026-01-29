@@ -30,7 +30,7 @@ PKGS=(
     
     # Media & Graphics
     vlc vlc-plugins-all firefox ristretto zathura evince gnome-disk-utility
-    yt-dlp aria2 ffmpeg nwg-look obs-studio qbittorrent
+    yt-dlp aria2 uget ffmpeg nwg-look obs-studio qbittorrent
     ifuse usbmuxd libplist libimobiledevice
     
     # Social

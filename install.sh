@@ -11,7 +11,7 @@ echo "--- Installing Pacman Packages ---"
 PKGS=(
     # System Core & Drivers
     base-devel xwayland-satellite xdg-desktop-portal-gtk xdg-desktop-portal-wlr xdg-utils 
-    polkit-gnome udiskie expac
+    polkit-gnome udiskie expac ntfs-3g
     
     # Niri Environment
     niri waybar fuzzel mako swaybg swayidle swaylock

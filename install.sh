@@ -14,7 +14,7 @@ PKGS=(
     polkit-gnome udiskie expac ntfs-3g
     
     # Niri Environment
-    niri waybar fuzzel mako swaybg swayidle swaylock
+    niri waybar fuzzel mako libcanberra sound-theme-freedesktop swaybg swayidle swaylock
     alacritty wl-clipboard cliphist wlsunset playerctl
     
     # Tools & Shell

@@ -1,3 +1,5 @@
+on-notify=exec canberra-gtk-play -i message-new-instant
+
 anchor=top-right
 font=monospace 10
 background-color=#37404fFF
@@ -19,3 +21,5 @@ format=<b>%s</b>\n%b
 
 # makoctl reload // Load last config
 # makoctl restore // Load last notify
+
+on-notify=exec canberra-gtk-play -i message-new-instant

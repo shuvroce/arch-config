@@ -10,7 +10,7 @@
         "custom/launcher",
         "group/apps",
         "group/hardware",
-        "group/dload",
+        // "group/dload",
         "network",
         "niri/window"
     ],
@@ -47,7 +47,8 @@
             "custom/term",
             "custom/files",
             "custom/browser",
-            "custom/vscode"
+            "custom/vscode",
+            "custom/ytdlp"
         ]
     },
 

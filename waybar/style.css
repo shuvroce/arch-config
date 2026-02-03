@@ -6,21 +6,16 @@
 
 * {
     border: none;
-    border-radius: 12px;
     font-family: "Inter", "JetBrainsMono Nerd Font", sans-serif;
     font-size: 13px;
     min-height: 0;
     font-weight: 500;
-    padding: 0 8px;
-    margin: 4px 3px;
     color: @text-color;
-    background: @bg-color;
     -webkit-font-smoothing: antialiased;
 }
 
 window#waybar {
     background: rgba(20, 20, 20, 0.2);
-    /* color: @text-color; */
     /* border-bottom: 1px solid rgba(255, 255, 255, 0.187); */
 }
 
@@ -37,19 +32,19 @@ window#waybar {
 #custom-notification,
 #custom-nightlight,
 #custom-darkmode {
-    /* padding: 0 8px; */
-    /* margin: 4px 3px; */
+    padding: 0 8px;
+    margin: 4px 3px;
     background: @bg-color;
-    /* border-radius: 12px; */
+    border-radius: 12px;
     /* box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); */
 }
 
 /* --- Launcher & App Group --- */
 .modules-left > widget > box {
     background: @bg-color;
-    /* border-radius: 12px; */
-    /* margin: 4px 3px; */
-    /* padding: 0 8px; */
+    border-radius: 12px;
+    margin: 4px 3px;
+    padding: 0 8px;
 }
 
 #window {
@@ -63,9 +58,8 @@ window#waybar {
 #custom-launcher {
     background: rgba(23, 147, 209, 0.15);
     color: #1793d1;
-    /* font-size: 14px; */
     padding: 0 14px 0 8px;
-    /* margin: 4px 4px; */
+    margin: 4px 4px;
     border-radius: 50px;
 }
 
@@ -76,9 +70,7 @@ window#waybar {
 #custom-downloader,
 #custom-ytdlp {
     background: transparent;
-    /* padding: 0 8px; */
-    /* color: @text-color; */
-    /* font-size: 15px; */
+    padding: 0 8px;
 }
 
 #custom-term:hover,
@@ -92,11 +84,10 @@ window#waybar {
 
 /* --- Workspaces --- */
 #workspaces button {
-    /* color: @text-color; */
     padding: 0;
-    /* margin: 5px 2px; */
+    margin: 1px 2px;
     border-radius: 5px;
-    /* background: @bg-color; */
+    background: @bg-color;
 }
 
 #workspaces button.active {
@@ -124,7 +115,7 @@ window#waybar {
 
 #clock {
     font-weight: bold;
-    /* padding: 0 12px; */
+    padding: 0 12px;
 }
 
 #custom-power {
@@ -132,5 +123,5 @@ window#waybar {
     background: rgba(243, 139, 168, 0.15);
     padding: 0 12px 0 10px;
     margin: 4px 8px 4px 2px;
-    /* border-radius: 12px; */
+    border-radius: 12px;
 }

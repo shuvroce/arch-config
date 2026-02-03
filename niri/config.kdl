@@ -105,6 +105,7 @@ spawn-at-startup "~/.config/niri/wallpaper.sh"
 spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 spawn-at-startup "dbus-update-activation-environment" "--systemd" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP=niri"
 spawn-at-startup "udiskie" "--tray"
+spawn-at-startup "conky" "-c" "~/.config/conky/conky.conf"
 
 
 //--------------------------------------------------------------
@@ -171,6 +172,15 @@ window-rule {
 window-rule {
     match app-id=r#"firefox$"# title="^Picture-in-Picture$"
     open-floating true
+}
+
+window-rule {
+    match app-id="conky"
+    open-floating true
+    focus-ring off
+    shadow off
+    exclude-from-tabs true
+    click-to-focus false
 }
 
 //--------------------------------------------------------------

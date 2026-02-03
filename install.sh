@@ -38,7 +38,7 @@ PKGS=(
 
     # Fonts & Themes
     inter-font ttf-jetbrains-mono-nerd otf-codenewroman-nerd noto-fonts
-    adw-gtk-theme libappindicator-gtk3 qt5ct qt6ct
+    adw-gtk-theme libappindicator-gtk3 qt5ct qt6ct conky
     
     # Archives
     zip tar bzip2 gzip unzip unrar 7zip xarchiver
@@ -74,7 +74,7 @@ yay -S --noconfirm --needed "${AUR_PKGS[@]}"
 ## Config
 # Create Directories
 echo "--- Setting up Configs ---"
-mkdir -p ~/.config/{xdg-desktop-portal,fish,niri,waybar,alacritty,fuzzel,Thunar,mako,qt5ct,qt6ct,wlogout}
+mkdir -p ~/.config/{xdg-desktop-portal,fish,niri,waybar,alacritty,fuzzel,Thunar,mako,qt5ct,qt6ct,wlogout,conky}
 mkdir -p ~/.config/fish/functions
 mkdir -p ~/.config/qt5ct/colors
 mkdir -p ~/.config/qt6ct/colors
@@ -89,6 +89,7 @@ mkdir -p ~/Pictures/Wallpapers
 [ -d "./fuzzel" ]         && cp -rv ./fuzzel/fuzzel.ini ~/.config/fuzzel/
 [ -d "./Thunar" ]         && cp -rv ./Thunar/uca.xml ~/.config/Thunar/
 [ -d "./mako" ]           && cp -rv ./mako/config ~/.config/mako/
+[ -d "./conky" ]          && cp -rv ./conky/conky.conf ~/.config/conky/
 [ -d "./qt5ct/colors" ]   && cp -rv ./qt5ct/colors/* ~/.config/qt5ct/colors/
 [ -d "./qt6ct/colors" ]   && cp -rv ./qt6ct/colors/* ~/.config/qt6ct/colors/
 [ -d "./wlogout" ]        && cp -rv ./wlogout/* ~/.config/wlogout/

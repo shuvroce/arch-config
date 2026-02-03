@@ -1,0 +1,102 @@
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "Inter", "JetBrainsMono Nerd Font", sans-serif;
+    font-size: 13px;
+    min-height: 0;
+    font-weight: 500;
+    -webkit-font-smoothing: antialiased;
+}
+
+window#waybar {
+    background: rgba(20, 20, 20, 0.3);
+    color: #000;
+    /* border-bottom: 1px solid rgba(255, 255, 255, 0.187); */
+}
+
+/* Base module styling for standard "pills" */
+#network, #window, #mpris, #tray, #dload,
+#custom-updates, #pulseaudio, #custom-brightness, 
+#clock, #custom-notification, #custom-nightlight, #custom-darkmode {
+    padding: 0 8px;
+    margin: 4px 3px;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 12px;
+    /* box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); */
+}
+
+/* --- Launcher & App Group --- */
+.modules-left > widget > box {
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 12px;
+    margin: 4px 3px;
+    padding: 0 8px;
+}
+
+#window {
+    background: transparent;
+    color: #fff;
+}
+
+#apps {
+    background: rgba(255, 255, 255, 0.6);
+}
+
+#custom-launcher {
+    background: rgba(44, 185, 255, 0.9);
+    color: #03161f;
+    font-size: 14px;
+    padding: 0 14px 0 8px;
+    margin: 4px 4px;
+    border-radius: 50px;
+}
+
+#custom-term, #custom-files, #custom-browser, #custom-vscode,
+#custom-downloader, #custom-ytdlp {
+    background: transparent;
+    padding: 0 8px;
+    color: #000;
+    font-size: 15px;
+}
+
+#custom-term:hover, #custom-files:hover, #custom-browser:hover,
+#custom-vscode:hover, #custom-downloader:hover, #custom-ytdlp:hover {
+    color: #06234f;
+}
+
+/* --- Workspaces --- */
+#workspaces button {
+    color: #000;
+    padding: 0;
+    margin: 5px 2px;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.6);
+}
+
+#workspaces button.active {
+    color: #031736;
+    background: rgba(175, 200, 241, 0.8);
+    padding: 0 4px;
+}
+
+/* --- Hardware Group --- */
+#cpu, #memory, #temperature {
+    background: transparent;
+    padding: 0 6px;
+}
+
+/* --- Right Side Specifics --- */
+#custom-nightlight { color: #58351f; }
+#custom-darkmode { color: #262b52; }
+#clock { 
+    font-weight: bold; 
+    padding: 0 12px;
+}
+
+#custom-power {
+    color: #fcc7d8;
+    background: rgba(181, 0, 54, 0.95);
+    padding: 0 12px 0 10px;
+    margin: 4px 8px 4px 2px;
+    border-radius: 12px;
+}

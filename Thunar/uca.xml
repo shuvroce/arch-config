@@ -13,6 +13,16 @@
 	<directories/>
 </action>
 <action>
+    <icon>background</icon>
+    <name>Set as Wallpaper</name>
+    <unique-id>wall-1000</unique-id>
+    <command>~/.local/bin/wallp.sh %f</command>
+    <description>Set the selected image as Niri wallpaper</description>
+	<range>*</range>
+    <patterns>*.jpg;*.jpeg;*.png;*.gif;*.webp</patterns>
+    <image-files/>
+</action>
+<action>
 	<icon>visual-studio-code</icon>
 	<name>Open with Code</name>
 	<submenu></submenu>
@@ -27,16 +37,6 @@
 	<other-files/>
 	<text-files/>
 	<video-files/>
-</action>
-<action>
-    <icon>background</icon>
-    <name>Set as Wallpaper</name>
-    <unique-id>wall-1000</unique-id>
-    <command>~/.local/bin/wallp.sh %f</command>
-    <description>Set the selected image as Niri wallpaper</description>
-	<range>*</range>
-    <patterns>*.jpg;*.jpeg;*.png;*.gif;*.webp</patterns>
-    <image-files/>
 </action>
 <action>
 	<icon>application-audio</icon>

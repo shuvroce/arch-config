@@ -1,13 +1,13 @@
 /* --- Color Definitions (GTK-safe) --- */
-@define-color bg-color        rgba(181, 181, 181, 0.2);
-@define-color apps-bg-color   rgba(181, 181, 181, 0.2);
+@define-color bg-color        rgba(100, 100, 100, 0.4);
+@define-color apps-bg-color   rgba(14, 166, 153, 0.2);
 @define-color text-color      #cdd6f4;
 @define-color active-color    #9ec2fc;
 @define-color hover-color     #89b4fa;
-@define-color arch-blue       rgba(23, 147, 209, 0.15);
+@define-color arch-blue       rgba(23, 147, 209, 0.3);
 @define-color arch-text       #1793d1;
 @define-color red-accent      #f38ba8;
-@define-color red-bg          rgba(243, 139, 168, 0.15);
+@define-color red-bg          rgba(243, 139, 168, 0.3);
 
 /* --- Global Reset --- */
 * {

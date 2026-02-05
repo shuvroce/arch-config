@@ -11,7 +11,7 @@ echo "--- Installing Pacman Packages ---"
 PKGS=(
     # System Core & Drivers
     base-devel xwayland-satellite xdg-desktop-portal-gtk xdg-desktop-portal-wlr xdg-utils 
-    polkit-gnome udiskie expac ntfs-3g
+    polkit-gnome udiskie expac ntfs-3g os-prober
     
     # Niri Environment
     niri waybar fuzzel mako libcanberra sound-theme-freedesktop swaybg swayidle swaylock
@@ -37,7 +37,7 @@ PKGS=(
     telegram-desktop discord
 
     # Fonts & Themes
-    inter-font ttf-jetbrains-mono-nerd otf-codenewroman-nerd noto-fonts
+    noto-fonts inter-font ttf-jetbrains-mono-nerd otf-codenewroman-nerd
     adw-gtk-theme libappindicator-gtk3 qt5ct qt6ct conky
     
     # Archives

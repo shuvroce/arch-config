@@ -61,17 +61,17 @@ layout {
 
     // `draw-border-with-background`.
     focus-ring {
-        // off
+        off
         width 2
         active-color "#7185a1"
-        inactive-color "#505050"
+        inactive-color "#626262"
     }
 
     border {
-        off
+        // off
         width 2
-        active-color "#ffc87f"
-        inactive-color "#505050"
+        active-color "#7185a1"
+        inactive-color "#636363"
         urgent-color "#9b0000"
     }
 
@@ -105,7 +105,8 @@ spawn-at-startup "~/.config/niri/wallpaper.sh"
 spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 spawn-at-startup "dbus-update-activation-environment" "--systemd" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP=niri"
 spawn-at-startup "udiskie" "--tray"
-spawn-at-startup "conky"
+spawn-at-startup "ibus-daemon" "-drx"
+// spawn-at-startup "~/.config/conky/conky-startup.sh"
 
 
 //--------------------------------------------------------------
@@ -130,9 +131,10 @@ window-rule {
     clip-to-geometry true
 }
 
-/-window-rule {
+window-rule {
     match is-active=false
-    opacity 0.8
+    match is-focused=false
+    //opacity 0.8
 }
 
 window-rule {

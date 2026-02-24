@@ -28,7 +28,7 @@ window#waybar {
     Change the padding and margin here to affect ALL pills 
 */
 #network, #window, #mpris, #tray, #dload, #custom-updates,
-#pulseaudio, #custom-brightness, #clock, #custom-notification,
+#pulseaudio, #custom-brightness, #language, #clock, #custom-notification,
 #custom-nightlight, #custom-darkmode, #custom-power, #custom-launcher,
 .modules-left > widget > box {
     padding: 1px 8px;

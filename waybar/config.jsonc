@@ -28,6 +28,7 @@
         "tray",
         "custom/updates",
         "pulseaudio",
+        "niri/language",
         "clock",
         "custom/notification",
         "custom/power"
@@ -209,13 +210,21 @@
     },
 
     "custom/brightness": {
-        "exec": "~/.local/bin/brightness.sh",
+        // "exec": "~/.local/bin/brightness.sh",
         "return-type": "json",
         "interval": 20,
-        "format": "󰃠   {}%",
+        // "format": "󰃠   {}%",
+        "format": "󰃠 ",
         // "on-scroll-up": "ddcutil setvcp 10 + 5",
         // "on-scroll-down": "ddcutil setvcp 10 - 5",
         "exec-on-event": true
+    },
+
+    "niri/language": {
+        "format": "{}",
+        "format-en": "US",
+        "format-bn": "BN",
+        "on-click": "ibus engine next" 
     },
 
     "clock": {

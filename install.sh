@@ -38,7 +38,7 @@ PKGS=(
 
     # Fonts & Themes
     noto-fonts inter-font ttf-jetbrains-mono-nerd otf-codenewroman-nerd
-    adw-gtk-theme libappindicator-gtk3 qt5ct qt6ct conky
+    adw-gtk-theme libappindicator-gtk3 qt5ct qt6ct
     
     # Archives
     zip tar bzip2 gzip unzip unrar 7zip xarchiver
@@ -65,16 +65,14 @@ fi
 # Install AUR Packages
 echo "--- Installing AUR Packages ---"
 AUR_PKGS=(
-    zenity-gtk3 wlogout visual-studio-code-bin google-chrome numix-circle-icon-theme-git spotify spicetify-cli
+    zenity-gtk3 wlogout visual-studio-code-bin google-chrome numix-circle-icon-theme-git ibus-avro-git
 )
 yay -S --noconfirm --needed "${AUR_PKGS[@]}"
-# yay -S --noconfirm waypaper
-
 
 ## Config
 # Create Directories
 echo "--- Setting up Configs ---"
-mkdir -p ~/.config/{xdg-desktop-portal,fish,niri,waybar,alacritty,fuzzel,Thunar,mako,qt5ct,qt6ct,wlogout,conky}
+mkdir -p ~/.config/{xdg-desktop-portal,fish,niri,waybar,alacritty,fuzzel,Thunar,mako,qt5ct,qt6ct,wlogout}
 mkdir -p ~/.config/fish/functions
 mkdir -p ~/.config/qt5ct/colors
 mkdir -p ~/.config/qt6ct/colors
@@ -89,7 +87,6 @@ mkdir -p ~/Pictures/Wallpapers
 [ -d "./fuzzel" ]         && cp -rv ./fuzzel/fuzzel.ini ~/.config/fuzzel/
 [ -d "./Thunar" ]         && cp -rv ./Thunar/uca.xml ~/.config/Thunar/
 [ -d "./mako" ]           && cp -rv ./mako/config ~/.config/mako/
-[ -d "./conky" ]          && cp -rv ./conky/conky.conf ~/.config/conky/
 [ -d "./qt5ct/colors" ]   && cp -rv ./qt5ct/colors/* ~/.config/qt5ct/colors/
 [ -d "./qt6ct/colors" ]   && cp -rv ./qt6ct/colors/* ~/.config/qt6ct/colors/
 [ -d "./wlogout" ]        && cp -rv ./wlogout/* ~/.config/wlogout/

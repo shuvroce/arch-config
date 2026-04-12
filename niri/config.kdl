@@ -70,7 +70,7 @@ layout {
     border {
         // off
         width 2
-        active-color "#7185a1"
+        active-color "#85898e"
         inactive-color "#636363"
         urgent-color "#9b0000"
     }
@@ -105,7 +105,9 @@ spawn-at-startup "~/.config/niri/wallpaper.sh"
 spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 spawn-at-startup "dbus-update-activation-environment" "--systemd" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP=niri"
 spawn-at-startup "udiskie" "--tray"
-spawn-at-startup "ibus-daemon" "-drx"
+// spawn-at-startup "ibus-daemon" "-drx"
+// spawn-at-startup "ibus-daemon" "-rxrd" "--wayland-im"
+spawn-at-startup "fcitx5" "-d"
 // spawn-at-startup "~/.config/conky/conky-startup.sh"
 
 
@@ -201,6 +203,10 @@ binds {
     Mod+F hotkey-overlay-title="Run an Application: Browser" { spawn "firefox"; }
     Mod+E hotkey-overlay-title="Run an Application: File Manager" { spawn "thunar"; }
     Mod+Escape repeat=false { spawn "wlogout"; }
+
+    Ctrl+Space {
+        spawn "bash" "-c" "engine=$(ibus engine); if [ \"$engine\" == \"ibus-avro\" ]; then ibus engine xkb:us::eng; else ibus engine ibus-avro; fi"
+    }
 
     Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
     Super+Alt+S allow-when-locked=true hotkey-overlay-title=null { spawn-sh "pkill orca || exec orca"; }
@@ -334,5 +340,9 @@ binds {
 environment {
     QT_QPA_PLATFORM "wayland;xcb"
     QT_QPA_PLATFORMTHEME "qt6ct"
+
+    QT_IM_MODULE "fcitx"
+    XMODIFIERS "@im=fcitx"
+    GTK_IM_MODULE "fcitx"
 }
 

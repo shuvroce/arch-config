@@ -14,13 +14,12 @@ PKGS=(
     polkit-gnome udiskie expac ntfs-3g os-prober
     
     # Niri Environment
-    niri waybar fuzzel mako libcanberra sound-theme-freedesktop swaybg swayidle swaylock
-    alacritty wl-clipboard cliphist wlsunset playerctl
+    niri waybar fuzzel mako libcanberra sound-theme-freedesktop
+    alacritty wl-clipboard cliphist playerctl
     
     # Tools & Shell
     curl wget git fish btop fastfetch gedit nano micro
-    pacman-contrib timeshift reflector
-    ddcutil brightnessctl nethogs
+    pacman-contrib timeshift reflector nethogs
     
     # Networking & Audio
     iwd openssh wireguard-tools wireplumber
@@ -29,12 +28,12 @@ PKGS=(
     thunar gvfs gvfs-mtp tumbler ffmpegthumbnailer 
     
     # Media & Graphics
-    vlc vlc-plugins-all firefox ristretto zathura evince gnome-disk-utility
-    yt-dlp aria2 uget ffmpeg nwg-look obs-studio qbittorrent
+    vlc vlc-plugins-all ristretto evince gnome-disk-utility
+    yt-dlp aria2 uget ffmpeg nwg-look
     ifuse usbmuxd libplist libimobiledevice
     
     # Social
-    telegram-desktop discord
+    telegram-desktop
 
     # Fonts & Themes
     noto-fonts inter-font ttf-jetbrains-mono-nerd otf-codenewroman-nerd
@@ -48,6 +47,9 @@ PKGS=(
 
     # Greeter
     lightdm lightdm-gtk-greeter lightdm-slick-greeter
+
+    # Extra
+    # zathura obs-studio qbittorrent ddcutil brightnessctl
 )
 
 for pkg in "${PKGS[@]}"; do
@@ -65,9 +67,13 @@ fi
 # Install AUR Packages
 echo "--- Installing AUR Packages ---"
 AUR_PKGS=(
-    zenity-gtk3 wlogout visual-studio-code-bin google-chrome numix-circle-icon-theme-git ibus-avro-git
+    zenity-gtk3 wlogout visual-studio-code-bin google-chrome numix-circle-icon-theme-git ttf-freebanglafont
 )
 yay -S --noconfirm --needed "${AUR_PKGS[@]}"
+
+# Bangla Keyboard
+echo "--- Installing OpenBangla Keyboard ---"
+bash -c "$(wget -q https://raw.githubusercontent.com/asifakonjee/openbangla-script/master/fcitx5.sh -O -)"
 
 ## Config
 # Create Directories
@@ -93,7 +99,7 @@ mkdir -p ~/Pictures/Wallpapers
 [ -d "./scripts" ]        && cp -rv ./scripts/* ~/.local/bin/
 
 # Make all local scripts executable
-echo "--- Making all lcoal scripts executable ---"
+echo "--- Making all local scripts executable ---"
 if [ "$(ls -A ~/.local/bin)" ]; then
     chmod +x ~/.local/bin/*
 fi
@@ -118,7 +124,7 @@ org.freedesktop.impl.portal.Screencast=gnome
 org.freedesktop.impl.portal.Screenshot=gnome
 EOF
 
-# Fish Config
+# Fish Config // reload waybar
 cat <<EOF > ~/.config/fish/config.fish
 fish_add_path ~/.local/bin
 
@@ -141,7 +147,7 @@ gsettings set org.gnome.desktop.wm.preferences button-layout ":"
 sudo mv /usr/lib/thunarx-3/thunar-wallpaper-plugin.so /usr/lib/thunarx-3/thunar-wallpaper-plugin.so.disabled
 
 # Set GTK theme for Wayland apps
-gsettings set org.gnome.desktop.interface gtk-theme "cat-mocha"
+gsettings set org.gnome.desktop.interface gtk-theme "adw-gtk3-dark"
 gsettings set org.gnome.desktop.interface icon-theme "Numix-Circle"
 gsettings set org.gnome.desktop.interface font-name "Inter 11"
 gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"
@@ -183,18 +189,20 @@ session-wrapper=/etc/lightdm/Xsession
 user-session=niri
 EOF
 
+# GTK Greeter
 cat <<EOF | sudo tee /etc/lightdm/lightdm-gtk-greeter.conf
 [greeter]
 background=/usr/share/pixmaps/lightdm/bg.jpg
-theme-name=cat-mocha
+theme-name=adw-gtk3-dark
 icon-theme-name=Numix-Circle
 font-name=Inter 10
 EOF
 
+# Slick Greeter
 cat <<EOF | sudo tee /etc/lightdm/slick-greeter.conf
 [Greeter]
 background=/usr/share/pixmaps/lightdm/bg.jpg
-theme-name=cat-mocha
+theme-name=adw-gtk3-dark
 icon-theme-name=Numix-Circle
 font-name=Inter 10
 EOF

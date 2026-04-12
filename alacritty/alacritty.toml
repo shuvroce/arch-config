@@ -1,5 +1,5 @@
 [general]
-import = ["themes/cat-mocha.toml"]
+import = ["themes/cat-dark.toml"]
 
 [font]
 size = 12.0

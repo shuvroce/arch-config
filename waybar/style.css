@@ -1,13 +1,13 @@
 /* --- Color Definitions (GTK-safe) --- */
-@define-color bg-color        rgba(100, 100, 100, 0.4);
-@define-color apps-bg-color   rgba(14, 166, 153, 0.2);
+@define-color bg-color        rgba(85, 85, 85, 0.9);
+@define-color apps-bg-color   rgba(85, 85, 85, 0.9);
 @define-color text-color      #cdd6f4;
 @define-color active-color    #9ec2fc;
 @define-color hover-color     #89b4fa;
 @define-color arch-blue       rgba(23, 147, 209, 0.3);
 @define-color arch-text       #1793d1;
 @define-color red-accent      #f38ba8;
-@define-color red-bg          rgba(243, 139, 168, 0.3);
+@define-color red-bg          rgba(243, 139, 168, 0.4);
 
 /* --- Global Reset --- */
 * {
@@ -21,7 +21,7 @@
 }
 
 window#waybar {
-    background: rgba(20, 20, 20, 0.3);
+    background: rgba(20, 20, 20, 0.6);
 }
 
 /* --- MASTER MODULE STYLE ---

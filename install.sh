@@ -43,7 +43,7 @@ PKGS=(
     zip tar bzip2 gzip unzip unrar 7zip xarchiver
 
     # Development
-    python-pip nodejs
+    python-pip nodejs opencode
 
     # Greeter
     lightdm lightdm-gtk-greeter lightdm-slick-greeter

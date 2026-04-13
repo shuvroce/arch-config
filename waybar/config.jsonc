@@ -21,11 +21,11 @@
         // "group/dload",
         "custom/nightlight",
         "custom/darkmode",
-        "custom/brightness",
+        // "custom/brightness",
         "tray",
         "custom/updates",
         "pulseaudio",
-        "niri/language",
+        // "niri/language",
         "clock",
         "custom/notification",
         "custom/power"

@@ -73,7 +73,7 @@ yay -S --noconfirm --needed "${AUR_PKGS[@]}"
 
 # Bangla Keyboard
 echo "--- Installing OpenBangla Keyboard ---"
-bash -c "$(wget -q https://raw.githubusercontent.com/asifakonjee/openbangla-script/master/fcitx5.sh -O -)"
+# bash -c "$(wget -q https://raw.githubusercontent.com/asifakonjee/openbangla-script/master/fcitx5.sh -O -)"
 
 ## Config
 # Create Directories

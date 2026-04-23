@@ -341,8 +341,8 @@ environment {
     QT_QPA_PLATFORM "wayland;xcb"
     QT_QPA_PLATFORMTHEME "qt6ct"
 
-    QT_IM_MODULE "fcitx"
-    XMODIFIERS "@im=fcitx"
+    // QT_IM_MODULE "fcitx"
+    // XMODIFIERS "@im=fcitx"
    // GTK_IM_MODULE "fcitx"
 }
 

@@ -11,7 +11,7 @@ echo "--- Installing Pacman Packages ---"
 PKGS=(
     # System Core & Drivers
     base-devel xwayland-satellite xdg-desktop-portal-gtk xdg-desktop-portal-wlr xdg-utils 
-    polkit-gnome udiskie expac ntfs-3g os-prober
+    polkit-gnome udiskie expac ntfs-3g os-prober flatpak
     
     # Niri Environment
     niri waybar fuzzel mako libcanberra sound-theme-freedesktop
@@ -124,8 +124,12 @@ org.freedesktop.impl.portal.Screencast=gnome
 org.freedesktop.impl.portal.Screenshot=gnome
 EOF
 
+
 # Fish Config // reload waybar
 cat <<EOF > ~/.config/fish/config.fish
+# Export Flatpak paths
+set -gx XDG_DATA_DIRS \$XDG_DATA_DIRS:\$HOME/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share
+
 fish_add_path ~/.local/bin
 
 function rwb
@@ -134,6 +138,12 @@ function rwb
     disown
     echo "Waybar reloaded!"
 end
+EOF
+
+# Bash Config
+cat <<EOF >> ~/.bashrc
+export XDG_DATA_DIRS=\$XDG_DATA_DIRS:\$HOME/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share
+export PATH=\$PATH:\$HOME/.local/bin
 EOF
 
 # Fish plugins

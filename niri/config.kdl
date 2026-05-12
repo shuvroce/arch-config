@@ -160,7 +160,7 @@ window-rule {
     }
 
     popups {
-        opacity 0.8
+        opacity 0.85
         background-effect {
             blur true
             xray false

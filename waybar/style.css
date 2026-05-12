@@ -28,9 +28,20 @@ window#waybar {
 /* --- MASTER MODULE STYLE ---
     Change the padding and margin here to affect ALL pills 
 */
-#network, #window, #mpris, #tray, #dload, #custom-updates,
-#pulseaudio, #custom-brightness, #clock, #custom-notification,
-#custom-nightlight, #custom-darkmode, #custom-power, #custom-launcher,
+#network,
+#window,
+#mpris,
+#tray,
+#dload,
+#custom-updates,
+#pulseaudio,
+#custom-brightness,
+#clock,
+#custom-notification,
+#custom-nightlight,
+#custom-darkmode,
+#custom-power,
+#custom-launcher,
 .modules-left > widget > box {
     padding: 0px 8px;
     margin: 4px 3px;
@@ -51,20 +62,44 @@ window#waybar {
     color: @text-color-white;
 }
 
-#apps { background: @apps-bg-color; }
+#apps {
+    background: @apps-bg-color;
+}
 
-#custom-term, #custom-files, #custom-browser,
-#custom-vscode, #custom-downloader, #custom-ytdlp {
+#custom-term,
+#custom-files,
+#custom-browser,
+#custom-vscode,
+#custom-downloader,
+#custom-ytdlp {
     background: transparent;
     padding: 0 8px;
 }
 
-#custom-term:hover, #custom-files:hover, #custom-browser:hover,
-#custom-vscode:hover, #custom-downloader:hover, #custom-ytdlp:hover {
+#custom-term:hover,
+#custom-files:hover,
+#custom-browser:hover,
+#custom-vscode:hover,
+#custom-downloader:hover,
+#custom-ytdlp:hover {
     color: @hover-color;
 }
 
-#cpu, #memory, #temperature {
+#taskbar button {
+    padding: 1px;
+    padding-left: 2px;
+    margin: 1px 2px;
+    border-radius: 10px;
+}
+
+#taskbar button.active {
+    background: rgba(255, 255, 255, 0.15);
+    border-bottom: 2px solid #292929;
+}
+
+#cpu,
+#memory,
+#temperature {
     background: transparent;
     padding: 0 6px;
 }
@@ -84,8 +119,12 @@ window#waybar {
 }
 
 /* --- Right Side Highlights --- */
-#custom-nightlight { color: #813709; }
-#custom-darkmode   { color: #000b4f; }
+#custom-nightlight {
+    color: #813709;
+}
+#custom-darkmode {
+    color: #000b4f;
+}
 
 #clock {
     padding: 0px 12px;

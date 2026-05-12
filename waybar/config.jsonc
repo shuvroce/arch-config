@@ -8,14 +8,13 @@
     "modules-left": [
         "custom/launcher",
         "group/apps",
+        // "wlr/taskbar",
         "group/hardware",
         // "group/dload",
         "network",
-        "niri/window"
+        "niri/window",
     ],
-    "modules-center": [
-        "niri/workspaces"
-    ],
+    "modules-center": ["niri/workspaces"],
     "modules-right": [
         "mpris",
         // "group/dload",
@@ -28,13 +27,13 @@
         // "niri/language",
         "clock",
         "custom/notification",
-        "custom/power"
+        "custom/power",
     ],
     // --- LEFT MODULES ---
     "custom/launcher": {
         "format": "",
         "on-click": "nwg-menu",
-        "tooltip": false
+        "tooltip": false,
     },
     "group/apps": {
         "orientation": "horizontal",
@@ -43,59 +42,61 @@
             "custom/files",
             "custom/browser",
             "custom/vscode",
-            "custom/ytdlp"
-        ]
+            "custom/ytdlp",
+        ],
     },
     "custom/term": {
         "format": "",
         "on-click": "alacritty",
-        "tooltip": false
+        "tooltip": false,
     },
     "custom/files": {
         "format": "󰉋",
         "on-click": "thunar",
-        "tooltip": false
+        "tooltip": false,
     },
     "custom/browser": {
         "format": "",
         "on-click": "firefox",
-        "tooltip": false
+        "tooltip": false,
     },
     "custom/vscode": {
         "format": "",
         "on-click": "code",
-        "tooltip": false
+        "tooltip": false,
     },
+
+    "wlr/taskbar": {
+        "format": "{icon}",
+        "icon-size": 14,
+        "tooltip-format": "{title}",
+        "on-click": "activate",
+        "on-click-middle": "close",
+        "ignore-list": ["Waybar"],
+    },
+
     "group/hardware": {
         "orientation": "horizontal",
-        "modules": [
-            "cpu",
-            "memory",
-            "temperature"
-        ]
+        "modules": ["cpu", "memory", "temperature"],
     },
     "cpu": {
         "format": "   {usage}%",
         "interval": 2,
         "on-click": "alacritty -e btop",
-        "tooltip": false
+        "tooltip": false,
     },
     "memory": {
         "format": "    {used:0.1f}G",
         "interval": 5,
         "on-click": "alacritty -e btop",
-        "tooltip": false
+        "tooltip": false,
     },
     "temperature": {
         "hwmon-path": "/sys/class/hwmon/hwmon1/temp1_input",
         "critical-threshold": 80,
         "format": "{icon} {temperatureC}°C",
-        "format-icons": [
-            "",
-            "",
-            ""
-        ],
-        "tooltip": false
+        "format-icons": ["", "", ""],
+        "tooltip": false,
     },
     "network": {
         "format-wifi": "   {bandwidthDownBytes}",
@@ -104,7 +105,7 @@
         "tooltip-format": "{ifname} via {gwaddr}\n󰇚 {bandwidthDownBytes} 󰕒 {bandwidthUpBytes}",
         "interval": 2,
         "on-click": "alacritty -e nethogs",
-        "tooltip": false
+        "tooltip": false,
     },
     "niri/window": {
         "format": "{title}",
@@ -113,14 +114,14 @@
         "icon": true,
         "icon-size": 15,
         "tooltip": false,
-        "on-click-middle": "niri msg action close-window"
+        "on-click-middle": "niri msg action close-window",
     },
     // --- CENTER MODULES ---
     "niri/workspaces": {
         "format": "{index}",
         "active-only": false,
         "all-outputs": true,
-        "on-click": "activate"
+        "on-click": "activate",
     },
     // --- RIGHT MODULES ---
     "mpris": {
@@ -131,64 +132,57 @@
         "player-icons": {
             "default": "󰎆",
             "spotify": "",
-            "firefox": ""
+            "firefox": "",
         },
         "max-length": 25, // Increased to fit the title better
         "interval": 1,
         // Ensures the module doesn't disappear if no player is found
         "on-click": "playerctl play-pause",
         "on-scroll-up": "playerctl next",
-        "on-scroll-down": "playerctl previous"
+        "on-scroll-down": "playerctl previous",
     },
     "group/dload": {
         "orientation": "horizontal",
-        "modules": [
-            "custom/downloader",
-            "custom/ytdlp"
-        ]
+        "modules": ["custom/downloader", "custom/ytdlp"],
     },
     "custom/downloader": {
         "format": "󰉍",
         "on-click": "~/.local/bin/area2.sh",
-        "tooltip": false
+        "tooltip": false,
     },
     "custom/ytdlp": {
         "format": "󰅢",
         "on-click": "~/.local/bin/ytdlp.sh",
-        "tooltip": false
+        "tooltip": false,
     },
     "custom/nightlight": {
         "format": "󰛨",
         "on-click": "pkill wlsunset || wlsunset -t 4500 -T 6500",
-        "tooltip-format": "Night Light Toggle"
+        "tooltip-format": "Night Light Toggle",
     },
     "custom/darkmode": {
         "format": "󰔎",
         "on-click": "nwg-look",
-        "tooltip-format": "Toggle Dark/Light Mode"
+        "tooltip-format": "Toggle Dark/Light Mode",
     },
     "tray": {
         "icon-size": 14,
-        "spacing": 10
+        "spacing": 10,
     },
     "custom/updates": {
         "format": "   {}",
         "exec": "checkupdates | wc -l",
         "interval": 3600,
-        "tooltip": false
+        "tooltip": false,
     },
     "pulseaudio": {
         "format": "{icon}  {volume}%",
         "format-muted": "󰝟",
         "format-icons": {
-            "default": [
-                "󰕿",
-                "󰖀",
-                "󰕾"
-            ]
+            "default": ["󰕿", "󰖀", "󰕾"],
         },
         "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
-        "tooltip": false
+        "tooltip": false,
     },
     "custom/brightness": {
         // "exec": "~/.local/bin/brightness.sh",
@@ -198,28 +192,28 @@
         "format": "󰃠 ",
         // "on-scroll-up": "ddcutil setvcp 10 + 5",
         // "on-scroll-down": "ddcutil setvcp 10 - 5",
-        "exec-on-event": true
+        "exec-on-event": true,
     },
     "niri/language": {
         "format": "{}",
         "format-en": "US",
         "format-bn": "BN",
-        "on-click": "bash -c \"[[ $(ibus engine) == 'ibus-avro' ]] && ibus engine xkb:us::eng || ibus engine ibus-avro\""
+        "on-click": "bash -c \"[[ $(ibus engine) == 'ibus-avro' ]] && ibus engine xkb:us::eng || ibus engine ibus-avro\"",
     },
     "clock": {
         "format": "{:%I:%M %p  |  %d %b, %Y}",
-        "tooltip": false
+        "tooltip": false,
         // "tooltip-format": "<tt>{calendar}</tt>"
     },
     "custom/notification": {
         "format": "󰂚",
         "on-click": "makoctl dismiss",
         "on-click-right": "makoctl restore",
-        "tooltip": false
+        "tooltip": false,
     },
     "custom/power": {
         "format": "⏻",
         "on-click": "wlogout",
-        "tooltip": false
-    }
+        "tooltip": false,
+    },
 }

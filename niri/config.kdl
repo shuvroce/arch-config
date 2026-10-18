@@ -52,7 +52,7 @@ prefer-no-csd
 layout {
     background-color "transparent"
 
-    gaps 5
+    gaps 4
     center-focused-column "never"
     always-center-single-column
     preset-column-widths {
@@ -70,7 +70,7 @@ layout {
 
     default-column-width { proportion 0.5; }
 
-    // `draw-border-with-background`.
+    // `draw-border-with-background`
     focus-ring {
         off
         width 2
@@ -81,8 +81,8 @@ layout {
     border {
         // off
         width 2
-        active-color "#85898e"
-        inactive-color "#636363"
+        active-color "#616972"
+        inactive-color "#404040"
         urgent-color "#9b0000"
     }
 
@@ -146,7 +146,8 @@ screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 //--------------------------------------------------------------
 
 window-rule {
-    geometry-corner-radius 8
+    // geometry-corner-radius 8
+    geometry-corner-radius 0
     clip-to-geometry true
 }
 
@@ -157,6 +158,7 @@ window-rule {
         xray true
         blur true
         noise 0
+        saturation 2
     }
 
     popups {
@@ -164,6 +166,7 @@ window-rule {
         background-effect {
             blur true
             xray false
+            saturation 2
         }
     }
 }
@@ -182,12 +185,21 @@ window-rule {
     match app-id="qt5ct"
     match app-id="qt6ct"
     match app-id="kvantummanager"
-    match app-id="ristretto"
     match app-id="sddm-conf"
     match app-id="gnome-calculator"
     match app-id="zenity"
 
     open-floating true
+}
+
+window-rule {
+    match app-id="ristretto"
+
+    open-floating true
+    // default-column-width { fixed 800; }
+    default-column-width { proportion 0.5; }
+    // default-window-height { fixed 800; }
+    default-window-height { proportion 0.75; }
 }
 
 /-window-rule {
@@ -249,7 +261,8 @@ layer-rule {
         blur true
         xray true
     }
-    geometry-corner-radius 10
+    // geometry-corner-radius 10
+    geometry-corner-radius 0
 }
 
 window-rule {

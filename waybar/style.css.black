@@ -34,7 +34,8 @@ window#waybar {
     padding: 1px 8px;
     margin: 4px 3px;
     background: @bg-color;
-    border-radius: 12px;
+    /* border-radius: 12px; */
+    border-radius: 0px;
 }
 
 /* --- Launcher & App Group Adjustments --- */
@@ -42,7 +43,8 @@ window#waybar {
     background: @arch-blue;
     color: @arch-text;
     padding-right: 14px; /* Unique padding for the icon */
-    border-radius: 50px;
+    /* border-radius: 50px; */
+    border-radius: 0px;
 }
 
 #window { background: transparent; }
@@ -66,16 +68,17 @@ window#waybar {
 
 /* --- Workspaces --- */
 #workspaces button {
-    padding: 0;
+    padding: 0 2px;
     margin: 4px 2px;
-    border-radius: 5px;
+    /* border-radius: 5px; */
+    border-radius: 0px;
     background: @bg-color;
 }
 
 #workspaces button.active {
     color: @active-color;
     background: rgba(137, 180, 250, 0.25);
-    padding: 0 4px;
+    /* padding: 0 4px; */
 }
 
 /* --- Right Side Highlights --- */

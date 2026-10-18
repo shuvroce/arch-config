@@ -1,6 +1,6 @@
 /* --- Color Definitions (GTK-safe) --- */
-@define-color bg-color          rgba(255, 255, 255, 0.9);
-@define-color apps-bg-color     rgba(255, 255, 255, 0.9);
+@define-color bg-color          rgba(255, 255, 255, 0.75);
+@define-color apps-bg-color     rgba(255, 255, 255, 0.75);
 @define-color text-color        #0e0e0e;
 @define-color text-color-white  #fafafa;
 @define-color active-color      #00112c;
@@ -44,9 +44,10 @@ window#waybar {
 #custom-launcher,
 .modules-left > widget > box {
     padding: 0px 8px;
-    margin: 4px 3px;
+    margin: 3px 2px 2px;
     background: @bg-color;
-    border-radius: 12px;
+    /* border-radius: 12px; */
+    border-radius: 0px;
 }
 
 /* --- Launcher & App Group Adjustments --- */
@@ -54,7 +55,8 @@ window#waybar {
     background: @arch-blue;
     color: @arch-text;
     padding-right: 14px; /* Unique padding for the icon */
-    border-radius: 50px;
+    /* border-radius: 50px; */
+    border-radius: 0px;
 }
 
 #window {
@@ -89,7 +91,8 @@ window#waybar {
     padding: 1px;
     padding-left: 2px;
     margin: 1px 2px;
-    border-radius: 10px;
+    /* border-radius: 10px; */
+    border-radius: 0px;
 }
 
 #taskbar button.active {
@@ -106,16 +109,17 @@ window#waybar {
 
 /* --- Workspaces --- */
 #workspaces button {
-    padding: 0;
+    padding: 0 2px;
     margin: 4px 2px;
-    border-radius: 5px;
+    /* border-radius: 5px; */
+    border-radius: 0px;
     background: @bg-color;
 }
 
 #workspaces button.active {
     color: @active-color;
     background: rgba(137, 180, 250, 0.9);
-    padding: 0 4px;
+    /* padding: 0 4px; */
 }
 
 /* --- Right Side Highlights --- */

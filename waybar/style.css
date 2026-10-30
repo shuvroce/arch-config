@@ -44,7 +44,7 @@ window#waybar {
 #custom-launcher,
 .modules-left > widget > box {
     padding: 0px 8px;
-    margin: 3px 2px 2px;
+    margin: 3px 2px 1px;
     background: @bg-color;
     /* border-radius: 12px; */
     border-radius: 0px;
@@ -110,7 +110,7 @@ window#waybar {
 /* --- Workspaces --- */
 #workspaces button {
     padding: 0 2px;
-    margin: 4px 2px;
+    margin: 3px 1px 2px;
     /* border-radius: 5px; */
     border-radius: 0px;
     background: @bg-color;

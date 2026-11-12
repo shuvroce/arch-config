@@ -176,9 +176,6 @@ window-rule {
     match title="^File Operation Progress$"
     match title="^Confirm to replace files$"
     match title="^Create New Folder$"
-    match title="^Open File$"
-    match title="^Save File$"
-    match title="^Select a File$"
     match app-id="nwg-look"
     match app-id="waypaper"
     match app-id="timeshift"
@@ -190,6 +187,21 @@ window-rule {
     match app-id="zenity"
 
     open-floating true
+}
+
+
+window-rule {
+    match title="^Open File$"
+    match title="^Open Files$"
+    match title="^Open Folder$"
+    match title="^Save File$"
+    match title="^Select a File$"
+    match title="^Select a Folder$"
+    match title="^Select Folder$"
+
+    open-floating true
+    default-column-width { proportion 0.5; }
+    default-window-height { proportion 0.75; }
 }
 
 window-rule {
@@ -211,7 +223,8 @@ window-rule {
     match app-id="firefox"
     match app-id="google-chrome"
     match app-id="code"
-    default-column-width { proportion 0.65; }
+    match app-id="com.microsoft.VSCode"
+    default-column-width { proportion 0.7; }
 }
 
 window-rule {

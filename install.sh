@@ -29,7 +29,7 @@ PKGS=(
     
     # Media & Graphics
     vlc vlc-plugins-all ristretto evince gnome-disk-utility
-    yt-dlp aria2 uget ffmpeg nwg-look
+    yt-dlp aria2 ffmpeg nwg-look
     ifuse usbmuxd libplist libimobiledevice
     
     # Social

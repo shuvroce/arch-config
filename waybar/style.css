@@ -1,15 +1,3 @@
-/* --- Color Definitions (GTK-safe) --- */
-@define-color bg-color          rgba(255, 255, 255, 0.75);
-@define-color apps-bg-color     rgba(255, 255, 255, 0.75);
-@define-color text-color        #0e0e0e;
-@define-color text-color-white  #fafafa;
-@define-color active-color      #00112c;
-@define-color hover-color       #0e3d89;
-@define-color arch-blue         rgba(114, 208, 255, 0.9);
-@define-color arch-text         #002132;
-@define-color red-accent        #2c000c;
-@define-color red-bg            rgba(255, 173, 196, 0.9);
-
 /* --- Global Reset --- */
 * {
     border: none;
@@ -17,7 +5,7 @@
     font-size: 13px;
     min-height: 0;
     font-weight: 500;
-    color: @text-color;
+    color: #0e0e0e;
     -webkit-font-smoothing: antialiased;
 }
 
@@ -25,79 +13,32 @@ window#waybar {
     background: rgba(20, 20, 20, 0.35);
 }
 
-/* --- MASTER MODULE STYLE ---
-    Change the padding and margin here to affect ALL pills 
-*/
+/* --- MASTER MODULE STYLE --- */
 #network,
-#window,
 #mpris,
 #tray,
-#dload,
 #custom-updates,
 #pulseaudio,
-#custom-brightness,
-#clock,
 #custom-notification,
-#custom-nightlight,
 #custom-darkmode,
-#custom-power,
-#custom-launcher,
-.modules-left > widget > box {
+#hardware {
     padding: 0px 8px;
     margin: 3px 2px 1px;
-    background: @bg-color;
-    /* border-radius: 12px; */
-    border-radius: 0px;
+    background: rgba(255, 255, 255, 0.75);
+    /* border-radius: 0px; */
 }
 
-/* --- Launcher & App Group Adjustments --- */
 #custom-launcher {
-    background: @arch-blue;
-    color: @arch-text;
-    padding-right: 14px; /* Unique padding for the icon */
-    /* border-radius: 50px; */
-    border-radius: 0px;
+    background: rgba(114, 208, 255, 0.9);
+    color: #002132;
+    margin: 3px 2px 1px;
+    padding: 0 14px 0 10px;
 }
 
-#window {
-    background: rgba(253, 238, 180, 0.6);
-    color: @text-color-white;
-}
-
-#apps {
-    background: @apps-bg-color;
-}
-
-#custom-term,
-#custom-files,
-#custom-browser,
-#custom-vscode,
-#custom-downloader,
-#custom-ytdlp {
-    background: transparent;
-    padding: 0 8px;
-}
-
-#custom-term:hover,
-#custom-files:hover,
-#custom-browser:hover,
-#custom-vscode:hover,
-#custom-downloader:hover,
-#custom-ytdlp:hover {
-    color: @hover-color;
-}
-
-#taskbar button {
-    padding: 1px;
-    padding-left: 2px;
-    margin: 1px 2px;
-    /* border-radius: 10px; */
-    border-radius: 0px;
-}
-
-#taskbar button.active {
-    background: rgba(255, 255, 255, 0.15);
-    border-bottom: 2px solid #292929;
+#clock {
+    margin: 3px 2px 1px;
+    padding: 0px 12px;
+    background: rgba(252, 243, 204, 0.63);
 }
 
 #cpu,
@@ -107,35 +48,28 @@ window#waybar {
     padding: 0 6px;
 }
 
-/* --- Workspaces --- */
 #workspaces button {
-    padding: 0 2px;
-    margin: 3px 1px 2px;
-    /* border-radius: 5px; */
+    padding: 0 0 0 6px;
+    margin: 3px 1px 1px;
     border-radius: 0px;
-    background: @bg-color;
+    background: rgba(252, 243, 204, 0.63);
 }
 
 #workspaces button.active {
-    color: @active-color;
+    color: #00112c;
     background: rgba(137, 180, 250, 0.9);
-    /* padding: 0 4px; */
 }
 
-/* --- Right Side Highlights --- */
-#custom-nightlight {
-    color: #813709;
-}
-#custom-darkmode {
-    color: #000b4f;
-}
-
-#clock {
+#window {
+    margin: 3px 2px 1px;
     padding: 0px 12px;
+    background: rgba(255, 255, 255, 0.75);
+    /* border-radius: 2px; */
 }
 
 #custom-power {
-    color: @red-accent;
-    background: @red-bg;
-    padding: 1px 12px 1px 10px;
+    color: #2c000c;
+    background: rgba(255, 173, 196, 0.9);
+    margin: 3px 2px 1px;
+    padding: 0px 12px 0px 10px;
 }

@@ -99,6 +99,38 @@
 	<video-files/>
 </action>
 <action>
+	<icon>emblem-synchronized</icon>
+	<name>Make Available Offline</name>
+	<submenu></submenu>
+	<unique-id>gdrive-offline-1000</unique-id>
+	<command>~/.local/bin/gdrive-offline.sh pin %F</command>
+	<description>Download and keep Google Drive files cached offline</description>
+	<range>*</range>
+	<patterns>*</patterns>
+	<directories/>
+	<audio-files/>
+	<image-files/>
+	<other-files/>
+	<text-files/>
+	<video-files/>
+</action>
+<action>
+	<icon>edit-delete</icon>
+	<name>Remove Offline Copy</name>
+	<submenu></submenu>
+	<unique-id>gdrive-offline-2000</unique-id>
+	<command>~/.local/bin/gdrive-offline.sh unpin %F</command>
+	<description>Evict Google Drive files from local offline cache</description>
+	<range>*</range>
+	<patterns>*</patterns>
+	<directories/>
+	<audio-files/>
+	<image-files/>
+	<other-files/>
+	<text-files/>
+	<video-files/>
+</action>
+<action>
 	<icon>dialog-password</icon>
 	<name>Open as Root</name>
 	<submenu></submenu>

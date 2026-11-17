@@ -25,7 +25,10 @@ PKGS=(
     iwd openssh wireguard-tools wireplumber
     
     # File Management (The Thunar Stack)
-    thunar gvfs gvfs-mtp tumbler ffmpegthumbnailer 
+    thunar gvfs gvfs-mtp tumbler ffmpegthumbnailer
+
+    # Google drive
+    rclone fuse3 libnotify jq
     
     # Media & Graphics
     vlc vlc-plugins-all ristretto evince gnome-disk-utility
@@ -78,10 +81,12 @@ echo "--- Installing OpenBangla Keyboard ---"
 ## Config
 # Create Directories
 echo "--- Setting up Configs ---"
-mkdir -p ~/.config/{xdg-desktop-portal,fish,niri,waybar,alacritty,fuzzel,Thunar,mako,qt5ct,qt6ct,wlogout}
+mkdir -p ~/GoogleDrive
+mkdir -p ~/.config/{xdg-desktop-portal,fish,niri,waybar,alacritty,fuzzel,Thunar,mako,qt5ct,qt6ct,wlogout,rclone-offline}
 mkdir -p ~/.config/fish/functions
 mkdir -p ~/.config/qt5ct/colors
 mkdir -p ~/.config/qt6ct/colors
+mkdir -p ~/.config/systemd/user
 mkdir -p ~/.local/bin
 mkdir -p ~/Pictures/Wallpapers
 

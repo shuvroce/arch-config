@@ -185,6 +185,8 @@ window-rule {
     match app-id="sddm-conf"
     match app-id="gnome-calculator"
     match app-id="zenity"
+    match app-id="xdg-desktop-portal-gtk"
+    match app-id="megasync"
 
     open-floating true
 }
@@ -214,6 +216,16 @@ window-rule {
     default-window-height { proportion 0.75; }
 }
 
+
+window-rule {
+    match title="^MEGAsync$"
+
+    open-floating true
+    default-column-width { fixed 300; }
+    default-window-height { fixed 400; }
+}
+
+
 /-window-rule {
     match app-id="vlc"
     open-floating true
@@ -224,6 +236,8 @@ window-rule {
     match app-id="google-chrome"
     match app-id="code"
     match app-id="com.microsoft.VSCode"
+    match app-id="artcraft-launcher"
+
     default-column-width { proportion 0.7; }
 }
 
@@ -314,6 +328,7 @@ binds {
     XF86AudioNext        allow-when-locked=true { spawn-sh "playerctl next"; }
 
     Mod+O repeat=false { toggle-overview; }
+    Mod+A repeat=false { toggle-overview; }
     Mod+Q repeat=false { close-window; }
 
     Mod+Left      { focus-column-left; }

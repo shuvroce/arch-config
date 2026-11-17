@@ -6,12 +6,29 @@
     min-height: 0;
     font-weight: 500;
     color: #0e0e0e;
+    padding: 0;
+    margin: 0;
     -webkit-font-smoothing: antialiased;
 }
 
 window#waybar {
     background: rgba(20, 20, 20, 0.35);
 }
+
+tooltip {
+    background-color: rgba(255, 255, 255, 0.8);
+    /* border: 1px solid #cba6f7; */
+    border-radius: 0px;
+}
+
+tooltip label {
+    color: #0e0e0e;
+    padding: 2px 4px;
+    font-family: "Inter", "JetBrainsMono Nerd Font";
+    font-size: 12px;
+    font-weight: normal;
+}
+
 
 /* --- MASTER MODULE STYLE --- */
 #network,
@@ -21,6 +38,7 @@ window#waybar {
 #pulseaudio,
 #custom-notification,
 #custom-darkmode,
+#custom-gdrive,
 #hardware {
     padding: 0px 8px;
     margin: 3px 2px 1px;
@@ -39,6 +57,8 @@ window#waybar {
     margin: 3px 2px 1px;
     padding: 0px 12px;
     background: rgba(252, 243, 204, 0.63);
+    /* font-size: 14px; */
+    /* font-weight: bold; */
 }
 
 #cpu,
@@ -60,11 +80,38 @@ window#waybar {
     background: rgba(137, 180, 250, 0.9);
 }
 
+.cffi-niri-windows .tile {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+.cffi-niri-windows .tile:active {
+    background-color: rgb(255, 255, 255);
+}
+.cffi-niri-windows .column {
+    border: 0px solid rgba(255, 255, 255, 0.6);
+}
+
 #window {
     margin: 3px 2px 1px;
     padding: 0px 12px;
     background: rgba(255, 255, 255, 0.75);
     /* border-radius: 2px; */
+}
+
+#custom-gdrive.synced {
+    color: #a6e3a1; /* Green: Mounted & Synced */
+}
+
+#custom-gdrive.syncing {
+    color: #89b4fa; /* Blue: Actively uploading/downloading */
+}
+
+#custom-gdrive.offline {
+    color: #f9e2af; /* Yellow: No internet, using local offline cache */
+}
+
+#custom-gdrive.unmounted,
+#custom-gdrive.error {
+    color: #f38ba8; /* Red: Unmounted or error */
 }
 
 #custom-power {

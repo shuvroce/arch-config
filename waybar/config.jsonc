@@ -9,13 +9,15 @@
         "custom/launcher",
         "clock",
         "group/hardware",
-        "niri/workspaces"
+        "niri/workspaces",
+        "cffi/niri-windows"
     ],
     "modules-center": ["niri/window"],
     "modules-right": [
         "network",
         "mpris",
         "custom/darkmode",
+        "custom/gdrive",
         "tray",
         "custom/updates",
         "pulseaudio",
@@ -56,6 +58,15 @@
         "all-outputs": true,
         "on-click": "activate"
     },
+    "cffi/niri-windows": {
+        "module_path": "/home/mark/.config/waybar/waybar-niri-windows.so",
+        "options": {
+            "mode": "graphical",
+            "show-icon": true,
+            "column-borders": 5,
+            "floating-borders": 5
+        }
+    },
 
     // --- CENTER MODULES ---
     "niri/window": {
@@ -93,6 +104,13 @@
         "format": "󰔎",
         "on-click": "nwg-look",
         "tooltip": false
+    },
+    "custom/gdrive": {
+        "exec": "~/.local/bin/waybar-gdrive.sh",
+        "return-type": "json",
+        "interval": 5,
+        "on-click": "thunar ~/GoogleDrive",
+        "on-click-right": "~/.local/bin/gdrive-offline.sh sync && notify-send 'Google Drive' 'Triggered manual offline sync'"
     },
     "tray": {
         "icon-size": 14,

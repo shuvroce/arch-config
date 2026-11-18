@@ -94,7 +94,7 @@ fi
 # Install AUR Packages
 echo "--- Installing AUR Packages ---"
 AUR_PKGS=(
-    zenity-gtk3 wlogout visual-studio-code-bin google-chrome numix-circle-icon-theme-git ttf-freebanglafont
+    paru zenity-gtk3 wlogout visual-studio-code-bin google-chrome numix-circle-icon-theme-git ttf-freebanglafont
 )
 if ! yay -S --noconfirm --needed "${AUR_PKGS[@]}"; then
     echo "Warning: some AUR packages failed to install." >&2

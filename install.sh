@@ -1,5 +1,15 @@
 #!/bin/bash
 
+SCRIPT_DIR="$(cd -- "$(dirname -- "$(readlink -f -- "$0")")" && pwd)"
+cd -- "$SCRIPT_DIR" || exit 1
+
+if [ "$(id -u)" -eq 0 ]; then
+    echo "Run this script as your normal user, not as root." >&2
+    exit 1
+fi
+
+USER_NAME="$(id -un)"
+
 sudo -v
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
@@ -10,38 +20,38 @@ sudo pacman -Syu --noconfirm
 echo "--- Installing Pacman Packages ---"
 PKGS=(
     # System Core & Drivers
-    base-devel xwayland-satellite xdg-desktop-portal-gtk xdg-desktop-portal-wlr xdg-utils 
-    polkit-gnome udiskie expac ntfs-3g os-prober flatpak
-    
+    base-devel xwayland-satellite xdg-desktop-portal-gtk xdg-desktop-portal-gnome
+    xdg-utils polkit-gnome udiskie expac ntfs-3g os-prober flatpak gnome-keyring
+
     # Niri Environment
     niri waybar fuzzel mako libcanberra sound-theme-freedesktop
-    alacritty wl-clipboard cliphist playerctl
-    
+    alacritty wl-clipboard cliphist playerctl swaybg swaylock btop fcitx5
+
     # Tools & Shell
-    curl wget git fish btop fastfetch gedit nano micro
+    curl wget git fish fastfetch gedit nano micro
     pacman-contrib timeshift reflector nethogs
-    
+
     # Networking & Audio
-    iwd openssh wireguard-tools wireplumber
-    
+    iwd openssh wireguard-tools wireplumber pipewire-pulse pipewire-alsa
+
     # File Management (The Thunar Stack)
     thunar gvfs gvfs-mtp tumbler ffmpegthumbnailer
 
-    # Google drive
-    rclone fuse3 libnotify jq
-    
     # Media & Graphics
     vlc vlc-plugins-all ristretto evince gnome-disk-utility
-    yt-dlp aria2 ffmpeg nwg-look
-    ifuse usbmuxd libplist libimobiledevice
-    
+    yt-dlp ffmpeg nwg-look
+    ifuse usbmuxd libplist libimobiledevice rclone fuse3 libnotify jq
+
+    # Browsers
+    firefox
+
     # Social
     telegram-desktop
 
     # Fonts & Themes
     noto-fonts inter-font ttf-jetbrains-mono-nerd otf-codenewroman-nerd
     adw-gtk-theme libappindicator-gtk3 qt5ct qt6ct
-    
+
     # Archives
     zip tar bzip2 gzip unzip unrar 7zip xarchiver
 
@@ -49,22 +59,36 @@ PKGS=(
     python-pip nodejs opencode
 
     # Greeter
-    lightdm lightdm-gtk-greeter lightdm-slick-greeter
+    lightdm lightdm-slick-greeter
 
     # Extra
     # zathura obs-studio qbittorrent ddcutil brightnessctl
 )
 
+failed=()
 for pkg in "${PKGS[@]}"; do
-    sudo pacman -S --noconfirm --needed "$pkg" || echo "Package $pkg not found, skipping..."
+    if ! sudo pacman -S --noconfirm --needed "$pkg"; then
+        failed+=("$pkg")
+    fi
 done
+
+if [ ${#failed[@]} -gt 0 ]; then
+    echo "Warning: these packages failed to install: ${failed[*]}" >&2
+fi
 
 # Install Yay
 echo "--- Installing Yay ---"
 if ! command -v yay &> /dev/null; then
-    sudo pacman -S --needed --noconfirm base-devel
-    git clone https://aur.archlinux.org/yay.git
-    cd yay && makepkg -si --noconfirm && cd .. && rm -rf yay
+    tmpdir="$(mktemp -d)"
+    if git clone --depth=1 https://aur.archlinux.org/yay.git "$tmpdir/yay"; then
+        ( cd "$tmpdir/yay" && makepkg -si --noconfirm )
+    fi
+    rm -rf "$tmpdir"
+
+    if ! command -v yay &> /dev/null; then
+        echo "yay installation failed." >&2
+        exit 1
+    fi
 fi
 
 # Install AUR Packages
@@ -72,154 +96,21 @@ echo "--- Installing AUR Packages ---"
 AUR_PKGS=(
     zenity-gtk3 wlogout visual-studio-code-bin google-chrome numix-circle-icon-theme-git ttf-freebanglafont
 )
-yay -S --noconfirm --needed "${AUR_PKGS[@]}"
-
-# Bangla Keyboard
-echo "--- Installing OpenBangla Keyboard ---"
-# bash -c "$(wget -q https://raw.githubusercontent.com/asifakonjee/openbangla-script/master/fcitx5.sh -O -)"
-
-## Config
-# Create Directories
-echo "--- Setting up Configs ---"
-mkdir -p ~/GoogleDrive
-mkdir -p ~/.config/{xdg-desktop-portal,fish,niri,waybar,alacritty,fuzzel,Thunar,mako,qt5ct,qt6ct,wlogout,rclone-offline}
-mkdir -p ~/.config/fish/functions
-mkdir -p ~/.config/qt5ct/colors
-mkdir -p ~/.config/qt6ct/colors
-mkdir -p ~/.config/systemd/user
-mkdir -p ~/.local/bin
-mkdir -p ~/Pictures/Wallpapers
-
-# Copying files
-[ -d "./niri" ]           && cp -rv ./niri/config.kdl ~/.config/niri/
-[ -d "./waybar" ]         && cp -rv ./waybar/* ~/.config/waybar/
-[ -d "./alacritty" ]      && cp -rv ./alacritty/* ~/.config/alacritty/
-[ -d "./fish/functions" ] && cp -rv ./fish/functions/* ~/.config/fish/functions/
-[ -d "./fuzzel" ]         && cp -rv ./fuzzel/fuzzel.ini ~/.config/fuzzel/
-[ -d "./Thunar" ]         && cp -rv ./Thunar/uca.xml ~/.config/Thunar/
-[ -d "./mako" ]           && cp -rv ./mako/config ~/.config/mako/
-[ -d "./qt5ct/colors" ]   && cp -rv ./qt5ct/colors/* ~/.config/qt5ct/colors/
-[ -d "./qt6ct/colors" ]   && cp -rv ./qt6ct/colors/* ~/.config/qt6ct/colors/
-[ -d "./wlogout" ]        && cp -rv ./wlogout/* ~/.config/wlogout/
-[ -d "./scripts" ]        && cp -rv ./scripts/* ~/.local/bin/
-
-# Make all local scripts executable
-echo "--- Making all local scripts executable ---"
-if [ "$(ls -A ~/.local/bin)" ]; then
-    chmod +x ~/.local/bin/*
+if ! yay -S --noconfirm --needed "${AUR_PKGS[@]}"; then
+    echo "Warning: some AUR packages failed to install." >&2
 fi
 
-# Copy Wallpapers
-echo "--- Setting up Wallpapers ---"
-if ls ./wallpaper/* >/dev/null 2>&1; then
-    cp -v ./wallpaper/* ~/Pictures/Wallpapers/
-else
-    echo "Warning: No wallpaper found."
+echo "--- Applying user configuration ---"
+if ! bash ./config.sh; then
+    echo "Configuration step failed." >&2
+    exit 1
 fi
 
-# Extract themes
-echo "--- Extracting themes ---"
-[ -d "./themes" ] && for f in ./themes/*.zip; do sudo unzip -o -q "$f" -d /usr/share/themes; done
-
-# desktop-portal
-cat <<EOF > ~/.config/xdg-desktop-portal/portals.conf
-[preferred]
-default=wlr;gtk
-org.freedesktop.impl.portal.Screencast=gnome
-org.freedesktop.impl.portal.Screenshot=gnome
-EOF
-
-
-# Fish Config // reload waybar
-cat <<EOF > ~/.config/fish/config.fish
-# Export Flatpak paths
-set -gx XDG_DATA_DIRS \$XDG_DATA_DIRS:\$HOME/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share
-
-fish_add_path ~/.local/bin
-
-function rwb
-    killall waybar
-    waybar > /dev/null 2>&1 &
-    disown
-    echo "Waybar reloaded!"
-end
-EOF
-
-# Bash Config
-cat <<EOF >> ~/.bashrc
-export XDG_DATA_DIRS=\$XDG_DATA_DIRS:\$HOME/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share
-export PATH=\$PATH:\$HOME/.local/bin
-EOF
-
-# Fish plugins
-echo "--- Installing Fish Plugins ---"
-fish -c "curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher"
-fish -c "fisher install IlanCosman/tide@v6"
-
-# Basic setting/service
-sudo usermod -aG wheel,video,storage $USER
-gsettings set org.gnome.desktop.wm.preferences button-layout ":"
-sudo mv /usr/lib/thunarx-3/thunar-wallpaper-plugin.so /usr/lib/thunarx-3/thunar-wallpaper-plugin.so.disabled
-
-# Set GTK theme for Wayland apps
-gsettings set org.gnome.desktop.interface gtk-theme "adw-gtk3-dark"
-gsettings set org.gnome.desktop.interface icon-theme "Numix-Circle"
-gsettings set org.gnome.desktop.interface font-name "Inter 11"
-gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"
-
-# Set Qt themeing to follow GTK
-sudo tee -a /etc/environment <<EOF
-QT_QPA_PLATFORMTHEME=qt5ct
-GDK_BACKEND=wayland,x11
-EOF
-
-# lightdm
-sudo systemctl enable lightdm.service
-
-sudo mkdir -p /usr/share/wayland-sessions
-cat <<EOF | sudo tee /usr/share/wayland-sessions/niri.desktop
-[Desktop Entry]
-Name=Niri
-Comment=A scrollable tiling compositor for Wayland
-Exec=niri
-Type=Application
-DesktopNames=Niri
-EOF
-
-sudo mkdir -p /usr/share/pixmaps/lightdm
-if [ -d "./lightdm" ]; then
-    sudo cp -rv ./lightdm/* /usr/share/pixmaps/lightdm/
-    sudo chmod 755 /usr/share/pixmaps/lightdm
-    sudo chmod 644 /usr/share/pixmaps/lightdm/*
+if [ -t 0 ]; then
+    read -rp "Set up Google Drive (rclone + offline cache) now? [y/N] " reply
+    case "$reply" in
+        [Yy]*) bash ./gdrive.sh || echo "Google Drive setup failed." >&2 ;;
+    esac
 fi
-
-# Overwrite (don't append) to ensure clean config
-cat <<EOF | sudo tee /etc/lightdm/lightdm.conf
-[LightDM]
-run-directory=/run/lightdm
-
-[Seat:*]
-greeter-session=lightdm-slick-greeter
-session-wrapper=/etc/lightdm/Xsession
-user-session=niri
-EOF
-
-# GTK Greeter
-cat <<EOF | sudo tee /etc/lightdm/lightdm-gtk-greeter.conf
-[greeter]
-background=/usr/share/pixmaps/lightdm/bg.jpg
-theme-name=adw-gtk3-dark
-icon-theme-name=Numix-Circle
-font-name=Inter 10
-EOF
-
-# Slick Greeter
-cat <<EOF | sudo tee /etc/lightdm/slick-greeter.conf
-[Greeter]
-background=/usr/share/pixmaps/lightdm/bg.jpg
-theme-name=adw-gtk3-dark
-icon-theme-name=Numix-Circle
-font-name=Inter 10
-EOF
 
 echo "--- Setup Complete. Please reboot. ---"

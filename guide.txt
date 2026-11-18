@@ -1,12 +1,15 @@
 #### Config / customize
 
 gnome-portal:
+    sudo pacman -S xdg-desktop-portal-gnome xdg-desktop-portal-gtk gnome-keyring
     mkdir -p ~/.config/xdg-desktop-portal
     nano ~/.config/xdg-desktop-portal/portals.conf
         [preferred]
-        default=wlr;gtk
-        org.freedesktop.impl.portal.Screencast=gnome
+        default=gtk
+        org.freedesktop.impl.portal.ScreenCast=gnome
         org.freedesktop.impl.portal.Screenshot=gnome
+        org.freedesktop.impl.portal.Secret=gnome-keyring
+        org.freedesktop.impl.portal.GlobalShortcuts=gnome
 
 grub:
     copy <theme-folder> with root priviledge to /boot/grub/themes/
@@ -16,21 +19,23 @@ grub:
 
 lightdm:
     sudo mkdir -p /usr/share/pixmaps/lightdm
-    
-    copy bg.jpg and user.png with root priviledge to /usr/share/pixmaps/lightdm
-    
+
+    copy bg.jpg with root priviledge to /usr/share/pixmaps/lightdm
+
     sudo micro /etc/lightdm/lightdm.conf
         [Seat:*]
-        greeter-session=lightdm-gtk-greeter
+        greeter-session=lightdm-slick-greeter
+        session-wrapper=/etc/lightdm/Xsession
+        user-session=niri
 
-    sudo micro /etc/lightdm/lightdm-gtk-greeter.conf
-        [greeter]
+    sudo micro /etc/lightdm/slick-greeter.conf
+        [Greeter]
         background=/usr/share/pixmaps/lightdm/bg.jpg
         theme-name=adw-gtk3-dark
         icon-theme-name=Numix-Circle
         font-name=Inter 10
-        default-user-image=/usr/share/pixmaps/lightdm/user.png
-        round-user-image=true
+
+    sudo systemctl enable lightdm.service
 
 
 ## auto mount external drive
@@ -46,4 +51,3 @@ sudo chmod -R 755 /mnt/external_drive           # for ext4
 
 ## remove thunar right click 'set as wallpaper'
 sudo mv /usr/lib/thunarx-3/thunar-wallpaper-plugin.so /usr/lib/thunarx-3/thunar-wallpaper-plugin.so.disabled
-

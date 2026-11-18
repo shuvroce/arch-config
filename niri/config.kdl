@@ -117,18 +117,12 @@ overview {
 //--------------------------------------------------------------
 
 spawn-at-startup "waybar"
-// spawn-at-startup "waybar" "-c" "/home/mark/.config/waybar/dock.jsonc" "-s" "/home/mark/.config/waybar/dock.css"
-spawn-at-startup "swaync"
-// spawn-at-startup "swaybg" "-o" "HDMI-A-1" "-i" "/home/mark/Pictures/Wallpapers/wallpaper.jpg" "-m" "fill"
-// spawn-at-startup "waypaper" "--backend" "swaybg" "--restore"
-spawn-at-startup "~/.config/niri/wallpaper.sh"
+spawn-at-startup "mako"
+spawn-at-startup "sh" "-c" "$HOME/.config/niri/wallpaper.sh"
 spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 spawn-at-startup "dbus-update-activation-environment" "--systemd" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP=niri"
 spawn-at-startup "udiskie" "--tray"
-// spawn-at-startup "ibus-daemon" "-drx"
-// spawn-at-startup "ibus-daemon" "-rxrd" "--wayland-im"
 spawn-at-startup "fcitx5" "-d"
-// spawn-at-startup "~/.config/conky/conky-startup.sh"
 
 
 //--------------------------------------------------------------
@@ -136,8 +130,6 @@ spawn-at-startup "fcitx5" "-d"
 //--------------------------------------------------------------
 
 screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
-
-// screenshot-path null
 
 
 
@@ -448,9 +440,5 @@ binds {
 environment {
     QT_QPA_PLATFORM "wayland;xcb"
     QT_QPA_PLATFORMTHEME "qt6ct"
-
-    // QT_IM_MODULE "fcitx"
-    // XMODIFIERS "@im=fcitx"
-    // GTK_IM_MODULE "fcitx"
 }
 

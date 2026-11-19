@@ -1,10 +1,16 @@
 #!/bin/bash
 
+# Colors for terminal output
+GREEN='\033[0;32m'
+BLUE='\033[0;34m'
+YELLOW='\033[1;33m'
+NC='\033[0m'
+
 SCRIPT_DIR="$(cd -- "$(dirname -- "$(readlink -f -- "$0")")" && pwd)"
 cd -- "$SCRIPT_DIR" || exit 1
 
 if [ "$(id -u)" -eq 0 ]; then
-    echo "Run this script as your normal user, not as root." >&2
+    echo "${BLUE}Run this script as your normal user, not as root.${NC}" >&2
     exit 1
 fi
 
@@ -15,7 +21,7 @@ USER_NAME="$(id -un)"
 sudo -v
 
 # Create Directories
-echo "--- Setting up Configs ---"
+echo "${GREEN}--- Setting up Configs ---${NC}"
 mkdir -p ~/GoogleDrive
 mkdir -p ~/.config/{xdg-desktop-portal,fish,niri,waybar,alacritty,fuzzel,Thunar,mako,qt5ct,qt6ct,wlogout,rclone-offline}
 mkdir -p ~/.config/fish/functions
@@ -54,21 +60,21 @@ for f in ~/.config/waybar/config.jsonc ~/.config/niri/config.kdl ~/.config/niri/
 done
 
 # Make all local scripts executable
-echo "--- Making all local scripts executable ---"
+echo "${GREEN}--- Making all local scripts executable ---${NC}"
 if [ -n "$(ls -A ~/.local/bin 2>/dev/null)" ]; then
     chmod +x ~/.local/bin/*
 fi
 
 # Copy Wallpapers
-echo "--- Setting up Wallpapers ---"
+echo "${GREEN}--- Setting up Wallpapers ---${NC}"
 if [ -d "./wallpaper" ] && [ -n "$(ls -A ./wallpaper 2>/dev/null)" ]; then
     cp -v ./wallpaper/* ~/Pictures/Wallpapers/
 else
-    echo "Warning: No wallpaper found."
+    echo "${YELLOW}Warning: No wallpaper found.${NC}"
 fi
 
 # Extract themes
-echo "--- Extracting themes ---"
+echo "${GREEN}--- Extracting themes ---${NC}"
 for f in ./themes/*.zip; do
     sudo unzip -o -q "$f" -d /usr/share/themes
 done
@@ -126,7 +132,7 @@ EOF
 fi
 
 # Fish plugins
-echo "--- Installing Fish Plugins ---"
+echo "${GREEN}--- Installing Fish Plugins ---${NC}"
 fish -c "curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher"
 fish -c "fisher install IlanCosman/tide@v6"
 
@@ -163,6 +169,7 @@ if [ -f /usr/share/wayland-sessions/niri.desktop ] && grep -qx 'Exec=niri' /usr/
 fi
 
 # lightdm
+echo "${GREEN}--- Installing Display Manager (Greeter) ---${NC}"
 sudo systemctl enable lightdm.service
 
 sudo mkdir -p /usr/share/pixmaps/lightdm

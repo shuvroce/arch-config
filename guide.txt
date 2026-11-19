@@ -51,3 +51,12 @@ sudo chmod -R 755 /mnt/external_drive           # for ext4
 
 ## remove thunar right click 'set as wallpaper'
 sudo mv /usr/lib/thunarx-3/thunar-wallpaper-plugin.so /usr/lib/thunarx-3/thunar-wallpaper-plugin.so.disabled
+
+
+### Appimages list:
+AppManager (https://github.com/kem-a/AppManager)
+Mister Download Manager (https://github.com/anefzaoui/misterdownloadmanager)
+Concat (https://github.com/jub0t/concat)
+IngeTrazo (Sketchup) (https://github.com/ingelibre/ingetrazo)
+OpenCADStudio (https://github.com/HakanSeven12/OpenCADStudio)
+ConstructCraft (https://github.com/francisreboucas/constructcraft)

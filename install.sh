@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# Colors for terminal output
+GREEN='\033[0;32m'
+BLUE='\033[0;34m'
+YELLOW='\033[1;33m'
+NC='\033[0m'
+
 SCRIPT_DIR="$(cd -- "$(dirname -- "$(readlink -f -- "$0")")" && pwd)"
 cd -- "$SCRIPT_DIR" || exit 1
 
@@ -17,7 +23,7 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 sudo pacman -Syu --noconfirm
 
 # Install Pacman Packages
-echo "--- Installing Pacman Packages ---"
+echo "${GREEN}--- Installing Pacman Packages ---${NC}"
 PKGS=(
     # System Core & Drivers
     base-devel xwayland-satellite xdg-desktop-portal-gtk xdg-desktop-portal-gnome
@@ -28,8 +34,8 @@ PKGS=(
     alacritty wl-clipboard cliphist playerctl swaybg swaylock btop fcitx5
 
     # Tools & Shell
-    curl wget git fish fastfetch gedit nano micro
-    pacman-contrib timeshift reflector nethogs
+    curl wget git fish fastfetch gedit nano micro flatseal
+    pacman-contrib timeshift reflector nethogs tuxmanager
 
     # Networking & Audio
     iwd openssh wireguard-tools wireplumber pipewire-pulse pipewire-alsa
@@ -62,7 +68,7 @@ PKGS=(
     lightdm lightdm-slick-greeter
 
     # Extra
-    # zathura obs-studio qbittorrent ddcutil brightnessctl
+    # obs-studio qbittorrent
 )
 
 failed=()
@@ -73,11 +79,11 @@ for pkg in "${PKGS[@]}"; do
 done
 
 if [ ${#failed[@]} -gt 0 ]; then
-    echo "Warning: these packages failed to install: ${failed[*]}" >&2
+    echo "${YELLOW}Warning: these packages failed to install: ${failed[*]}${NC}" >&2
 fi
 
 # Install Yay
-echo "--- Installing Yay ---"
+echo "${GREEN}--- Installing AUR Heloper: yay ---${NC}"
 if ! command -v yay &> /dev/null; then
     tmpdir="$(mktemp -d)"
     if git clone --depth=1 https://aur.archlinux.org/yay.git "$tmpdir/yay"; then
@@ -86,31 +92,32 @@ if ! command -v yay &> /dev/null; then
     rm -rf "$tmpdir"
 
     if ! command -v yay &> /dev/null; then
-        echo "yay installation failed." >&2
+        echo "${YELLOW}yay installation failed.${NC}" >&2
         exit 1
     fi
 fi
 
 # Install AUR Packages
-echo "--- Installing AUR Packages ---"
+echo "${GREEN}--- Installing AUR Packages ---${NC}"
 AUR_PKGS=(
     paru zenity-gtk3 wlogout visual-studio-code-bin google-chrome numix-circle-icon-theme-git ttf-freebanglafont
+    artcraft-launcher luminance xapp-appimage-thumbnailer
 )
 if ! yay -S --noconfirm --needed "${AUR_PKGS[@]}"; then
-    echo "Warning: some AUR packages failed to install." >&2
+    echo "${YELLOW}Warning: some AUR packages failed to install.${NC}" >&2
 fi
 
 echo "--- Applying user configuration ---"
 if ! bash ./config.sh; then
-    echo "Configuration step failed." >&2
+    echo "${YELLOW}Configuration step failed.${NC}" >&2
     exit 1
 fi
 
 if [ -t 0 ]; then
-    read -rp "Set up Google Drive (rclone + offline cache) now? [y/N] " reply
+    read -rp "${BLUE}Set up Google Drive (rclone + offline cache) now? [y/N] ${NC}" reply
     case "$reply" in
-        [Yy]*) bash ./gdrive.sh || echo "Google Drive setup failed." >&2 ;;
+        [Yy]*) bash ./gdrive.sh || echo "${YELLOW}Google Drive setup failed.${NC}" >&2 ;;
     esac
 fi
 
-echo "--- Setup Complete. Please reboot. ---"
+echo "${GREEN}--- Setup Complete. Please reboot. ---${NC}"

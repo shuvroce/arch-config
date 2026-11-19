@@ -1,30 +1,36 @@
 #!/usr/bin/env bash
 set -e
 
+# Colors for terminal output
+GREEN='\033[0;32m'
+BLUE='\033[0;34m'
+YELLOW='\033[1;33m'
+NC='\033[0m'
+
 SCRIPT_DIR="$(cd -- "$(dirname -- "$(readlink -f -- "$0")")" && pwd)"
 
 if [ "$(id -u)" -eq 0 ]; then
-    echo "Run this script as your normal user, not as root." >&2
+    echo "${YELLOW}Run this script as your normal user, not as root.${NC}" >&2
     exit 1
 fi
 
-echo -e "=== Google Drive (Thunar + Offline + Waybar) Setup ==="
+echo -e "${BLUE}=== Google Drive (Thunar + Offline + Waybar) Setup ===${NC}"
 
 mkdir -p "$HOME/.local/bin" "$HOME/.config/rclone-offline" "$HOME/.config/systemd/user" "$HOME/GoogleDrive"
 
-echo -e "[1/4] Configuring Rclone Remotes..."
+echo -e "${GREEN}[1/4] Configuring Rclone Remotes...${NC}"
 
 if ! rclone listremotes | grep -qx "gdrive-main:"; then
-    echo -e "Step A: Authenticate 'My Drive' (gdrive-main)"
+    echo -e "${BLUE}Step A: Authenticate 'My Drive' (gdrive-main)${NC}"
     echo "A browser window will open. Please sign in to your Google account."
     rclone config create gdrive-main drive scope=drive
 else
     echo "Remote 'gdrive-main' already exists. Skipping..."
 fi
 
-read -p "Do you want to link an 'Other Computer' synced folder? (y/N): " ADD_COMP
+read -p "${BLUE}Do you want to link an 'Other Computer' synced folder? (y/N): ${NC}" ADD_COMP
 if [[ "$ADD_COMP" =~ ^[Yy]$ ]]; then
-    echo -e "Step B: Configure 'Computers' (gdrive-computers)"
+    echo -e "${BLUE}Step B: Configure 'Computers' (gdrive-computers)${NC}"
     echo "1. Open https://google.com -> Click 'Computers' -> Open your PC folder."
     echo "2. Copy the Folder ID at the end of the URL (after /folders/)."
     read -p "Paste your Computer Folder ID here: " COMP_ID
@@ -40,17 +46,17 @@ else
     UPSTREAMS="\"My Drive=gdrive-main:\""
 fi
 
-echo -e "Creating combined 'gdrive' remote..."
+echo -e "${YELLOW}Creating combined 'gdrive' remote...${NC}"
 rclone config delete gdrive >/dev/null 2>&1 || true
 rclone config create gdrive combine upstreams="$UPSTREAMS"
 
-echo -e "[2/4] Installing offline pinning script (~/.local/bin/gdrive-offline.sh)..."
+echo -e "${GREEN}[2/4] Installing offline pinning script (~/.local/bin/gdrive-offline.sh)...${NC}"
 install -m 755 "$SCRIPT_DIR/scripts/gdrive-offline.sh" "$HOME/.local/bin/gdrive-offline.sh"
 
-echo -e "[3/4] Installing Waybar status script (~/.local/bin/waybar-gdrive.sh)..."
+echo -e "${GREEN}[3/4] Installing Waybar status script (~/.local/bin/waybar-gdrive.sh)...${NC}"
 install -m 755 "$SCRIPT_DIR/scripts/waybar-gdrive.sh" "$HOME/.local/bin/waybar-gdrive.sh"
 
-echo -e "[4/4] Setting up Systemd user services..."
+echo -e "${GREEN}[4/4] Setting up Systemd user services...${NC}"
 
 cat << 'EOF' > "$HOME/.config/systemd/user/rclone-gdrive.service"
 [Unit]
@@ -103,3 +109,5 @@ systemctl --user enable rclone-gdrive.service
 systemctl --user restart rclone-gdrive.service
 systemctl --user enable rclone-offline-sync.timer
 systemctl --user restart rclone-offline-sync.timer
+
+echo "${GREEN}--- Google Drive Setup Complete. ---${NC}"

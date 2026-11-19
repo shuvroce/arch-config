@@ -171,6 +171,7 @@ window-rule {
     match app-id="zenity"
     match app-id="xdg-desktop-portal-gtk"
     match app-id="megasync"
+    match app-id="Insync"
     // match app-id="com.github.AppManager"
 
     open-floating true
@@ -260,6 +261,10 @@ window-rule {
     match app-id="misterdownloadmanager"
 
     opacity 1.0
+
+    popups {
+        opacity 1.0
+    }
 }
 
 

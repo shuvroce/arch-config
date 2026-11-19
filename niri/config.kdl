@@ -73,9 +73,6 @@ layout {
     // `draw-border-with-background`
     focus-ring {
         off
-        width 2
-        active-color "#7185a1"
-        inactive-color "#626262"
     }
 
     border {
@@ -94,13 +91,6 @@ layout {
         offset x=0 y=5
         color "#0007"
     }
-    
-    struts {
-        //left 64
-        // right 64
-        // top 64
-        // bottom 64
-    }
 }
 
 overview {
@@ -117,12 +107,12 @@ overview {
 //--------------------------------------------------------------
 
 spawn-at-startup "waybar"
-spawn-at-startup "mako"
+spawn-at-startup "mako" //notification demon
 spawn-at-startup "sh" "-c" "$HOME/.config/niri/wallpaper.sh"
 spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 spawn-at-startup "dbus-update-activation-environment" "--systemd" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP=niri"
 spawn-at-startup "udiskie" "--tray"
-spawn-at-startup "fcitx5" "-d"
+spawn-at-startup "fcitx5" "-d" //for bangla keyboard
 
 
 //--------------------------------------------------------------
@@ -138,11 +128,12 @@ screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 //--------------------------------------------------------------
 
 window-rule {
-    // geometry-corner-radius 8
     geometry-corner-radius 0
     clip-to-geometry true
 }
 
+
+// --- Blur Effect ---
 window-rule {
     opacity 0.9
 
@@ -163,6 +154,7 @@ window-rule {
     }
 }
 
+// --- Floating Windows ---
 window-rule {
     match app-id="thunar" title="^Rename "
     match title="^File Operation Progress$"
@@ -184,7 +176,7 @@ window-rule {
     open-floating true
 }
 
-
+// --- Floating window for file selection dialog ---
 window-rule {
     match title="^Open File$"
     match title="^Open Files$"
@@ -199,16 +191,14 @@ window-rule {
     default-window-height { proportion 0.75; }
 }
 
+// --- Image viewer floating window ---
 window-rule {
     match app-id="ristretto"
 
     open-floating true
-    // default-column-width { fixed 800; }
     default-column-width { proportion 0.5; }
-    // default-window-height { fixed 800; }
     default-window-height { proportion 0.75; }
 }
-
 
 window-rule {
     match title="^MEGAsync$"
@@ -216,12 +206,6 @@ window-rule {
     open-floating true
     default-column-width { fixed 300; }
     default-window-height { fixed 400; }
-}
-
-
-/-window-rule {
-    match app-id="vlc"
-    open-floating true
 }
 
 window-rule {
@@ -237,19 +221,6 @@ window-rule {
 window-rule {
     match app-id=r#"firefox$"# title="^Picture-in-Picture$"
     open-floating true
-}
-
-window-rule {
-    match app-id="conky"
-    open-floating true
-    focus-ring {
-        off
-    }
-    shadow {
-        off
-    }
-    // exclude-from-tabs true
-    // click-to-focus false
 }
 
 
@@ -281,12 +252,13 @@ layer-rule {
         blur true
         xray true
     }
-    // geometry-corner-radius 10
     geometry-corner-radius 0
 }
 
 window-rule {
     match app-id="google-chrome"
+    match app-id="misterdownloadmanager"
+
     opacity 1.0
 }
 
@@ -296,6 +268,7 @@ window-rule {
 //--------------------------------------------------------------
 
 binds {
+    // Primary bindings
     Mod+Shift+Slash { show-hotkey-overlay; }
     Mod+Return hotkey-overlay-title="Open a Terminal: Alacritty" { spawn "alacritty"; }
     Alt+Space hotkey-overlay-title="Run an Application: Fuzzel" { spawn "fuzzel"; }
@@ -304,25 +277,12 @@ binds {
     Mod+E hotkey-overlay-title="Run an Application: File Manager" { spawn "thunar"; }
     Mod+Escape repeat=false { spawn "wlogout"; }
 
-    Ctrl+Space {
-        spawn "bash" "-c" "engine=$(ibus engine); if [ \"$engine\" == \"ibus-avro\" ]; then ibus engine xkb:us::eng; else ibus engine ibus-avro; fi"
-    }
-
-    Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
-    Super+Alt+S allow-when-locked=true hotkey-overlay-title=null { spawn-sh "pkill orca || exec orca"; }
-
-    XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0"; }
-    XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-"; }
-    XF86AudioMute        allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
-    XF86AudioMicMute     allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
-    XF86AudioPlay        allow-when-locked=true { spawn-sh "playerctl play-pause"; }
-    XF86AudioStop        allow-when-locked=true { spawn-sh "playerctl stop"; }
-    XF86AudioPrev        allow-when-locked=true { spawn-sh "playerctl previous"; }
-    XF86AudioNext        allow-when-locked=true { spawn-sh "playerctl next"; }
-
     Mod+O repeat=false { toggle-overview; }
     Mod+A repeat=false { toggle-overview; }
     Mod+Q repeat=false { close-window; }
+    Mod+Space { maximize-column; }
+    Mod+C { center-column; }
+    Mod+P { screenshot; }
 
     Mod+Left      { focus-column-left; }
     Alt+Down      { focus-window-down; }
@@ -335,6 +295,27 @@ binds {
     Mod+Ctrl+Down  { move-window-down; }
     Mod+Ctrl+Up    { move-window-up; }
     Mod+Ctrl+Right { move-column-right; }
+    Mod+Comma  { consume-window-into-column; }
+    Mod+Period { expel-window-from-column; }
+    Mod+Minus { set-column-width "-10%"; }
+    Mod+Equal { set-column-width "+10%"; }
+
+    Ctrl+Space {
+        spawn "bash" "-c" "engine=$(ibus engine); if [ \"$engine\" == \"ibus-avro\" ]; then ibus engine xkb:us::eng; else ibus engine ibus-avro; fi"
+    }
+
+    // Other bindings
+    Super+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
+    Super+Alt+S allow-when-locked=true hotkey-overlay-title=null { spawn-sh "pkill orca || exec orca"; }
+
+    XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0"; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-"; }
+    XF86AudioMute        allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
+    XF86AudioMicMute     allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
+    XF86AudioPlay        allow-when-locked=true { spawn-sh "playerctl play-pause"; }
+    XF86AudioStop        allow-when-locked=true { spawn-sh "playerctl stop"; }
+    XF86AudioPrev        allow-when-locked=true { spawn-sh "playerctl previous"; }
+    XF86AudioNext        allow-when-locked=true { spawn-sh "playerctl next"; }
 
     Mod+Home { focus-column-first; }
     Mod+End  { focus-column-last; }
@@ -401,9 +382,6 @@ binds {
     Mod+BracketLeft  { consume-or-expel-window-left; }
     Mod+BracketRight { consume-or-expel-window-right; }
 
-    Mod+Comma  { consume-window-into-column; }
-    Mod+Period { expel-window-from-column; }
-
     Mod+R { switch-preset-column-width; }
     Mod+Shift+R { switch-preset-window-height; }
     Mod+Ctrl+R { reset-window-height; }
@@ -412,13 +390,10 @@ binds {
     // Mod+Shift+F { fullscreen-window; }
     // Mod+Ctrl+F { expand-column-to-available-width; }
     
-    Mod+Space { maximize-column; }
     Mod+Shift+Return { fullscreen-window; }
     Mod+Ctrl+Return { expand-column-to-available-width; }
-    Mod+C { center-column; }
+    
     Mod+Ctrl+C { center-visible-columns; }
-    Mod+Minus { set-column-width "-10%"; }
-    Mod+Equal { set-column-width "+10%"; }
     Mod+Shift+Minus { set-window-height "-10%"; }
     Mod+Shift+Equal { set-window-height "+10%"; }
     Mod+V       { toggle-window-floating; }

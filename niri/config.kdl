@@ -171,7 +171,7 @@ window-rule {
     match app-id="zenity"
     match app-id="xdg-desktop-portal-gtk"
     match app-id="megasync"
-    match app-id="com.github.AppManager"
+    // match app-id="com.github.AppManager"
 
     open-floating true
 }
